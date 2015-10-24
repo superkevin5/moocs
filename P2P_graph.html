@@ -1,0 +1,490 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+
+    <title>particles2planets-001 Forums</title>
+
+    <style>
+
+ .node circle {
+   fill: #fff;
+   stroke: steelblue;
+   stroke-width: 3px;
+ }
+
+ .node text { font: 12px sans-serif; }
+
+ .link {
+   fill: none;
+   stroke: #ccc;
+   stroke-width: 2px;
+ }
+
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+        var treeData = [
+    {
+     "name": "-1- (p=0, c=0) [d=N/A]", 
+     "value": 0.0, 
+     "parent": "-", 
+     "children": [
+        {
+         "name": "0-Forums (p=0, c=0) [d=0]", 
+         "value": 0.0, 
+         "parent": "-1-", 
+         "children": [
+            {
+             "name": "2-General Discussion (p=364, c=235) [d=0]", 
+             "value": 100.0, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10059- (p=0, c=0) [d=0]", 
+                 "value": 0.0, 
+                 "parent": "2-General Discussion" 
+                }
+             ]
+            },
+            {
+             "name": "3-Experimental Investigations (p=35, c=4) [d=0]", 
+             "value": 9.62, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10055-Experimental investigation #1 (p=32, c=37) [d=0]", 
+                 "value": 8.79, 
+                 "parent": "3-Experimental Investigations" 
+                },
+                {
+                 "name": "10056-Experimental investigation #2 (p=17, c=4) [d=0]", 
+                 "value": 4.67, 
+                 "parent": "3-Experimental Investigations" 
+                }
+             ]
+            },
+            {
+             "name": "4-Study Groups (p=14, c=6) [d=0]", 
+             "value": 3.85, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "5-Errata (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "6- (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "7-Course Material Feedback (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "8-Week 1 Introduction and basic tools (p=71, c=36) [d=0]", 
+             "value": 19.51, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10004-Lesson 1.1 (p=0, c=0) [d=1]", 
+                 "value": 0.0, 
+                 "parent": "8-Week 1 Introduction and basic tools" 
+                },
+                {
+                 "name": "10006-General (p=13, c=6) [d=0]", 
+                 "value": 3.57, 
+                 "parent": "8-Week 1 Introduction and basic tools" 
+                },
+                {
+                 "name": "10007-Lesson 1.1 Introduction and context (p=28, c=42) [d=0]", 
+                 "value": 7.69, 
+                 "parent": "8-Week 1 Introduction and basic tools" 
+                },
+                {
+                 "name": "10008-Lesson 1.2 Units and significant figures (p=57, c=61) [d=0]", 
+                 "value": 15.66, 
+                 "parent": "8-Week 1 Introduction and basic tools" 
+                },
+                {
+                 "name": "10009-Lesson 1.3 Vectors and scalars (p=24, c=10) [d=0]", 
+                 "value": 6.59, 
+                 "parent": "8-Week 1 Introduction and basic tools" 
+                },
+                {
+                 "name": "10011-Lesson 1.4 Estimating (p=24, c=17) [d=0]", 
+                 "value": 6.59, 
+                 "parent": "8-Week 1 Introduction and basic tools", 
+                 "children": [
+                    {
+                     "name": "10058- (p=0, c=0) [d=0]", 
+                     "value": 0.0, 
+                     "parent": "10011-Lesson 1.4 Estimating" 
+                    }
+                 ]
+                }
+             ]
+            },
+            {
+             "name": "9-Technical Feedback (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10000-Course Materials Errors (p=50, c=9) [d=0]", 
+             "value": 13.74, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10001-Technical Issues (p=86, c=14) [d=0]", 
+             "value": 23.63, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10003-STAFF FORUM (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10005- (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10010-Signature Track (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10012-Week 2 Velocity and acceleration (p=27, c=23) [d=0]", 
+             "value": 7.42, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10019-General (p=7, c=1) [d=0]", 
+                 "value": 1.92, 
+                 "parent": "10012-Week 2 Velocity and acceleration" 
+                },
+                {
+                 "name": "10020-Lesson 2.1 Graphing displacement and velocity (p=11, c=2) [d=0]", 
+                 "value": 3.02, 
+                 "parent": "10012-Week 2 Velocity and acceleration" 
+                },
+                {
+                 "name": "10021-Lesson 2.2 Acceleration (p=14, c=4) [d=0]", 
+                 "value": 3.85, 
+                 "parent": "10012-Week 2 Velocity and acceleration" 
+                },
+                {
+                 "name": "10022-Lesson 2.3 Relating velocity, acceleration and displacement (p=6, c=7) [d=0]", 
+                 "value": 1.65, 
+                 "parent": "10012-Week 2 Velocity and acceleration" 
+                },
+                {
+                 "name": "10023-Lesson 2.4 Relative motion (p=6, c=0) [d=0]", 
+                 "value": 1.65, 
+                 "parent": "10012-Week 2 Velocity and acceleration" 
+                }
+             ]
+            },
+            {
+             "name": "10013-Week 3 Motion in two dimensions (p=54, c=48) [d=0]", 
+             "value": 14.84, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10030-General (p=2, c=0) [d=0]", 
+                 "value": 0.55, 
+                 "parent": "10013-Week 3 Motion in two dimensions" 
+                },
+                {
+                 "name": "10031-Lesson 3.1 Projectiles, falling vertically under gravity (p=5, c=1) [d=0]", 
+                 "value": 1.37, 
+                 "parent": "10013-Week 3 Motion in two dimensions" 
+                },
+                {
+                 "name": "10032-Lesson 3.2 Combining horizontal and vertical motion (p=5, c=2) [d=0]", 
+                 "value": 1.37, 
+                 "parent": "10013-Week 3 Motion in two dimensions" 
+                },
+                {
+                 "name": "10033-Lesson 3.3 Trajectories and range (p=2, c=0) [d=0]", 
+                 "value": 0.55, 
+                 "parent": "10013-Week 3 Motion in two dimensions" 
+                },
+                {
+                 "name": "10034-Lesson 3.4 Uniform circular motion (p=6, c=5) [d=0]", 
+                 "value": 1.65, 
+                 "parent": "10013-Week 3 Motion in two dimensions" 
+                }
+             ]
+            },
+            {
+             "name": "10014-Week 4 Newton's laws of motion (p=40, c=29) [d=0]", 
+             "value": 10.99, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10024-General (p=4, c=0) [d=0]", 
+                 "value": 1.1, 
+                 "parent": "10014-Week 4 Newton's laws of motion" 
+                },
+                {
+                 "name": "10025-Lesson 4.1 Newton's laws of motion (p=10, c=13) [d=0]", 
+                 "value": 2.75, 
+                 "parent": "10014-Week 4 Newton's laws of motion" 
+                },
+                {
+                 "name": "10026-Lesson 4.2 Intertial and non-inertial frames (p=15, c=4) [d=0]", 
+                 "value": 4.12, 
+                 "parent": "10014-Week 4 Newton's laws of motion" 
+                },
+                {
+                 "name": "10027-Lesson 4.3 Newton's third law (p=2, c=0) [d=0]", 
+                 "value": 0.55, 
+                 "parent": "10014-Week 4 Newton's laws of motion" 
+                },
+                {
+                 "name": "10028-Lesson 4.4 Calculating total force (p=7, c=9) [d=0]", 
+                 "value": 1.92, 
+                 "parent": "10014-Week 4 Newton's laws of motion" 
+                },
+                {
+                 "name": "10029-Lesson 4.5 Practice problems (p=14, c=4) [d=0]", 
+                 "value": 3.85, 
+                 "parent": "10014-Week 4 Newton's laws of motion" 
+                }
+             ]
+            },
+            {
+             "name": "10015-Week 5 Weight, friction and spring forces (p=35, c=31) [d=0]", 
+             "value": 9.62, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10035-General (p=1, c=0) [d=0]", 
+                 "value": 0.27, 
+                 "parent": "10015-Week 5 Weight, friction and spring forces" 
+                },
+                {
+                 "name": "10036-Lesson 5.1 Weight versus mass (p=17, c=6) [d=0]", 
+                 "value": 4.67, 
+                 "parent": "10015-Week 5 Weight, friction and spring forces" 
+                },
+                {
+                 "name": "10037-Lesson 5.2 Springs and Hooke's law (p=16, c=9) [d=0]", 
+                 "value": 4.4, 
+                 "parent": "10015-Week 5 Weight, friction and spring forces" 
+                },
+                {
+                 "name": "10038-Lesson 5.3 Normal and frictional forces (p=23, c=22) [d=0]", 
+                 "value": 6.32, 
+                 "parent": "10015-Week 5 Weight, friction and spring forces" 
+                },
+                {
+                 "name": "10039-Lesson 5.4 Friction problems (p=0, c=0) [d=0]", 
+                 "value": 0.0, 
+                 "parent": "10015-Week 5 Weight, friction and spring forces" 
+                }
+             ]
+            },
+            {
+             "name": "10016-Week 6 Work, energy and power (p=12, c=18) [d=0]", 
+             "value": 3.3, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10040-General (p=4, c=8) [d=0]", 
+                 "value": 1.1, 
+                 "parent": "10016-Week 6 Work, energy and power" 
+                },
+                {
+                 "name": "10041-Lesson 6.1 What is work? (p=14, c=12) [d=0]", 
+                 "value": 3.85, 
+                 "parent": "10016-Week 6 Work, energy and power" 
+                },
+                {
+                 "name": "10042-Lesson 6.2 Work and kinetic energy (p=11, c=13) [d=0]", 
+                 "value": 3.02, 
+                 "parent": "10016-Week 6 Work, energy and power" 
+                },
+                {
+                 "name": "10043-Lesson 6.3 Work and potential energy (p=2, c=3) [d=0]", 
+                 "value": 0.55, 
+                 "parent": "10016-Week 6 Work, energy and power" 
+                },
+                {
+                 "name": "10044-Lesson 6.4 Energy conservation (p=10, c=1) [d=0]", 
+                 "value": 2.75, 
+                 "parent": "10016-Week 6 Work, energy and power" 
+                },
+                {
+                 "name": "10057-Lesson 6.5 Energy, work and power (p=25, c=5) [d=0]", 
+                 "value": 6.87, 
+                 "parent": "10016-Week 6 Work, energy and power" 
+                }
+             ]
+            },
+            {
+             "name": "10017-Week 7 Momentum and collisions (p=18, c=4) [d=0]", 
+             "value": 4.95, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10045-General (p=0, c=0) [d=0]", 
+                 "value": 0.0, 
+                 "parent": "10017-Week 7 Momentum and collisions" 
+                },
+                {
+                 "name": "10046-Lesson 7.1 Momentum and collisions (p=5, c=7) [d=0]", 
+                 "value": 1.37, 
+                 "parent": "10017-Week 7 Momentum and collisions" 
+                },
+                {
+                 "name": "10047-Lesson 7.2 Impulse and more about collisions (p=2, c=0) [d=0]", 
+                 "value": 0.55, 
+                 "parent": "10017-Week 7 Momentum and collisions" 
+                },
+                {
+                 "name": "10048-Lesson 7.3 Centre of mass, elastic and inelastic collisions (p=5, c=2) [d=0]", 
+                 "value": 1.37, 
+                 "parent": "10017-Week 7 Momentum and collisions" 
+                },
+                {
+                 "name": "10049-Lesson 7.4 Problems involving collisions (p=11, c=4) [d=0]", 
+                 "value": 3.02, 
+                 "parent": "10017-Week 7 Momentum and collisions" 
+                }
+             ]
+            },
+            {
+             "name": "10018-Week 8 Gravity (p=23, c=22) [d=0]", 
+             "value": 6.32, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10050-General (p=11, c=8) [d=0]", 
+                 "value": 3.02, 
+                 "parent": "10018-Week 8 Gravity" 
+                },
+                {
+                 "name": "10051-Lesson 8.1 Gravity, orbits, planets, stars ... (p=15, c=13) [d=0]", 
+                 "value": 4.12, 
+                 "parent": "10018-Week 8 Gravity" 
+                },
+                {
+                 "name": "10052-Lesson 8.2 g varies with latitude and altitude (p=10, c=2) [d=0]", 
+                 "value": 2.75, 
+                 "parent": "10018-Week 8 Gravity" 
+                },
+                {
+                 "name": "10053-Lesson 8.3 Orbits (p=25, c=25) [d=0]", 
+                 "value": 6.87, 
+                 "parent": "10018-Week 8 Gravity" 
+                },
+                {
+                 "name": "10054-Lesson 8.4 Gravity and other forces (p=2, c=0) [d=0]", 
+                 "value": 0.55, 
+                 "parent": "10018-Week 8 Gravity" 
+                }
+             ]
+            },
+            {
+             "name": "10060-Signature Track (p=48, c=53) [d=0]", 
+             "value": 13.19, 
+             "parent": "0-Forums" 
+            }
+         ]
+        }
+     ]
+    }
+];
+
+// ************** Generate the tree diagram  *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+ width = 1960 - margin.right - margin.left,
+ height = 1550 - margin.top - margin.bottom;
+
+var i = 0;
+
+var tree = d3.layout.tree()
+ .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+ .projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+ .attr("width", width + margin.right + margin.left)
+ .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+ .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+
+update(root);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+   links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 400;  });
+
+  // Declare the nodesâ€¦
+  var node = svg.selectAll("g.node")
+   .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter the nodes.
+  var nodeEnter = node.enter().append("g")
+   .attr("class", "node")
+   .attr("transform", function(d) {
+    return "translate(" + d.y + "," + d.x + ")"; });
+
+  //nodeEnter.append("circle")
+  // .attr("r", 10)
+  // .style("fill", "#fff");
+
+  nodeEnter.append("circle")
+   .attr("r", function(d) { return d.value/5; })
+   .style("fill", "#fff");
+
+  nodeEnter.append("text")
+   .attr("x", function(d) {
+    return d.children || d._children ? 0 : 13; })
+   .attr("dy", ".35em")
+   .attr("text-anchor", function(d) {
+    return d.children || d._children ? "end" : "start"; })
+   .text(function(d) { return d.name; })
+   .style("fill-opacity", 1);
+
+  // Declare the links
+  var link = svg.selectAll("path.link")
+   .data(links, function(d) { return d.target.id; });
+
+  // Enter the links.
+  link.enter().insert("path", "g")
+   .attr("class", "link")
+   .attr("d", diagonal);
+
+}
+
+</script>
+
+  </body>
+</html>
+
+        

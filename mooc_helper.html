@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>MOOC Dashboard helpers</title>
+<link rel="icon" type="image/png" href="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/LADA_ico.png">
+<style>
+textarea { height: 30em; }
+.minify-button { background: #3cd42f; margin-left:30%; background-image: -webkit-linear-gradient(top, #3cd42f, #17751b); background-image: -moz-linear-gradient(top, #3cd42f, #17751b); background-image: -ms-linear-gradient(top, #3cd42f, #17751b); background-image: -o-linear-gradient(top, #3cd42f, #17751b); background-image: linear-gradient(to bottom, #3cd42f, #17751b); -webkit-border-radius: 15; -moz-border-radius: 15; border-radius: 15px; font-family: Arial; color: #ffffff; font-size: 20px; padding: 25px 50px 25px 50px; text-decoration: none; }
+.minify-button:hover { background: #c9edc7; background-image: -webkit-linear-gradient(top, #c9edc7, #48a648); background-image: -moz-linear-gradient(top, #c9edc7, #48a648); background-image: -ms-linear-gradient(top, #c9edc7, #48a648); background-image: -o-linear-gradient(top, #c9edc7, #48a648); background-image: linear-gradient(to bottom, #c9edc7, #48a648); text-decoration: none; }
+#outer-wrapper { overflow: hidden; }
+#wrapper { width: 65%; float: left; }
+#input { width: 99%; height: 18em; }
+#output { width: 99%; height: 18em; margin-bottom: 2em; }
+#options { float: right; width: 33%; padding-left: 1em; margin-top: 3em; }
+#options ul { list-style: none; padding: 0.5em; overflow: hidden; background: #ffe; margin-top: 0; }
+#options ul li { float: left; clear: both; padding-bottom: 0.5em; }
+#options ul li div { margin-left: 1.75em; }
+#options label, #options input { float: left; }
+#options label.sub-option{ margin-left: 22px; margin-right: 5px }
+#options input { margin-right: 0.5em; }
+#stats { margin-bottom: 2em; overflow: hidden; margin-top: 0; }
+#todo { font-family: monospace; margin-bottom: 2em; }
+#warning { background: #fee; padding: 0.25em; display: inline-block; margin-top: 0; font-size: 0.85em; }
+#lint-report { font-family: monospace; }
+#report { margin-bottom: 5em; }
+#report ul { margin: 0.5em; padding-left: 1em; list-style: none; }
+
+.min-output{border:solid thin #C30;}
+.success { color: green; }
+.failure { color: red; }
+.quiet { font-size: 0.85em; color: #888; }
+.short { display: inline-block; width: 20em; margin-top: 0.25em; }
+
+.controls span { margin-right: 0.5em; margin-left: 1em; }
+.controls a { margin-left: 0.1em; }
+.controls a:focus, .controls a:hover { text-decoration: none; }
+
+.deprecated-element, .deprecated-attribute { color: red; }
+.presentational-element, .presentational-attribute, .inaccessible-attribute { color: #FF8C00; }
+
+.unsafe { color: #f33; }
+
+iframe { position: absolute; top: 10px; right: 10px; }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
+
+<script>
+
+//jquery additional elements	
+$(function() {
+	$('#helpspace').hide();
+
+    });
+	
+$('#helpbutton').click(function(){
+	  if($('#helpspace').is(":visible")){
+		  $('#helpspace').hide(1000);
+	  } else {
+		  $('#helpspace').show(1000);
+	  }
+    });
+
+	
+</script>
+
+<link href="https://googledrive.com/host/0B8KqLaP_s06ITFd1aHpXc0w4Uk0/css/hover.css" rel="stylesheet" media="all">
+<link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/mooc_dashboard.css" rel="stylesheet" media="all">
+<link href="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/stylesheets/jquery.sidr.dark.css" rel="stylesheet" media="all">
+
+<style>
+
+</style>
+</head>
+
+<body>
+<div class="SkinInner">
+
+ 
+    
+	<div id="SkinContent">
+	<div id="LogoContainer">
+		<div id="Logo">
+		  <h1>|  MOOC Dashboard helpers <span style="font-size:10px; color:#069">v0.2 - HTML Minifier (v0.7.0)</span></h1></div>
+        	<div id="help">
+	   			<img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/question_mark_35.png" id="helpbutton" title="Detailed information"/>
+   			  <a href="https://googledrive.com/host/0B8KqLaP_s06IflM5RGJfdlZEdC1NNHBLQm5JbVFtUWNwc2lISVYtYnpJUVMwUGxSXzF1X3M/mooc_helper.html"><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/home_35.png" id="homebutton" title="Home page"/></a>
+    	   	</div>
+   	  </div>
+  </div>
+
+<div id="helpspace">
+	<p>Testing the space for editor</p>
+</div>
+
+<div id="mainbody">
+	<textarea id="editor1" name="editor1" rows="4" cols="40"></textarea>
+		<script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace( 'editor1' );
+        </script>
+</div>            
+                 
+<div>
+      <div id="outer-wrapper">
+        <div id="wrapper">
+          <textarea rows="4" cols="40" id="input" hidden="true"></textarea>
+          <button type="button" id="minify-btn" class="minify-button">Minify</button>
+          <p></p>
+          Result:<br /><textarea rows="4" cols="40" id="output" class="min-output" readonly></textarea>
+
+		  <p>Summary stats</p>
+	      <p id="stats"></p>
+          <hr />   
+          <div id="lint-report">
+            LINT REPORT:
+	          <div id="report"></div>
+          </div>
+        </div>
+        <div id="options">
+          <ul>
+            <li>
+              <input type="checkbox" id="remove-comments" checked>
+              <label for="remove-comments">Remove comments
+                <br>
+                <span class="quiet short">
+                  Conditional comments are left intact, but their inner (insignificant) whitespace is removed.
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-comments-from-cdata" checked>
+              <label for="remove-comments-from-cdata">Also remove comments from scripts and styles</label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-cdata-sections-from-cdata" checked>
+              <label for="remove-cdata-sections-from-cdata">Remove CDATA sections from scripts and styles</label>
+            </li>
+            <li>
+              <input type="checkbox" id="collapse-whitespace" checked>
+              <label for="collapse-whitespace">Collapse whitespace</label>
+            </li>
+            <li>
+              <input type="checkbox" id="conservative-collapse">
+              <label for="conservative-collapse">Conservative whitespace collapse</label>
+            </li>
+            <li>
+              <input type="checkbox" id="collapse-boolean-attributes" checked>
+              <label for="collapse-boolean-attributes">
+                Collapse boolean attributes
+                <br>
+                <span class="quiet short">
+                  (e.g. <code>&lt;... disabled="disabled"&gt; &rarr; &lt;... disabled&gt;</code>)
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-attribute-quotes" checked>
+              <label for="remove-attribute-quotes">
+                Remove attribute quotes
+                <br>
+                <span class="quiet">
+                  (e.g. <code>&lt;p class="foo"&gt; &rarr; &lt;p class=foo&gt;</code>)
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-redundant-attributes" checked>
+              <label for="remove-redundant-attributes">Remove redundant attributes/values</label>
+              <div class="quiet">
+                <code>&lt;script language="Javascript" ...&gt;</code><br>
+                <code>&lt;form method="get" ...&gt;</code><br>
+                <code>&lt;input type="text" ...&gt;</code><br>
+                <code>&lt;script src="..." charset="..."&gt;</code><br>
+                <code>&lt;a id="..." name="..."&gt;</code><br>
+                <code>&lt;... onclick="javascript:..." ...&gt;</code>
+              </div>
+            </li>
+            <li>
+              <input type="checkbox" id="use-short-doctype" checked>
+              <label for="use-short-doctype" title="i.e. <!DOCTYPE html>">
+                Use short doctype
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-empty-attributes" checked>
+              <label for="remove-empty-attributes">
+                Remove empty (or blank) attributes
+                <br>
+                <span class="quiet short">
+                  Valid attributes are: class, id, style, title, lang, dir, event attributes
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-optional-tags" checked>
+              <label for="remove-optional-tags">
+                Remove optional tags
+                <br>
+                <span class="quiet short">
+                  Currently, only:
+                  <code>&lt;/html></code>,
+                  <code>&lt;/head></code>,
+                  <code>&lt;/body></code>,
+                  <code>&lt;/option></code>
+                  <code>&lt;/thead></code>,
+                  <code>&lt;/tbody></code>,
+                  <code>&lt;/tfoot></code>,
+                  and
+                  <code>&lt;/tr></code>
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-ignored">
+              <label for="remove-ignored">
+                Remove ignored tags
+                <br>
+                <span class="quiet short">
+                  Currently, only tags starting and ending with:
+                  <code>&lt;% ... %></code>
+                  and
+                  <code>&lt;? ... ?></code>
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-empty-elements">
+              <label for="remove-empty-elements" class="unsafe">
+                Remove empty elements
+                <br>
+                <span class="quiet short">
+                  All except <code>textarea</code>
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-script-type-attributes">
+              <label for="remove-script-type-attributes">
+                Remove <code>type="text/javascript"</code> from <code>script</code>'s
+                <br>
+                <span class="quiet short">
+                  Values other than "text/javascript" (e.g. "text/vbscript") are left intact.
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="remove-style-link-type-attributes">
+              <label for="remove-style-link-type-attributes">
+                Remove <code>type="text/css"</code> from <code>style</code>'s and <code>link</code>'s
+                <br>
+                <span class="quiet short">
+                  Values other than "text/css" (e.g. "text/plain" or "application/atom+xml") are left intact.
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="case-sensitive">
+              <label for="case-sensitive">
+                Case-sensitive attributes
+                <br>
+                <span class="quiet short">
+                  Useful when minifying SVG
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="keep-closing-slash">
+              <label for="keep-closing-slash">
+                Keep closing slash
+                <br>
+                <span class="quiet short">
+                  Useful when minifying SVG
+                </span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="minify-js" checked>
+              <label for="minify-js">
+                Minify JS
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="minify-js-templates">
+              <label for="minify-js-templates">
+                Minify JS Templates
+                <br>
+                <span class="quiet short">
+                  Minify HTML served inside script tag with a custom type attribute like "text/x-handlebars-template"
+                </span>
+              </label>
+            </li>
+            <li>
+              <label for="minify-js-templates-type" class="sub-option">
+                Template type
+              </label>
+              <input type="input" id="minify-js-templates-type">
+            </li>
+            <li>
+              <input type="checkbox" id="minify-css" checked>
+              <label for="minify-css">
+                Minify CSS
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="minify-urls">
+              <label for="minify-urls">
+                Minify URLs
+                <br>
+                <span class="quiet short">
+                  Convert absolute URLs to relative
+                </span>
+              </label>
+            </li>
+            <li>
+              <label for="minify-urls-siteurl" class="sub-option">
+                Site URL
+              </label>
+              <input type="input" id="minify-urls-siteurl">
+            </li>
+            <li>
+              <input type="checkbox" id="use-htmllint" >
+              <label for="use-htmllint">
+                Validate input through HTML lint
+              </label>
+            </li>
+            <li>
+              <label for="max-line-length" class="sub-option">
+                Max line length
+              </label>
+              <input type="number" id="max-line-length" value="0" min="0" max="10000">
+            </li>
+          </ul>
+          <div class="controls">
+            <span>Select:</span>
+            <a href="#" id="select-all">All</a>,
+            <a href="#" id="select-none">None</a>,
+            <a href="#" id="select-safe">Safe</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/dist/htmlminifier.min.js"></script>
+    <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/uglify.js"></script>
+    <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/cleancss-browser.js"></script>
+    <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/relateurl-browser.js"></script>
+    <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/master.js"></script>
+        
+	<div id="footer">
+    	<p class="footer_p">UNSW - Learning & Teching Unit, <br />
+        Learning Analytics and Data Analysis Team.<br />
+        For feedback/comments please contact unswmooc1@gmail.com<br /><br /><br />
+        <strong>Last edited on date 28 july 2015. </strong>
+        </p>
+    </div>  
+        
+            
+</div>
+ 
+
+  
+</body>
+</html>

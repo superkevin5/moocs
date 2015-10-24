@@ -1,0 +1,12 @@
+{
+  "browser":    true,
+  "eqeqeq":     true,
+  "es3":        true,
+  "expr":       true,
+  "laxbreak":   true,
+  "loopfunc":   true,
+  "node":       true,
+  "strict":     true,
+  "undef":      true,
+  "unused":     true
+}

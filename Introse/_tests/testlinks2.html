@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>dynamic links</title>
+<link rel="icon" type="image/png" href="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/LADA_ico.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="https://googledrive.com/host/0B8KqLaP_s06IUHhOa2cwdnFVbWM/json2.js" type="text/javascript"></script>
+<script src="https://googledrive.com/host/0B8KqLaP_s06IUHhOa2cwdnFVbWM/jsonpath-0.8.0.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div id='a'></div>
+<div id='b'></div>
+<div id='c'></div>
+<div id='single1'></div>
+<div id='single2'></div>
+
+
+<script>
+// scema to write to elements by ID
+var a = ['a', 'b', 'c'];
+a.forEach(function(entry) {
+    console.log(entry);
+	document.getElementById(entry).innerHTML=entry+1;
+});
+
+json= $.getJSON('testdata2.json', function(json) { 
+  });
+console.log(a);
+console.log(json.toJSONString());
+console.log(jsonPath(json, '$.store.book[0].title').toJSONString());
+console.log(jsonPath(json, "$..author").toJSONString());
+
+document.getElementById('single1').innerHTML=jsonPath(data, '$.store.book[0].title').toJSONString();
+document.getElementById('single2').innerHTML=jsonPath(data, "$..author").toJSONString();
+		   
+	   
+	     /* 
+		  myarray.forEach(function(el) {    
+		   var out = '<p>'+jsonPath(json, '$..book[?(@.order='+el+')]') + '</p>, ';
+		   //out += '<p>'+jsonPath(data, "$.store.book[*].author") + '</p>';
+		   out += jsonPath(json, "$..author").toJSONString() + "\n";
+		   out += jsonPath(json, "$.store.*").toJSONString() + "\n";
+		   out += jsonPath(json, "$.store..price").toJSONString() + "\n";
+		   out += jsonPath(json, "$..book[(@.length-1)]").toJSONString() + "\n";
+		   out += jsonPath(json, "$..book[-1:]").toJSONString() + "\n";
+		   out += jsonPath(json, "$..book[0,1]").toJSONString() + "\n";
+		   out += jsonPath(json, "$..book[:2]").toJSONString() + "\n";
+		   out += jsonPath(json, "$..book[?(@.isbn)]").toJSONString() + "\n";
+		   out += jsonPath(json, "$..book[?(@.price<10)]").toJSONString() + "\n";
+		   out += jsonPath(json, "$..*").toJSONString() + "\n";
+		   //document.write(out);	
+   		   document.getElementById(el).innerHTML=out;  
+	});	
+		   */
+		
+
+ </script>
+</body>
+</html>

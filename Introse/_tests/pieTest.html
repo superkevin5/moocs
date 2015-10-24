@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+<style>
+/* 
+  make each pie piece a rectangle twice as high as it is wide.
+  move the transform origin to the middle of the left side.
+  Also ensure that overflow is set to hidden.
+*/
+  .pie {
+		position:absolute;
+		width:100px;
+		height:200px;
+		overflow:hidden;
+		left:150px;
+		-moz-transform-origin:left center;
+		-ms-transform-origin:left center;
+		-o-transform-origin:left center;
+		-webkit-transform-origin:left center;
+		transform-origin:left center;
+	}
+/*
+  unless the piece represents more than 50% of the whole chart.
+  then make it a square, and ensure the transform origin is
+  back in the center.
+
+  NOTE: since this is only ever a single piece, you could
+  move this to a piece specific rule and remove the extra class
+*/
+	.pie.big {
+		width:200px;
+		height:200px;
+		left:50px;
+		-moz-transform-origin:center center;
+		-ms-transform-origin:center center;
+		-o-transform-origin:center center;
+		-webkit-transform-origin:center center;
+		transform-origin:center center;
+	}
+/*
+  this is the actual visible part of the pie. 
+  Give it the same dimensions as the regular piece.
+  Use border radius make it a half circle.
+  move transform origin to the middle of the right side.
+  Push it out to the left of the containing box.
+*/
+	.pie:BEFORE {
+		content:"";
+		position:absolute;
+		width:100px;
+		height:200px;
+		left:-100px;
+		border-radius:100px 0 0 100px;
+		-moz-transform-origin:right center;
+		-ms-transform-origin:right center;
+		-o-transform-origin:right center;
+		-webkit-transform-origin:right center;
+		transform-origin:right center;
+		
+	}
+ /* if it's part of a big piece, bring it back into the square */
+	.pie.big:BEFORE {
+		left:0px;
+	}
+/* 
+  big pieces will also need a second semicircle, pointed in the
+  opposite direction to hide the first part behind.
+*/
+	.pie.big:AFTER {
+		content:"";
+		position:absolute;
+		width:100px;
+		height:200px;
+		left:100px;
+		border-radius:0 100px 100px 0;
+	}
+/*
+  add colour to each piece.
+*/
+	.pie:nth-of-type(1):BEFORE,
+	.pie:nth-of-type(1):AFTER {
+		background-color:blue;	
+	}
+	.pie:nth-of-type(2):AFTER,
+	.pie:nth-of-type(2):BEFORE {
+		background-color:green;	
+	}
+	.pie:nth-of-type(3):AFTER,
+	.pie:nth-of-type(3):BEFORE {
+		background-color:red;	
+	}
+	.pie:nth-of-type(4):AFTER,
+	.pie:nth-of-type(4):BEFORE {
+		background-color:yellow;	
+	}
+	.pie:nth-of-type(5):AFTER,
+	.pie:nth-of-type(5):BEFORE {
+		background-color:orange;	
+	}
+	.pie:nth-of-type(6):AFTER,
+	.pie:nth-of-type(6):BEFORE {
+		background-color:purple;	
+	}
+/*
+  now rotate each piece based on their cumulative starting
+  position
+*/
+	.pie[data-start="0"] {
+		-moz-transform: rotate(30deg); /* Firefox */
+		-ms-transform: rotate(30deg); /* IE */
+		-webkit-transform: rotate(30deg); /* Safari and Chrome */
+		-o-transform: rotate(30deg); /* Opera */
+		transform:rotate(30deg);
+	}
+	.pie[data-start="60"] {
+		-moz-transform: rotate(120deg); /* Firefox */
+		-ms-transform: rotate(120deg); /* IE */
+		-webkit-transform: rotate(120deg); /* Safari and Chrome */
+		-o-transform: rotate(120deg); /* Opera */
+		transform:rotate(120deg);
+	}
+	.pie[data-start="120"] {
+		-moz-transform: rotate(180deg); /* Firefox */
+		-ms-transform: rotate(180deg); /* IE */
+		-webkit-transform: rotate(180deg); /* Safari and Chrome */
+		-o-transform: rotate(180deg); /* Opera */
+		transform:rotate(180deg);
+	}
+	.pie[data-start="180"] {
+		-moz-transform: rotate(240deg); /* Firefox */
+		-ms-transform: rotate(240deg); /* IE */
+		-webkit-transform: rotate(240deg); /* Safari and Chrome */
+		-o-transform: rotate(240deg); /* Opera */
+		transform:rotate(240deg);
+	}
+	.pie[data-start="240"] {
+		-moz-transform: rotate(300deg); /* Firefox */
+		-ms-transform: rotate(300deg); /* IE */
+		-webkit-transform: rotate(300deg); /* Safari and Chrome */
+		-o-transform: rotate(300deg); /* Opera */
+		transform:rotate(300deg);
+	}
+	.pie[data-start="300"] {
+		-moz-transform: rotate(360deg); /* Firefox */
+		-ms-transform: rotate(360deg); /* IE */
+		-webkit-transform: rotate(360deg); /* Safari and Chrome */
+		-o-transform: rotate(360deg); /* Opera */
+		transform:rotate(360deg);
+	}
+/*
+  and rotate the amount of the pie that's showing.
+
+  NOTE: add an extra degree to all but the final piece, 
+  to fill in unsightly gaps.
+*/
+	.pie[data-value="60"]:BEFORE {
+		-moz-transform: rotate(61deg); /* Firefox */
+		-ms-transform: rotate(61deg); /* IE */
+		-webkit-transform: rotate(61deg); /* Safari and Chrome */
+		-o-transform: rotate(61deg); /* Opera */
+		transform:rotate(61deg);
+	}
+	.pie[data-value="120"]:BEFORE {
+		-moz-transform: rotate(121deg); /* Firefox */
+		-ms-transform: rotate(121deg); /* IE */
+		-webkit-transform: rotate(121deg); /* Safari and Chrome */
+		-o-transform: rotate(121deg); /* Opera */
+		transform:rotate(121deg);
+	}
+	.pie[data-value="180"]:BEFORE {
+		-moz-transform: rotate(181deg); /* Firefox */
+		-ms-transform: rotate(181deg); /* IE */
+		-webkit-transform: rotate(181deg); /* Safari and Chrome */
+		-o-transform: rotate(181deg); /* Opera */
+		transform:rotate(181deg);
+	}
+	.pie[data-value="240"]:BEFORE {
+		-moz-transform: rotate(241deg); /* Firefox */
+		-ms-transform: rotate(241deg); /* IE */
+		-webkit-transform: rotate(241deg); /* Safari and Chrome */
+		-o-transform: rotate(241deg); /* Opera */
+		transform:rotate(241deg);
+	}
+	.pie[data-value="300"]:BEFORE {
+		-moz-transform: rotate(301deg); /* Firefox */
+		-ms-transform: rotate(301deg); /* IE */
+		-webkit-transform: rotate(301deg); /* Safari and Chrome */
+		-o-transform: rotate(301deg); /* Opera */
+		transform:rotate(301deg);
+	}
+	.pie[data-value="360"]:BEFORE {
+		-moz-transform: rotate(360deg); /* Firefox */
+		-ms-transform: rotate(360deg); /* IE */
+		-webkit-transform: rotate(360deg); /* Safari and Chrome */
+		-o-transform: rotate(360deg); /* Opera */
+		transform:rotate(360deg);
+	}
+/*
+NOTE: you could also apply custom classes (i.e. .s0 .v30)
+but if the CSS3 attr() function proposal ever gets implemented,
+then all the above custom piece rules could be replaced with
+the following:
+
+.pie[data-start] {
+   transform:rotate(attr(data-start,deg,0);
+}
+.pie[data-value]:BEFORE {
+   transform:rotate(attr(data-value,deg,0);
+
+use big or highlight in class for different styles
+
+}
+*/
+</style>
+</head>
+
+<body>
+
+<div class="pie" data-start="0" data-value="0"></div>
+<div class="pie" data-start="60" data-value="60"></div>
+<div class="pie" data-start="120" data-value="120"></div>
+<div class="pie" data-start="180" data-value="180"></div>
+<div class="pie" data-start="240" data-value="240"></div>
+<div class="pie" data-start="300" data-value="300"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,704 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+
+    <title>ltto-001 Forums</title>
+
+    <style>
+
+ .node circle {
+   fill: #fff;
+   stroke: steelblue;
+   stroke-width: 3px;
+ }
+
+ .node text { font: 12px sans-serif; }
+
+ .link {
+   fill: none;
+   stroke: #ccc;
+   stroke-width: 2px;
+ }
+
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+        var treeData = [
+    {
+     "name": "-1- (p=0, c=0) [d=N/A]", 
+     "value": 0.0, 
+     "parent": "-", 
+     "children": [
+        {
+         "name": "0-Discussion Forums (p=0, c=0) [d=0]", 
+         "value": 0.0, 
+         "parent": "-1-", 
+         "children": [
+            {
+             "name": "2-Course Syllabus and Organisation (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10007-Course Syllabus and Organisation   (p=83, c=65) [d=0]", 
+                 "value": 11.29, 
+                 "parent": "2-Course Syllabus and Organisation" 
+                },
+                {
+                 "name": "10008-Grading (p=0, c=0) [d=1]", 
+                 "value": 0.0, 
+                 "parent": "2-Course Syllabus and Organisation" 
+                },
+                {
+                 "name": "10009-Grading, Activities and Assignments  (p=227, c=73) [d=0]", 
+                 "value": 30.88, 
+                 "parent": "2-Course Syllabus and Organisation" 
+                },
+                {
+                 "name": "10010-Other course issues (p=89, c=20) [d=0]", 
+                 "value": 12.11, 
+                 "parent": "2-Course Syllabus and Organisation" 
+                }
+             ]
+            },
+            {
+             "name": "3-Module 1: Why is online teaching important?   (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10026-Why is online teaching important to you, and what are the benefits? (your story)  (p=712, c=272) [d=0]", 
+                 "value": 96.87, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                },
+                {
+                 "name": "10027-What has prevented or slowed your engagement in online teaching?  (p=247, c=105) [d=0]", 
+                 "value": 33.61, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                },
+                {
+                 "name": "10028-Why are you doing this course and what do you want to achieve?  (p=151, c=29) [d=0]", 
+                 "value": 20.54, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                },
+                {
+                 "name": "10029-Share your advice about getting started in online teaching  (p=120, c=57) [d=0]", 
+                 "value": 16.33, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                },
+                {
+                 "name": "10030-What is digital literacy and how does it relate to my own teaching?  (p=78, c=72) [d=0]", 
+                 "value": 10.61, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                },
+                {
+                 "name": "10031-The need for a more integrated adoption of online technology in education  (p=52, c=6) [d=0]", 
+                 "value": 7.07, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                },
+                {
+                 "name": "10032-Understanding TPACK (Technological Pedagogical Content Knowledge)  (p=43, c=33) [d=0]", 
+                 "value": 5.85, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                },
+                {
+                 "name": "10033-Other contextual topics  (p=37, c=8) [d=0]", 
+                 "value": 5.03, 
+                 "parent": "3-Module 1: Why is online teaching important?  " 
+                }
+             ]
+            },
+            {
+             "name": "4-Weekly Q&A with the instructors  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10011-Week 1 Q&A - CLOSED (p=62, c=11) [d=0]", 
+                 "value": 8.44, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                },
+                {
+                 "name": "10012-Week 2 Q&A - CLOSED (p=100, c=27) [d=0]", 
+                 "value": 13.61, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                },
+                {
+                 "name": "10013-Week 3 Q&A - CLOSED (p=68, c=28) [d=0]", 
+                 "value": 9.25, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                },
+                {
+                 "name": "10095-Week 4 Q&A - CLOSED (p=65, c=28) [d=0]", 
+                 "value": 8.84, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                },
+                {
+                 "name": "10096-Week 5 Q&A - CLOSED (p=49, c=15) [d=0]", 
+                 "value": 6.67, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                },
+                {
+                 "name": "10097-Week 6 Q&A - CLOSED (p=35, c=4) [d=0]", 
+                 "value": 4.76, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                },
+                {
+                 "name": "10098-Week 7 Q&A - CLOSED (p=21, c=1) [d=0]", 
+                 "value": 2.86, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                },
+                {
+                 "name": "10099-Week 8 Q&A - Still open for continued discussion. Thanks everyone! (p=97, c=12) [d=0]", 
+                 "value": 13.2, 
+                 "parent": "4-Weekly Q&A with the instructors " 
+                }
+             ]
+            },
+            {
+             "name": "5-Errata (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "6- (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "7-Course Material Feedback (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "8-Social hangout and networking   (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10023-Say hello here!  (p=735, c=258) [d=0]", 
+                 "value": 100.0, 
+                 "parent": "8-Social hangout and networking  " 
+                },
+                {
+                 "name": "10024-Connect with others in the same discipline and country  (p=338, c=200) [d=0]", 
+                 "value": 45.99, 
+                 "parent": "8-Social hangout and networking  " 
+                },
+                {
+                 "name": "10025-Find others in similar education sectors  (p=132, c=45) [d=0]", 
+                 "value": 17.96, 
+                 "parent": "8-Social hangout and networking  " 
+                }
+             ]
+            },
+            {
+             "name": "9-Technical Feedback (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "10000-Course Materials Errors (p=112, c=21) [d=0]", 
+             "value": 15.24, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "10001-Technical Issues (p=679, c=134) [d=0]", 
+             "value": 92.38, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "10003-STAFF FORUM (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "10004-Module 2: Open and institutionally supported technologies  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10034-What online technologies do you use for your teaching?  (p=341, c=225) [d=0]", 
+                 "value": 46.39, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10035-Tips and benefits of using open technologies for teaching  (p=48, c=14) [d=0]", 
+                 "value": 6.53, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10036-Risks of using open technologies for teaching - ideas and concerns (p=44, c=11) [d=0]", 
+                 "value": 5.99, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10037-Tips for getting the most out of a Learning Management System (LMS) - strategies, ideas and suggestions  (p=99, c=38) [d=0]", 
+                 "value": 13.47, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10038-Share your strategies for integrating both open and institutionally supported technologies in your teaching  (p=35, c=38) [d=0]", 
+                 "value": 4.76, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10039-Managing students’ digital footprints - privacy and safety  (p=34, c=7) [d=0]", 
+                 "value": 4.63, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10040-Suggestions for choosing which type of technology is best for purpose  (p=49, c=48) [d=0]", 
+                 "value": 6.67, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10041-The bigger picture: institutional concerns and strategies for supporting online learning (p=37, c=25) [d=0]", 
+                 "value": 5.03, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                },
+                {
+                 "name": "10042-Other online technology topics  (p=52, c=17) [d=0]", 
+                 "value": 7.07, 
+                 "parent": "10004-Module 2: Open and institutionally supported technologies " 
+                }
+             ]
+            },
+            {
+             "name": "10005-Module 3: Planning online learning  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10043-Planning online activities - advice for new online teachers  (p=60, c=84) [d=0]", 
+                 "value": 8.16, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10044-Blended learning  (p=54, c=30) [d=0]", 
+                 "value": 7.35, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10045-Fully online learning  (p=27, c=3) [d=0]", 
+                 "value": 3.67, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10046-Learning outcomes, constructive alignment and related theory  (p=23, c=16) [d=0]", 
+                 "value": 3.13, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10047-Building digital literacy in students  (p=10, c=5) [d=0]", 
+                 "value": 1.36, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10048-Choosing which elements of a class to put online  (p=21, c=17) [d=0]", 
+                 "value": 2.86, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10049-Ideas for innovative online learning  (p=22, c=12) [d=0]", 
+                 "value": 2.99, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10050-What hasn’t worked for you in your own online courses?  (p=23, c=21) [d=0]", 
+                 "value": 3.13, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                },
+                {
+                 "name": "10051-Other planning topics  (p=8, c=0) [d=0]", 
+                 "value": 1.09, 
+                 "parent": "10005-Module 3: Planning online learning " 
+                }
+             ]
+            },
+            {
+             "name": "10006-Module 4: Online learning activities  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10052-Share ideas for effective online activities – what has worked well for you?  (p=58, c=17) [d=0]", 
+                 "value": 7.89, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10053-How to choose the right technology for an online activity, and the best way to learn new technologies  (p=28, c=29) [d=0]", 
+                 "value": 3.81, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10054-What can go wrong – share your horror stories, and explain how you solved the problem  (p=20, c=33) [d=0]", 
+                 "value": 2.72, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10055-The flipped classroom  (p=29, c=21) [d=0]", 
+                 "value": 3.95, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10056-Mobile learning and apps  (p=12, c=9) [d=0]", 
+                 "value": 1.63, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10057-All things Web 2.0  (p=20, c=6) [d=0]", 
+                 "value": 2.72, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10058-Activity formats – Presentation, Demonstrations, Visual portfolios or ePortfolios  (p=14, c=2) [d=0]", 
+                 "value": 1.9, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10059-Activity formats – Laboratory report, Written report or essay, Journal or reflective writing   (p=5, c=6) [d=0]", 
+                 "value": 0.68, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10060-Activity formats – Simulation or role play, Formative quizzes, Peer review, Group work activities  (p=18, c=2) [d=0]", 
+                 "value": 2.45, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10061-Social bookmarking and resource sharing  (p=10, c=18) [d=0]", 
+                 "value": 1.36, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                },
+                {
+                 "name": "10062-Other online activities topics  (p=5, c=0) [d=0]", 
+                 "value": 0.68, 
+                 "parent": "10006-Module 4: Online learning activities " 
+                }
+             ]
+            },
+            {
+             "name": "10014-Module 5: Online assessment strategies  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10063-Online assessment tools – what are your recommendations?  (p=56, c=36) [d=0]", 
+                 "value": 7.62, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10064-Tips for finding the right online assessment tool  (p=14, c=5) [d=0]", 
+                 "value": 1.9, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10065-Best strategies for supporting students undertaking online assessment  (p=6, c=6) [d=0]", 
+                 "value": 0.82, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10066-What can’t you assess online?  (p=3, c=3) [d=0]", 
+                 "value": 0.41, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10067-Ideas for online formative assessments  (p=10, c=7) [d=0]", 
+                 "value": 1.36, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10068-Using online assessment in large classes  (p=8, c=1) [d=0]", 
+                 "value": 1.09, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10069-Online assessment tips – case studies, presentations, studio-based, project-based, e-portfolios  (p=6, c=6) [d=0]", 
+                 "value": 0.82, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10070-Online assessment tips – extended writing, quizzes and exams, labs, reports, essays  (p=3, c=3) [d=0]", 
+                 "value": 0.41, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10071-Online assessment tips – groupwork, role play, simulation  (p=5, c=0) [d=0]", 
+                 "value": 0.68, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                },
+                {
+                 "name": "10072-Other online assessment topics  (p=25, c=8) [d=0]", 
+                 "value": 3.4, 
+                 "parent": "10014-Module 5: Online assessment strategies " 
+                }
+             ]
+            },
+            {
+             "name": "10015-Module 6: Online resources  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10073-Share your favourite online resources  (p=62, c=23) [d=0]", 
+                 "value": 8.44, 
+                 "parent": "10015-Module 6: Online resources " 
+                },
+                {
+                 "name": "10074-Evaluation of online resources  (p=11, c=4) [d=0]", 
+                 "value": 1.5, 
+                 "parent": "10015-Module 6: Online resources " 
+                },
+                {
+                 "name": "10075-Tips for creating your own online resources  (p=26, c=11) [d=0]", 
+                 "value": 3.54, 
+                 "parent": "10015-Module 6: Online resources " 
+                },
+                {
+                 "name": "10076-OER vs subscription based resources – benefits and drawbacks of each  (p=5, c=2) [d=0]", 
+                 "value": 0.68, 
+                 "parent": "10015-Module 6: Online resources " 
+                },
+                {
+                 "name": "10077-Copyright and Creative Commons considerations when using and making online resources  (p=11, c=1) [d=0]", 
+                 "value": 1.5, 
+                 "parent": "10015-Module 6: Online resources " 
+                },
+                {
+                 "name": "10078-Videos, Podcasts, e-books, iTunes U, PDF documents  (p=22, c=12) [d=0]", 
+                 "value": 2.99, 
+                 "parent": "10015-Module 6: Online resources " 
+                },
+                {
+                 "name": "10079-Course or activity templates (p=2, c=4) [d=0]", 
+                 "value": 0.27, 
+                 "parent": "10015-Module 6: Online resources " 
+                },
+                {
+                 "name": "10080-Other online resources topics  (p=9, c=2) [d=0]", 
+                 "value": 1.22, 
+                 "parent": "10015-Module 6: Online resources " 
+                }
+             ]
+            },
+            {
+             "name": "10016-Module 5: Online assessment strategies  (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "10017-Module 7: Engaging and motivating students  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10081-Share your tips for increasing student engagement  (p=59, c=49) [d=0]", 
+                 "value": 8.03, 
+                 "parent": "10017-Module 7: Engaging and motivating students " 
+                },
+                {
+                 "name": "10082-How do you motivate students who won’t participate in online activities?  (p=19, c=3) [d=0]", 
+                 "value": 2.59, 
+                 "parent": "10017-Module 7: Engaging and motivating students " 
+                },
+                {
+                 "name": "10083-Strategies for managing your time when teaching online  (p=25, c=20) [d=0]", 
+                 "value": 3.4, 
+                 "parent": "10017-Module 7: Engaging and motivating students " 
+                },
+                {
+                 "name": "10084-Facilitating online collaboration  (p=15, c=11) [d=0]", 
+                 "value": 2.04, 
+                 "parent": "10017-Module 7: Engaging and motivating students " 
+                },
+                {
+                 "name": "10085-Managing online discussions  (p=23, c=10) [d=0]", 
+                 "value": 3.13, 
+                 "parent": "10017-Module 7: Engaging and motivating students " 
+                },
+                {
+                 "name": "10086-Other engagement and motivation topics  (p=31, c=10) [d=0]", 
+                 "value": 4.22, 
+                 "parent": "10017-Module 7: Engaging and motivating students " 
+                }
+             ]
+            },
+            {
+             "name": "10018-Module 8: Evaluation strategies  (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10087-Effective evaluation practice  (p=23, c=21) [d=0]", 
+                 "value": 3.13, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                },
+                {
+                 "name": "10088-Strategies for improving your online teaching  (p=9, c=6) [d=0]", 
+                 "value": 1.22, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                },
+                {
+                 "name": "10089-Working with qualitative and quantitative data  (p=9, c=2) [d=0]", 
+                 "value": 1.22, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                },
+                {
+                 "name": "10090-Developing a research practice around online learning and teaching  (p=19, c=20) [d=0]", 
+                 "value": 2.59, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                },
+                {
+                 "name": "10091-Suggestions of useful literature about evaluation methods  (p=9, c=1) [d=0]", 
+                 "value": 1.22, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                },
+                {
+                 "name": "10092-Using learning analytics to inform your teaching  (p=4, c=1) [d=0]", 
+                 "value": 0.54, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                },
+                {
+                 "name": "10093-Recommendations of learning analytics tools  (p=7, c=6) [d=0]", 
+                 "value": 0.95, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                },
+                {
+                 "name": "10094-Other evaluation topics  (p=16, c=6) [d=0]", 
+                 "value": 2.18, 
+                 "parent": "10018-Module 8: Evaluation strategies " 
+                }
+             ]
+            },
+            {
+             "name": "10019-Suggestion Box  (p=126, c=93) [d=0]", 
+             "value": 17.14, 
+             "parent": "0-Discussion Forums" 
+            },
+            {
+             "name": "10020-Signature Track  (p=1, c=0) [d=0]", 
+             "value": 0.14, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10021-General issues (p=122, c=60) [d=0]", 
+                 "value": 16.6, 
+                 "parent": "10020-Signature Track " 
+                },
+                {
+                 "name": "10022-Certificate Issues (p=0, c=0) [d=1]", 
+                 "value": 0.0, 
+                 "parent": "10020-Signature Track " 
+                }
+             ]
+            },
+            {
+             "name": "10100-Missed Assignment Submissions (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Discussion Forums", 
+             "children": [
+                {
+                 "name": "10101-Assignment 1 (p=10, c=0) [d=0]", 
+                 "value": 1.36, 
+                 "parent": "10100-Missed Assignment Submissions" 
+                }
+             ]
+            },
+            {
+             "name": "10102-'How To’ Support for Using Different Technologies for Teaching (p=10, c=7) [d=0]", 
+             "value": 1.36, 
+             "parent": "0-Discussion Forums" 
+            }
+         ]
+        }
+     ]
+    }
+];
+
+// ************** Generate the tree diagram  *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+ width = 1960 - margin.right - margin.left,
+ height = 1550 - margin.top - margin.bottom;
+
+var i = 0;
+
+var tree = d3.layout.tree()
+ .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+ .projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+ .attr("width", width + margin.right + margin.left)
+ .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+ .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+
+update(root);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+   links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 400;  });
+
+  // Declare the nodesâ€¦
+  var node = svg.selectAll("g.node")
+   .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter the nodes.
+  var nodeEnter = node.enter().append("g")
+   .attr("class", "node")
+   .attr("transform", function(d) {
+    return "translate(" + d.y + "," + d.x + ")"; });
+
+  //nodeEnter.append("circle")
+  // .attr("r", 10)
+  // .style("fill", "#fff");
+
+  nodeEnter.append("circle")
+   .attr("r", function(d) { return d.value/5; })
+   .style("fill", "#fff");
+
+  nodeEnter.append("text")
+   .attr("x", function(d) {
+    return d.children || d._children ? 0 : 13; })
+   .attr("dy", ".35em")
+   .attr("text-anchor", function(d) {
+    return d.children || d._children ? "end" : "start"; })
+   .text(function(d) { return d.name; })
+   .style("fill-opacity", 1);
+
+  // Declare the links
+  var link = svg.selectAll("path.link")
+   .data(links, function(d) { return d.target.id; });
+
+  // Enter the links.
+  link.enter().insert("path", "g")
+   .attr("class", "link")
+   .attr("d", diagonal);
+
+}
+
+</script>
+
+  </body>
+</html>
+
+        

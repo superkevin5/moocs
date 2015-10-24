@@ -1,0 +1,450 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+
+    <title>introse-001 Forums</title>
+
+    <style>
+
+ .node circle {
+   fill: #fff;
+   stroke: steelblue;
+   stroke-width: 3px;
+ }
+
+ .node text { font: 12px sans-serif; }
+
+ .link {
+   fill: none;
+   stroke: #ccc;
+   stroke-width: 2px;
+ }
+
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+        var treeData = [
+    {
+     "name": "-1- (p=0, c=0) [d=N/A]", 
+     "value": 0.0, 
+     "parent": "-", 
+     "children": [
+        {
+         "name": "0-Forums (p=0, c=0) [d=0]", 
+         "value": 0.0, 
+         "parent": "-1-", 
+         "children": [
+            {
+             "name": "2-General Discussion (p=3, c=0) [d=1]", 
+             "value": 1.53, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "3-Module Quizzes and Exercises (not Extension Option) (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10017-Module 1 Quiz and Exercises  (p=86, c=34) [d=0]", 
+                 "value": 43.88, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10018-Module 2 Quiz and Exercises  (p=17, c=3) [d=0]", 
+                 "value": 8.67, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10019-Module 3 Quiz and Exercises  (p=28, c=3) [d=0]", 
+                 "value": 14.29, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10020-Module 4 Quiz and Exercises  (p=7, c=0) [d=0]", 
+                 "value": 3.57, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10021-Module 6 Quiz and Exercises  (p=11, c=0) [d=0]", 
+                 "value": 5.61, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10022-Module 5 Quiz and Exercises  (p=17, c=0) [d=0]", 
+                 "value": 8.67, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10023-Module 7 Quiz and Exercises  (p=0, c=0) [d=0]", 
+                 "value": 0.0, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10024-Module 8 Quiz and Exercises  (p=3, c=0) [d=0]", 
+                 "value": 1.53, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                },
+                {
+                 "name": "10040-General Module Quiz and Exercise Issues (p=28, c=5) [d=0]", 
+                 "value": 14.29, 
+                 "parent": "3-Module Quizzes and Exercises (not Extension Option)" 
+                }
+             ]
+            },
+            {
+             "name": "4-Study Groups (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "5-Errata (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "6- (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "7-Course Material Feedback (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "8-Module Lectures (p=4, c=8) [d=0]", 
+             "value": 2.04, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10006-Module 1 Lectures (p=131, c=27) [d=0]", 
+                 "value": 66.84, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10007-Module 2 Lectures (p=25, c=8) [d=0]", 
+                 "value": 12.76, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10008-Module 3 Lectures (p=22, c=13) [d=0]", 
+                 "value": 11.22, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10009-Module 4 Lectures (p=11, c=1) [d=0]", 
+                 "value": 5.61, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10010-Module 5 Lectures (p=17, c=1) [d=0]", 
+                 "value": 8.67, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10011-Module 6 Lectures (p=4, c=0) [d=0]", 
+                 "value": 2.04, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10012-Module 7 Lectures (p=5, c=0) [d=0]", 
+                 "value": 2.55, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10013-Module 8 Lectures (p=5, c=0) [d=0]", 
+                 "value": 2.55, 
+                 "parent": "8-Module Lectures" 
+                },
+                {
+                 "name": "10039-General Module Lecture Issues (p=4, c=0) [d=0]", 
+                 "value": 2.04, 
+                 "parent": "8-Module Lectures" 
+                }
+             ]
+            },
+            {
+             "name": "9-Technical Feedback (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10000-Course Materials Errors (p=49, c=3) [d=0]", 
+             "value": 25.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10001-Technical Issues (p=196, c=16) [d=0]", 
+             "value": 100.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10003-Advanced  (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10004-Module Extension Exercises (p=3, c=0) [d=0]", 
+             "value": 1.53, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10025-Module 1 Extension Exercise (p=21, c=12) [d=0]", 
+                 "value": 10.71, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10026-Module 2 Extension Exercise (p=3, c=0) [d=0]", 
+                 "value": 1.53, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10027-Module 3 Extension Exercise (p=2, c=0) [d=0]", 
+                 "value": 1.02, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10028-Module 4 Extension Exercise (p=2, c=0) [d=0]", 
+                 "value": 1.02, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10029-Module 5 Extension Exercise (p=0, c=0) [d=0]", 
+                 "value": 0.0, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10030-Module 6 Extension Exercise (p=1, c=0) [d=0]", 
+                 "value": 0.51, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10031-Module 7 Extension Exercise (p=4, c=0) [d=0]", 
+                 "value": 2.04, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10032-Module 7 Extension Exercise (p=0, c=0) [d=1]", 
+                 "value": 0.0, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10033-Module 8 Suggested Extension Exercise (p=0, c=0) [d=0]", 
+                 "value": 0.0, 
+                 "parent": "10004-Module Extension Exercises" 
+                },
+                {
+                 "name": "10041-General Module Extension Exercise Issues (p=47, c=13) [d=0]", 
+                 "value": 23.98, 
+                 "parent": "10004-Module Extension Exercises" 
+                }
+             ]
+            },
+            {
+             "name": "10005-Signature Track (p=19, c=3) [d=0]", 
+             "value": 9.69, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10014-Tests/Exams (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10015-Mid - Test/Exam (covering Modules 1-4) (p=82, c=11) [d=0]", 
+                 "value": 41.84, 
+                 "parent": "10014-Tests/Exams" 
+                },
+                {
+                 "name": "10016-End - Test/Exam (covering Modules 5-8) (p=20, c=6) [d=0]", 
+                 "value": 10.2, 
+                 "parent": "10014-Tests/Exams" 
+                },
+                {
+                 "name": "10042-General Test/Exam Issues (p=39, c=11) [d=0]", 
+                 "value": 19.9, 
+                 "parent": "10014-Tests/Exams" 
+                }
+             ]
+            },
+            {
+             "name": "10034-Course Syllabus (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10043-Course Structure (p=36, c=15) [d=0]", 
+                 "value": 18.37, 
+                 "parent": "10034-Course Syllabus" 
+                },
+                {
+                 "name": "10044-Workload, Time and Expectations (p=2, c=0) [d=0]", 
+                 "value": 1.02, 
+                 "parent": "10034-Course Syllabus" 
+                },
+                {
+                 "name": "10045-Grading and submission dates (p=5, c=2) [d=0]", 
+                 "value": 2.55, 
+                 "parent": "10034-Course Syllabus" 
+                },
+                {
+                 "name": "10046-Certification (p=15, c=4) [d=0]", 
+                 "value": 7.65, 
+                 "parent": "10034-Course Syllabus" 
+                },
+                {
+                 "name": "10051-Course Resources and Text (p=0, c=0) [d=1]", 
+                 "value": 0.0, 
+                 "parent": "10034-Course Syllabus" 
+                }
+             ]
+            },
+            {
+             "name": "10035-Course Surveys (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10036-Other Course Issues (p=79, c=11) [d=0]", 
+             "value": 40.31, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10037-Study Groups (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Forums", 
+             "children": [
+                {
+                 "name": "10047-Country (p=85, c=37) [d=0]", 
+                 "value": 43.37, 
+                 "parent": "10037-Study Groups" 
+                },
+                {
+                 "name": "10048-Profession/Industry (p=15, c=1) [d=0]", 
+                 "value": 7.65, 
+                 "parent": "10037-Study Groups" 
+                },
+                {
+                 "name": "10049-Topic (p=0, c=0) [d=0]", 
+                 "value": 0.0, 
+                 "parent": "10037-Study Groups" 
+                },
+                {
+                 "name": "10050-Other (p=22, c=2) [d=0]", 
+                 "value": 11.22, 
+                 "parent": "10037-Study Groups" 
+                }
+             ]
+            },
+            {
+             "name": "10038-Suggestion Box (p=73, c=7) [d=0]", 
+             "value": 37.24, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10052-STAFF FORUM (p=0, c=0) [d=0]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10053-Quiz Grades Report (p=0, c=0) [d=1]", 
+             "value": 0.0, 
+             "parent": "0-Forums" 
+            },
+            {
+             "name": "10054-Quiz Grades Report (p=113, c=28) [d=0]", 
+             "value": 57.65, 
+             "parent": "0-Forums" 
+            }
+         ]
+        }
+     ]
+    }
+];
+
+// ************** Generate the tree diagram  *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+ width = 1960 - margin.right - margin.left,
+ height = 1550 - margin.top - margin.bottom;
+
+var i = 0;
+
+var tree = d3.layout.tree()
+ .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+ .projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+ .attr("width", width + margin.right + margin.left)
+ .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+ .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+
+update(root);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+   links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 400;  });
+
+  // Declare the nodesâ€¦
+  var node = svg.selectAll("g.node")
+   .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter the nodes.
+  var nodeEnter = node.enter().append("g")
+   .attr("class", "node")
+   .attr("transform", function(d) {
+    return "translate(" + d.y + "," + d.x + ")"; });
+
+  //nodeEnter.append("circle")
+  // .attr("r", 10)
+  // .style("fill", "#fff");
+
+  nodeEnter.append("circle")
+   .attr("r", function(d) { return d.value/5; })
+   .style("fill", "#fff");
+
+  nodeEnter.append("text")
+   .attr("x", function(d) {
+    return d.children || d._children ? 0 : 13; })
+   .attr("dy", ".35em")
+   .attr("text-anchor", function(d) {
+    return d.children || d._children ? "end" : "start"; })
+   .text(function(d) { return d.name; })
+   .style("fill-opacity", 1);
+
+  // Declare the links
+  var link = svg.selectAll("path.link")
+   .data(links, function(d) { return d.target.id; });
+
+  // Enter the links.
+  link.enter().insert("path", "g")
+   .attr("class", "link")
+   .attr("d", diagonal);
+
+}
+
+</script>
+
+  </body>
+</html>
+
+        

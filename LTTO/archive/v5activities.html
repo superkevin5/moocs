@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>LTTO Activities</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+<script type="text/javascript" src="https://googledrive.com/host/0B8KqLaP_s06IUWEtVnJiUlg3U2s/jquery.tabslet.min.js"></script>
+<style>
+/**
+ * TABS
+ * guide here: https://github.com/vdw/Tabslet/wiki/Options
+ * -------------------------------------------------------------------------------------------------
+ */
+.tabs > DIV {
+	/*border-top: 1px solid #c7c7c7*/
+	margin-top: 10px;
+	background: white !important;
+	/*border-bottom: 4px solid #E95855 !important;*/
+}
+
+.tabs > DIV SPAN {
+	border-bottom: 4px solid #E5E5E5 !important;
+	color: #ccc !important;
+	font-weight: 300;
+	line-height: 126px !important;
+	display: block;
+	text-align: center;
+	font-size: 24px;
+}
+
+.tabs UL.horizontal {
+	list-style: none outside none;
+	margin: 0;
+}
+
+.tabs LI {
+	background: white;
+	border-bottom: 4px solid #E5E5E5;
+	margin: 0 10px 0 0;
+	display: inline-block;
+}
+
+.tabs A {
+	color: #ccc;
+	display: block;
+	font-size: 18px;
+	font-weight: 300;
+	padding: 4px 14px;
+	text-decoration: none;
+}
+
+.tabs LI:hover {
+	background: #a0cac0;
+	border-bottom: 4px solid #68a697;
+}
+
+.tabs LI:hover A {
+	color: white;
+}
+
+.active {
+	background: #a0cac0 !important;
+	border-bottom: 4px solid #68a697 !important;
+}
+
+.active A {
+	color: white !important;
+}
+
+.link {
+	color: white;
+	font-size: 14px;
+	font-weight: 300;
+	letter-spacing: 1px;
+	line-height: 48px;
+	margin-top: 20px;
+	margin-left: 6px;
+	text-decoration: none;
+}
+
+.link:hover {
+	text-decoration: underline;
+	color: inherit;
+}
+
+.anchorLink {
+	border-bottom: 1px dashed white;
+	color: white;
+	text-decoration: none;
+}
+
+.anchorLink:hover {
+	text-decoration: none;
+	border-bottom: none;
+	color: inherit;
+}
+
+.screenshot {
+	position: absolute;
+	clip: rect(0 0 0 0);
+}
+
+.prev,
+.next {
+	background: white !important;
+	color: #a0cac0 !important;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.prev:hover,
+.next:hover {
+	background: #a0cac0 !important;
+	color: white !important;
+}
+
+#Logo {
+  background: transparent url("https://az1.qualtrics.com/WRQualtricsShared/Skins/ltunsw/MQ/skin1/logo.png") no-repeat 20px center;
+  background-size: 194px 71px;
+  height: 71px;
+  margin: 0px auto;
+  max-width: 100%;
+  padding: 25px 20px; 
+  border-bottom:#ffcc00;
+  border-bottom-width:15px;
+  border-bottom-style:solid;
+  }
+ #Logo h1{
+   	font-family: "Tahoma", "Helvetica Neue", "Helvetica";
+	font-weight:80;
+	font-stretch:wider;
+	margin-left:220px;
+	height:71px;
+	letter-spacing: 2px;
+ }
+
+.button {
+	background-color: #a0cac0;
+	border: none;
+	border-bottom: 4px solid #68a697;
+	color: #FFFFFF;
+	border-radius: 0;
+	font-size: 14px;
+	letter-spacing: 2px;
+	height: 48px;
+	line-height: 48px;
+}
+
+.button:hover {
+	background: #93b7ae;
+	color: #FFF;
+	border-bottom-color: #68a697;
+}
+
+
+.footer_p {
+  clear:both;
+  font-family: "Tahoma", "Helvetica Neue", "Helvetica"; 
+  font-size: 9px;
+  color:#999;
+  text-align:center;
+}
+
+
+</style>
+
+</head>
+
+<body>
+<script>
+$(document).ready(function() {
+    $('.tabs').tabslet();
+	$('.tabs').tabslet({
+   		animation: true
+	});
+	$('.tabs').tabslet({
+   		controls: {
+        	prev: '.prev',
+        	next: '.next'
+    	}
+	});
+});
+
+</script>
+	<div id="LogoContainer">
+			<div id="Logo"><h1>| Dashboard of ACTIVITES</h1></div>
+		</div>
+        
+<div class='tabs'>
+    <ul>
+        <li><a href="#tab-1">v5 Activities1</a></li>
+        <li><a href="#tab-2">v5 Activities2</a></li>
+        <li><a href="#tab-3">Tab 3</a></li>
+        <li><a href="#tab-4">Tab 4</a></li>
+    </ul>
+    <div id='tab-1' class='tableauPlaceholder' style='width: 1840px; height: 1125px;'>
+    <script type='text/javascript' src='https://10ay.online.tableau.com/javascripts/api/viz_v1.js'></script>
+        <object class='tableauViz' width='1840' height='1125' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2F10ay.online.tableau.com%2F' /> 
+            <param name='site_root' value='&#47;t&#47;unswmooc' />
+            <param name='name' value='LTTO_v5activties&#47;v5ActivitybyVarious' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='showVizHome' value='n' />
+        </object>
+    </div>
+
+   <div id='tab-2' class='tableauPlaceholder' style='width: 1840px; height: 1125px;'>
+	<script type='text/javascript' src='https://10ay.online.tableau.com/javascripts/api/viz_v1.js'></script>    
+        <object class='tableauViz' id='viz2' width='1840' height='1125' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2F10ay.online.tableau.com%2F' /> 
+            <param name='site_root' value='&#47;t&#47;unswmooc' />
+            <param name='name' value='LTTO_v5activties&#47;V5ActivityOverview' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='showVizHome' value='n' />
+        </object>
+    </div>    
+    
+    <div id='tab-3'>
+	    <iframe src="https://googledrive.com/host/0B8KqLaP_s06IUWEtVnJiUlg3U2s/viewCluster.html" width="100%" height="1000px"></iframe></div>
+    <div id='tab-4'>
+    	</div>
+</div>
+
+
+
+
+          <div id="footer">
+        	<hr />
+            <p class="footer_p">UNSW - LTU, Last edited on date. </p>
+        </div>  
+
+
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>MOOC Dashboard</title>
+<link rel="icon" type="image/png" href="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/LADA_ico.png">
+
+<script type="text/javascript" src="https://online.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/jquery.sidr.min.js" type="text/javascript"></script>
+<script src="https://googledrive.com/host/0B8KqLaP_s06IdmZjTUhrbnRCeXc/jquery.matchHeight.js" type="text/javascript"></script>
+<script src="https://googledrive.com/host/0B8KqLaP_s06ISGQ4Q3JQS0wyNEk/jquery.maphilight.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+//jquery additional elemeents	
+$(function() {
+	$('#helpspace').hide();
+	$('#sidr').hide();
+	
+    $('.box').matchHeight();
+	
+	$('.map').maphilight({
+            fillColor: '008800',
+			strokeColor: 'ffcc00',
+    });
+	
+	$('#helpbutton').click(function(){
+		if($('#helpspace').is(":visible")){
+        	$('#helpspace').hide(1000);
+		} else {
+			$('#helpspace').show(1000);
+		}
+    });
+	
+	$('#simple-menu').sidr({
+      	side: 'right'
+    });
+		
+// initialise Tableau Viz
+function initializeViz() {
+	  var placeholderDiv = document.getElementById("tableauViz");
+	  var url = "https://10ay.online.tableau.com/#/site/unswmooc/views/Overview%2FOverview12";
+	  var options = {
+		width: placeholderDiv.offsetWidth,
+		height: placeholderDiv.offsetHeight,
+		hideTabs: false,
+		hideToolbar: true,
+		onFirstInteractive: function () {
+		  workbook = viz.getWorkbook();
+		  activeSheet = workbook.getActiveSheet();
+		}
+	  };
+	  viz = new tableau.Viz(placeholderDiv, url, options);
+	} 
+	
+	initializeViz();		
+
+//export to pdf
+$('#pdf').click(function exportPDF() {
+  viz.showExportPDFDialog();
+});
+       
+$('#img').click(function exportImage() {
+  viz.showExportImageDialog();
+});   
+  		
+$('#exp').click(function exportData() {
+  viz.showExportDataDialog();
+});    
+				
+});
+     
+</script>
+
+<link href="https://googledrive.com/host/0B8KqLaP_s06ITFd1aHpXc0w4Uk0/css/hover.css" rel="stylesheet" media="all">
+<link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/mooc_dashboard.css" rel="stylesheet" media="all">
+<link href="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/stylesheets/jquery.sidr.dark.css" rel="stylesheet" media="all">
+
+<style>
+
+</style>
+</head>
+
+<body>
+<div class="SkinInner">
+
+  <div class="pullbutton2">
+		<a id="simple-menu" href="#sidr"><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/pullicon_small.png" id="pullicon"/></a>
+ 	</div>
+ 
+    
+	<div id="SkinContent">
+	<div id="LogoContainer">
+		<div id="Logo">
+		  <h1>| INTSE MOOC Dashboard</h1></div>
+        	<div id="help">
+	   			<img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/question_mark_35.png" id="helpbutton" title="Detailed information"/>
+   	   			<a href="https://j.mp/INTSE01"><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/home_35.png" id="homebutton" title="Home page"/></a>
+    	   	</div>
+   	  </div>
+  </div>
+     
+     <div id="helpspace">
+       	<p>This is an alpha prototype dashboard produced by the LTU LADA team in order to characterise the activity in MOOCs.<br /> In order to facilitate the organisation of the large amount of data and details we provided three paths to explore the data.         </p>
+        <ul>
+        <li>On the left there is an overview by categories of information. </li>
+        <li>On the right the information is presented based on functional domains. </li>
+        <li>A full site maps with links to individual section is provided by expanding the pull menu on the right side of the page.</li>
+        </ul>
+
+     </div>
+
+        
+     <div id="mainbody">
+       	<div id="tableauViz"></div>
+     </div>
+            
+        
+    </div>
+        
+	<div id="footer">       
+    	<p class="footer_p">UNSW - Learning & Teching Unit, <br />
+        Learning Analytics and Data Analysis Team.<br />
+        For feedback/comments please contact unswmooc1@gmail.com<br /><br /><br />
+        <strong>Last edited on date 3 june 2015. </strong>
+        </p>
+        <div id="tools">
+        	<ul>
+            <li><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_img.png" id="img" title="Export as picture"/></li>
+           	<li><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_pdf.png" id="pdf" title="Export as PDF"/></li>
+           	<li><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png" id="exp"  title="Export DATA"/></li>
+            <p id="toolbox">EXPORT TOOLS</p>
+            </ul>
+
+        </div>
+        
+    </div>  
+        
+            
+</div>
+ 
+<div id="sidr">
+<!-- Full menu content -->
+	<ul>
+        <h2>Overview</h2>
+        <li><a href='summary_course.html'>Overview of Course</a></li>
+        <li><a href='summary_activity.html'>Overview of Activity</a></li>
+        <h2>Participants</h2>
+        <li><a href='participants.html'>Who are the participants?</a></li>
+        <li><a href='/'>Engagement</a></li>	
+        <h2>Activity</h2>
+        <li><a href='participant_activity.html'>What did participants do?</a></li>
+            <h3>Videos</h3>
+            <li><a href='video_lectures.html'>Overview Lecture videos</a></li>
+            <li><a href='overview_video.html'>Video use</a></li>
+            <li><a href='video_heatmap.html'>Video heatmap</a></li>
+            <li><a href='video_hm_detail.html'>Video heatmap detailed</a></li>
+            <li><a href='video_extension.html'>Videos and Extension Exercises</a></li>
+            <h3>Content</h3>
+            <li><a href='overview_content.html'>Content use</a></li>
+            <li><a href='content_sequence.html'>Sequence Analysis</a></li>
+            <h3>Forums</h3>
+            <li><a href='overview_forum.html'>Forum use</a></li>
+            <li><a href='forum_heatmap.html'>Discussion Heatmap</a></li>
+            <h3>Assessment</h3>
+            <li><a href='overview_activity.html'>Activities</a></li>
+            <li><a href='grades.html'>Grades</a></li>
+            <li><a href='overview_assessment.html'>Overview of Assessment</a></li>
+            <li><a href='assm_quizzes.html'>Quizzes</a></li>
+            <li><a href='assm_exams.html'>Exams</a></li>
+            <li><a href='assm_peer.html'>Peer Assessment</a></li>
+            <h3>Evaluation</h3>
+            <li><a href='overview_eval.html'>Evaluation </a></li>
+            <li><a href='eval_ivr1.html'>In-Video Ratings 1/2</a></li>
+            <li><a href='eval_ivr2.html'>In-Video Ratings 2/2</a></li>
+            <li><a href='eval_rubrics.html'>Assessment Rubrics</a></li>
+            <li><a href='eval_precourse.html'>Pre-course Survey</a></li>
+            <li><a href='eval_postcourse.html'>Post-course Survey</a></li>
+        <h2>Social Media</h2>
+		<li><a href='overview_social.html'>Social media </a></li>
+        <h2>Research</h2>
+		<li><a href='overview_research.html'>Research Questions</a></li>
+        <li><a href='research_cluster.html'>Clustering</a></li>
+        <li><a href='research_classify.html'>Classification</a></li>
+        <li><a href='research_regres.html'>Regression</a></li>
+             
+	</ul>
+</div>
+  
+</body>
+</html>

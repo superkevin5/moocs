@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Lorenzo vigentini">
+<meta name="version" content="version 2">
+<meta name="version-date" content="26 aug 2015">
+
+
+<title>MOOC Dashboard</title>
+<link rel="icon" type="image/png" href="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/LADA_ico.png">
+
+<script type="text/javascript" src="https://online.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+//parse url for string
+function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}          
+
+//IMPORTANT: setting environment variables
+var isHome=0;
+var desRef=""
+//var myPage=getUrlParameter('v');
+//console.log(getUrlParameter('v'));
+if (getUrlParameter('v') !== undefined){
+	var myPage=getUrlParameter('v');
+} else {
+	var myPage='main_Overview';
+}
+//console.log(myPage);
+
+//load json config
+var myjson = (function () {
+    var json = null;
+    $.ajax({
+        "async": false,
+        "global": false,
+        "url": "coursedata.json",
+        "dataType": "json",
+        "success": function (data) {
+            json = data;
+        }
+    });
+    return json;
+})(); 
+
+//used to parse the json object
+function getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else if (i == key && obj[key] == val) {
+            objects.push(obj);
+        }
+    }
+    return objects;
+}
+
+//jquery additional elements on doc ready	
+$(function() {
+	// cosmetic changes
+	$('#helpspace').hide();
+	
+	$('#sidr').hide();
+	$('.box').matchHeight();
+	$('.map').maphilight({
+    	fillColor: '008800',
+		strokeColor: 'ffcc00',
+    });
+
+	// help information show; NEED to load from info file
+	$('#helpbutton').click(function(){
+		
+		myObj=getObjects(myjson, 'page', myPage);
+		//console.log(myObj[0]['description']);
+		$( "#introText" ).replaceWith(myObj[0]['description']);
+
+		if($('#helpspace').is(":visible")){
+        	$('#helpspace').hide(1000);
+		} else {
+			$('#helpspace').show(1000);
+		}
+    });
+	
+	$('#simple-menu').sidr({
+      	side: 'right'
+    });
+	
+
+		
+// initialise Tableau Viz
+function initializeViz() {
+	  var placeholderDiv = document.getElementById("tableauViz");
+	  myObj=getObjects(myjson, 'page', myPage);
+	  //var url = "https://10ay.online.tableau.com/#/site/unswmooc/views/Overview%2FOverview12";
+	  var url = myObj[0]['Link'];
+	  
+	  $('#introText').innerHTML=myObj[0]['description'];
+	  //console.log(url);
+	  var options = {
+		width: placeholderDiv.offsetWidth,
+		height: placeholderDiv.offsetHeight,
+		hideTabs: false,
+		hideToolbar: true,
+		onFirstInteractive: function () {
+		  workbook = viz.getWorkbook();
+		  activeSheet = workbook.getActiveSheet();
+		}
+	  };
+	  viz = new tableau.Viz(placeholderDiv, url, options);
+	} 
+	
+// substitute the Tableau viz passing in the new URL
+function changeViz(myURL) {
+	  var placeholderDiv = document.getElementById("tableauViz");
+	  var url = myURL;
+	  var options = {
+		width: placeholderDiv.offsetWidth,
+		height: placeholderDiv.offsetHeight,
+		hideTabs: false,
+		hideToolbar: true,
+		onFirstInteractive: function () {
+		  workbook = viz.getWorkbook();
+		  activeSheet = workbook.getActiveSheet();
+		}
+	  };
+	  viz = new tableau.Viz(placeholderDiv, url, options);
+	  initializeViz();
+	} 		
+
+// function to control the clicking of URLs to change Viz on the same page
+$(".clickMe").click(function showViz(){
+	//console.log($(this).attr('id'));
+	myCall = $(this).attr('id');
+	viz.dispose();
+	
+	myObj=getObjects(myjson, 'page', myCall);
+	var url = myObj[0]['Link'];
+	console.log(myObj[0]['description']);
+	
+	//myObj2 = getObjects(myjson, 'page', myPage);
+	//desRef = myObj2[0]['description'];
+	$('#introText').innerHTML=myObj[0]['description'];
+	//$( "#introText" ).replaceWith(desRef);
+	
+	/*	
+	if($('#sidr').is(":visible")){
+        	$('#sidr').hide();
+		} else {
+			$('#sidr').show();
+		}
+		*/
+	//get the new viz	 
+	changeViz(url);
+});	
+
+//ensure that first Viz is loaded
+$( document ).ready(function() {
+    initializeViz();
+});
+	
+//export FUNCTIONS
+$('#pdf').click(function exportPDF() {
+  viz.showExportPDFDialog();
+});
+       
+$('#img').click(function exportImage() {
+  viz.showExportImageDialog();
+});   
+  		
+$('#exp').click(function exportData() {
+  viz.showExportDataDialog();
+});    
+				
+});
+     
+</script>
+
+<link href="https://googledrive.com/host/0B8KqLaP_s06ITFd1aHpXc0w4Uk0/css/hover.css" rel="stylesheet" media="all">
+<link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/mooc_dashboard.css" rel="stylesheet" media="all">
+<link href="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/stylesheets/jquery.sidr.dark.css" rel="stylesheet" media="all">
+<link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/topMenu.css" rel="stylesheet" media="all">
+
+<link href="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css" rel="stylesheet" media="all">
+
+<style>
+
+</style>
+</head>
+
+<body>
+<div class="SkinInner">
+
+  <div class="pullbutton2">
+		<a id="simple-menu" href="#sidr"><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/pullicon_small.png" id="pullicon"/></a>
+ 	</div>
+ 
+    
+	<div id="SkinContent">
+	<div id="LogoContainer">
+		<div id="Logo">
+		  <h1>| INTSE01 MOOC Dashboard</h1></div>
+        	<div id="help">
+	   			<img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/question_mark_35.png" id="helpbutton" title="Detailed information" help-tooltip="This gives you contextual information about the page"/>
+                   			<a href="manual.html"><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/manual_35.png" id="manual" title="User instructions" help-tooltip="Use this link for a quick guide of the Dashboard"/></a>
+                
+   	   			<a href="INTSE_home.html"><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/home_35.png" id="homebutton" title="Home page" help-tooltip="Return to the homepage"/></a>
+    	   	</div>
+   	  </div>
+                  <div id="dev">dev</div>
+                  
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href='https://j.mp/INTSE01'>Home</a></li>
+   <li class='active has-sub'><a href='#'>Report Categories</a>
+      <ul>
+         <li><a href='#' id='top_Overview' class='clickMe'>Overview of Course</a></li>
+         <li><a href='#' id='top_participants' class='clickMe'>Who are the participants?</a></li>
+         <li><a href='#' id='top_activity' class='clickMe'>Overview of Activity</a></li>
+         <li><a href='#' id='top_assessment' class='clickMe'>Overview of Assessment</a></li>
+         <li class='has-sub'><a href='#' id='top_research' class='clickMe'>Research Questions</a>
+            <ul>
+            <li><a href='#' id='top_research_1' class='clickMe'>Research 1</a></li>
+			<li><a href='#' id='top_research_2' class='clickMe'>Research 2</a></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+	<li class='has-sub'><a href='#'>Functional Domains</a>
+      <ul>
+      	<li><a href='#' id='top_content' class='clickMe'>Content use</a></li>
+        <li><a href='#' id='top_videos' class='clickMe'>Overview Lecture videos</a></li>
+        <li><a href='#' id='top_forums' class='clickMe'>Forum use</a></li>
+        <li><a href='#' id='top_social' class='clickMe'>Social Media</a></li>
+        <li><a href='#' id='top_evaluation' class='clickMe'>Evaluation & surveys</a></li>
+        <li><a href='#' id='top_activity' class='clickMe'>Assessment & activity</a></li>
+      </ul>
+   </li>
+</ul>
+</div>
+
+  </div>
+     
+     <div id="helpspace">
+       	<div id="introText"><p>This is an alpha prototype dashboard produced by the LTU LADA team in order to characterise the activity in MOOCs.<br /> In order to facilitate the organisation of the large amount of data and details we provided three paths to explore the data.         </p>
+        <ul>
+        <li>On the left there is an overview by categories of information. </li>
+        <li>On the right the information is presented based on functional domains. </li>
+        <li>A full site maps with links to individual section is provided by expanding the pull menu on the right side of the page.</li>
+        </ul>
+		</div>
+     </div>
+
+        
+     <div id="mainbody">
+       	<div id="tableauViz"></div>
+     </div>
+            
+        
+    </div>
+        
+	<div id="footer">       
+    	<p class="footer_p">UNSW - Learning & Teching Unit, <br />
+        Learning Analytics and Data Analysis Team.<br />
+        For feedback/comments please contact unswmooc1@gmail.com<br /><br /><br />
+        <strong>Last edited on date 24 august 2015. </strong>
+        </p>
+        <div id="tools">
+        	<ul>
+            <li><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_img.png" id="img" title="Export as picture" help-tooltip="This exports the current view as a picture"/></li>
+           	<li><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_pdf.png" id="pdf" title="Export as PDF" help-tooltip="This exports the current view as a PDF document"/></li>
+           	<li><img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png" id="exp"  title="Export DATA" help-tooltip="This will generate a view of the underlying data as a table which can be saved as CSV"/></li>
+            <p id="toolbox">EXPORT TOOLS</p>
+            </ul>
+
+        </div>
+        
+    </div>  
+        
+            
+</div>
+ 
+<div id="sidr">
+<!-- Full menu content -->
+	<ul>
+    	<li ><a href='#' class='clickMe'>Click me</a></li>
+        
+        <h2>Overview</h2>
+        <li><a href='#' id='sdr_summary_course' class='clickMe'>Overview of Course</a></li>
+        <li><a href='#' id='sdr_summary_activity' class='clickMe'>Overview of Activity</a></li>
+        <h2>Participants</h2>
+        <li><a href='#' id='sdr_participants' class='clickMe'>Who are the participants?</a></li>
+        <li><a href='#' id='sdr_engagement' class='clickMe'>Engagement</a></li>
+        <h2>What did participants do?</h2>
+            <h3>Videos</h3>
+                <li><a href='#' id='sdr_video_lectures' class='clickMe'>Overview Lecture videos</a></li>  
+                <li><a href='#' id='sdr_overview_video' class='clickMe'>Video use</a></li>
+                <li><a href='#' id='sdr_video_heatmap' class='clickMe'>Video heatmap</a></li>
+                <li><a href='#' id='sdr_video_hm_detail' class='clickMe'>Video heatmap detailed</a></li>
+                <li><a href='#' id='sdr_video_extension' class='clickMe'>Videos and Extension Exercises</a></li>         
+            <h3>Content</h3>
+                <li><a href='#' id='sdr_overview_content' class='clickMe'>Content use</a></li>
+                <li><a href='#' id='sdr_content_sequence' class='clickMe'>Sequence Analysis</a></li>
+            <h3>Forums</h3>
+                <li><a href='#' id='sdr_overview_forum' class='clickMe'>Forum use</a></li>
+                <li><a href='#' id='sdr_forum_heatmap' class='clickMe'>Discussion Heatmap</a></li>
+            <h3>Assessment</h3>
+                <li><a href='#' id='sdr_overview_activity' class='clickMe'>Activities</a></li>
+                <li><a href='#' id='sdr_grades' class='clickMe'>Grades</a></li>
+                <li><a href='#' id='sdr_overview_assessment' class='clickMe'>Overview of Assessment</a></li>
+                <li><a href='#' id='sdr_assm_quizzes' class='clickMe'>Quizzes</a></li>
+                <li><a href='#' id='sdr_assm_exams' class='clickMe'>Exams</a></li>
+                <li><a href='#' id='sdr_assm_peer' class='clickMe'>Peer Assessment</a></li>                      
+            <h3>Evaluation</h3>
+                <li><a href='#' id='sdr_overview_eval' class='clickMe'>Evaluation </a></li>
+                <li><a href='#' id='sdr_eval_ivr1' class='clickMe'>In-Video Ratings 1/2</a></li>
+                <li><a href='#' id='sdr_eval_ivr2' class='clickMe'>In-Video Ratings 2/2</a></li>
+                <li><a href='#' id='sdr_eval_rubrics' class='clickMe'>Assessment Rubrics</a></li>
+                <li><a href='#' id='sdr_eval_precourse' class='clickMe'>Pre-course Survey</a></li>
+                <li><a href='#' id='sdr_eval_postcourse' class='clickMe'>Post-course Survey</a></li>	
+        <h2>Social Media</h2>
+				<li><a href='#' id='sdr_overview_social' class='clickMe'>Social media </a></li>
+        <h2>Research</h2>
+            <li><a href='#' id='sdr_overview_research' class='clickMe'>Research Questions</a></li>
+            <li><a href='#' id='sdr_research_cluster' class='clickMe'>Clustering</a></li>
+            <li><a href='#' id='sdr_research_classify' class='clickMe'>Classification</a></li>
+            <li><a href='#' id='sdr_research_regres' class='clickMe'>Regression</a></li>
+	</ul>
+</div>
+
+<script>
+//assign link from the json to matching element IDs
+// schema to write elements by ID
+var a = ['main_Overview', 'main_participants', 'main_activity', 'main_assessment', 'main_research', 'dom_content', 'dom_videos', 'dom_forums', 'dom_social', 'dom_evaluation', 'dom_activity','sdr_home','sdr_summary_course','sdr_summary_activity','sdr_participants','sdr_engagement','sdr_participant_activity','sdr_overview_video','sdr_video_heatmap','sdr_video_hm_detail','sdr_video_extension','sdr_video_lectures','sdr_overview_content','sdr_content_sequence','sdr_overview_forum','sdr_forum_heatmap','sdr_overview_activity','sdr_grades','sdr_overview_assessment','sdr_assm_quizzes','sdr_assm_exams','sdr_assm_peer','sdr_overview_eval','sdr_eval_ivr1','sdr_eval_ivr2','sdr_eval_rubrics','sdr_eval_precourse','sdr_eval_postcourse','sdr_overview_social','sdr_overview_research','sdr_research_cluster','sdr_research_classify','sdr_research_regres'];
+
+if(isHome=1){
+	a.forEach(function(entry) {
+		//console.log(entry);
+		myObj=getObjects(myjson, 'page', entry);
+		//console.log(myObj);
+		domEl=(myObj[0]['page']);
+		//console.log(myObj[0]['Link']);
+		$("#"+domEl).attr('href', 'singleView.html?v='+domEl);
+	});
+}
+</script>
+
+
+<script src="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/jquery.sidr.min.js" type="text/javascript"></script>
+<script src="https://googledrive.com/host/0B8KqLaP_s06IdmZjTUhrbnRCeXc/jquery.matchHeight.js" type="text/javascript"></script>
+<script src="https://googledrive.com/host/0B8KqLaP_s06ISGQ4Q3JQS0wyNEk/jquery.maphilight.js" type="text/javascript"></script>
+<script src="https://googledrive.com/host/0B8KqLaP_s06IUHhOa2cwdnFVbWM/topMenu.js" type="text/javascript"></script>
+
+<!-- Load the qTip libary -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
+
+<script>
+//check the tooltip
+$('[help-tooltip!=""]').each(function() { // Grab all elements with a data-tooltip attribute,and set "this"
+    $(this).qtip({ // 
+        content: {
+			attr: 'help-tooltip', // Tell qTip2 to look inside this attr for its content
+		    text: $(this).data('help-tooltip'), // WILL work, because .each() sets "this" to refer to each element
+	   		container: $('a').closest('div')
+			},
+			position: {
+				my: 'right bottom',  // Position my top left...
+        		at: 'bottom left', // at the bottom right of...
+				target: $(this)
+		}
+    });
+});
+
+$('[data-tooltip!=""]').each(function() { // Grab all elements with a data-tooltip attribute,and set "this"
+    $(this).qtip({ // 
+        content: {
+			attr: 'data-tooltip', // Tell qTip2 to look inside this attr for its content
+		    text: $(this).data('data-tooltip'), // WILL work, because .each() sets "this" to refer to each element
+	   		container: $('a').closest('div')
+		}
+	});
+});
+
+$('.dijitTabHover').each(function() { // Grab all elements with a data-tooltip attribute,and set "this"
+    $(this).qtip({ // 
+        content: {
+			attr: 'dijitTabHover', // Tell qTip2 to look inside this attr for its content
+		    text: 'The tabs here will help you to navigate trhough the various visualisation panels', // WILL work, because .each() sets "this" to refer to each element
+	   		container: $('span').closest('div')
+		}
+	});
+});
+
+</script>
+
+</body>
+</html>
