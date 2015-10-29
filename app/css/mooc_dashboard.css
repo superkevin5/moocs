@@ -1,8 +1,8 @@
 @charset "UTF-8";
-/* 
+/*
 imagemap helper: http://www.image-maps.com/
-special hover effects: http://ianlunn.github.io/Hover/ 
-highlights for map: http://davidlynch.org/blog/2008/03/maphilight-image-map-mouseover-highlighting/  
+special hover effects: http://ianlunn.github.io/Hover/
+highlights for map: http://davidlynch.org/blog/2008/03/maphilight-image-map-mouseover-highlighting/
 matching height of boxes: https://github.com/liabru/jquery-match-height
 */
 
@@ -35,7 +35,7 @@ body{
   background-size: 194px 71px;
   height: 71px;
   margin: 0px auto;
-  padding: 25px 20px; 
+  padding: 25px 20px;
   border-bottom:#ffcc00;
   border-bottom-width:15px;
   border-bottom-style:solid;
@@ -71,7 +71,7 @@ body{
 }
 #rightBody{
 	margin-top:20px;
-	margin-left:100px;		
+	margin-left:100px;
 }
 #headerMap{
 	float:left;
@@ -122,12 +122,12 @@ body{
 	font-size: 10px;
   	color:#eee;
 }
-  
+
 
 /* sections: HELP BUBBLE */
 #help{
 	float:right;
-	margin-right:10px;	
+	margin-right:10px;
 	margin-top:-55px;
 }
 #helpspace {
@@ -157,7 +157,7 @@ body{
 	background:#FC6;
 }
 #pullicon{
-	margin-top:15px;	
+	margin-top:15px;
 	background:#FC6;
 }
 
@@ -182,7 +182,7 @@ body{
 	line-height: 24px;
 }
 #sidr li{
-	padding=left:10px;	
+	padding=left:10px;
 }
 #sidr h2{
 	padding=left:3px;

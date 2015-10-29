@@ -32,25 +32,25 @@ var server = require('gulp-server-livereload');
  */
 
 gulp.task('scripts', function () {
-  gulp.src('app/**/*.js')
-    .pipe(plumber())
-    .pipe(uglify())
-    .pipe(gulp.dest('build/scripts'));
+  //gulp.src('app/**/*.js')
+  //  .pipe(plumber())
+  //  .pipe(uglify())
+  //  .pipe(gulp.dest('build/scripts'));
 });
 
 
 //styles
 gulp.task('styles', function () {
-  gulp.src('app/styles/**/*.scss')
-    .pipe(plumber())
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(sass({
-        //outputStyle: 'compressed'
-        outputStyle: 'expanded'
-      }
-    ))
-    .pipe(autoprefixer())//auto prefix the css
-    .pipe(gulp.dest('app/styles/main'));
+  //gulp.src('app/styles/**/*.scss')
+  //  .pipe(plumber())
+  //  .pipe(sass.sync().on('error', sass.logError))
+  //  .pipe(sass({
+  //      //outputStyle: 'compressed'
+  //      outputStyle: 'expanded'
+  //    }
+  //  ))
+  //  .pipe(autoprefixer())//auto prefix the css
+  //  .pipe(gulp.dest('app/styles/main'));
 });
 
 //compress image
@@ -71,8 +71,8 @@ gulp.task('default', ['scripts','styles','webserver','watch'], function () {
 
 //Watch JS
 gulp.task('watch', function () {
-  gulp.watch('app/**/*.js', ['scripts']);
-  gulp.watch('app/**/*.scss', ['styles']);
+  //gulp.watch('app/**/*.js', ['scripts']);
+  //gulp.watch('app/**/*.scss', ['styles']);
 });
 
 gulp.task('webserver', function() {
