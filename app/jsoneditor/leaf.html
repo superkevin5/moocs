@@ -1,0 +1,73 @@
+
+<div >
+
+
+<a href="" ng-click="isOpen=!isOpen" ng-init="isOpen=false;">
+  <i class="glyphicon " ng-class="{'glyphicon-menu-down': isOpen,'glyphicon-menu-right':!isOpen}"></i>&nbsp;{{k}}
+</a>
+
+<span>{{node.label}}</span>
+</div>
+
+<div ng-if="!node.items&&isOpen" ng-switch="node.label" class="container">
+
+  <div class="row">
+
+  <div ng-switch-when="type" class="col-sm-5 editarea">
+    <input type="text" ng-model="node.value" class="form-control">
+  </div>
+
+  <div ng-switch-when="order">
+    <input type="text" ng-model="node.value"  class="form-control">
+  </div>
+
+  <div ng-switch-when="level">
+    <input type="text" ng-model="node.value"  class="form-control">
+  </div>
+
+
+  <div ng-switch-when="category">
+    <input type="text" ng-model="node.value">
+  </div>
+
+  <div ng-switch-when="section">
+    <input type="text" ng-model="node.value"  class="form-control">
+  </div>
+
+  <div ng-switch-when="page">
+    <input type="text" ng-model="node.value"  class="form-control">
+  </div>
+
+  <div ng-switch-when="tableauView">
+    <input type="text" ng-model="node.value">
+  </div>
+
+  <div ng-switch-when="Link">
+    <input type="text" ng-model="node.value" class="form-control">
+  </div>
+
+    <div ng-switch-when="tag">
+      <input type="text" ng-model="node.value" class="form-control">
+    </div>
+
+    <div ng-switch-when="id">
+      <input type="text" ng-model="node.value" class="form-control">
+    </div>
+
+  <div ng-switch-when="html">
+    <textarea class="form-control" rol="6" ng-model="node.value"></textarea>
+  </div>
+
+  <div ng-switch-default>
+    <input type="text" ng-model="node.value">
+  </div>
+
+
+</div>
+
+</div>
+<ol ui-tree-nodes="" ng-model="node.items" ng-if="isOpen">
+  <li ng-repeat="node in node.items" ui-tree-node ng-include="'leaf.html'">
+  </li>
+</ol>
+</div>
