@@ -1,41 +1,7 @@
 (function (angular) {
   'use strict';
-  angular.module('jsoneditor', ['ui.bootstrap']).controller('jsoneditor', function ($scope) {
-    $scope.sourceJson = [
-      {
-        "type": "report",
-        "order": "2",
-        "level": "li",
-        "category": "Who are the participants?",
-        "section": "Who are the participants?",
-        "page": "main_participants",
-        "tableauView": 1,
-        "Link": "https://10ay.online.tableau.com/t/unswmooc/views/Whoaretheparticipants_2/Demographics",
-        "description": {
-          "tag": "div",
-          "id": "introText",
-          "html": "<h2 style=font-style:italic>Report Categories - Who are the participants?</h2><p>This section shows basic demographic information of the registrants, the data sourced from both coursera demographic survey and course pre-course survey.</p><p>The map gives genders distribution of the registrants who has responded to either of the survey. The icons are scaled for easier comparison. The geographical distribution also indicated where they are mostly from.</p><p>The top 5 countries have the most survey respondents are listed in&nbsp;the box.</p>"
-        }
-      },
-      {
-        "type": "report",
-        "key":":",
-        "order": "3",
-        "level": "li",
-        "category": "What did participants do?",
-        "section": "Overview of Activity",
-        "page": "main_activity",
-        "tableauView": 1,
-        "Link": "https://10ay.online.tableau.com/t/unswmooc/views/Whatdidpartidantsdo_1/Whatdidparticipantsdo_Overview",
-        "description": {
-          "tag": "div",
-          "id": "introText",
-          "html": "<h2>Report Categories - What did the participants do?</h2><p><br>This section shows what active registrants have done in the course including&nbsp;Use of Video, Forum, Quiz submission and Tests in the course. Also includes peer assessment performance.&nbsp;</p><p>Blue heatmaps&nbsp;give an overview of participants&#39; activities by week.&nbsp;The color is range from 0% (grey) to 100% (dark Blue).&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>"
-        }
-      }
-    ];
-
-
+  angular.module('jsoneditor', ['ui.bootstrap', 'toastr', 'ngAnimate']).controller('jsoneditor', function ($scope, toastr) {
+    $scope.list = [];
     $scope.categories = [
       "Overview",
       "Home",
@@ -59,38 +25,92 @@
     ];
 
 
-
-    $scope.isObj=function(value){
-
+    $scope.isObj = function (value) {
       return angular.isObject(value);
     };
 
+    var convertTreeToJson = function (node, items) {
+      for (var y = 0, length = items.length; y < length; y++) {
+        var keyElement = items[y];
+        if (angular.isDefined(keyElement.items)) {
 
-
-    var getRootNodesScope = function() {
-      return angular.element(document.getElementById("tree-root")).scope();
+          node[keyElement.label] = {};
+          convertTreeToJson(node[keyElement.label], keyElement.items);
+        } else {
+          node[keyElement.label] = keyElement.value;
+        }
+      }
     };
 
-    $scope.collapseAll = function() {
-      $scope.isOpen =true;
+
+    $scope.$watch('list', function (newVal, oldVal) {
+      console.log('updating');
+      $scope.getNewJson();
+    }, true);
 
 
-      $scope.hello =true;
+    $scope.getNewJson = function () {
+
+      var newJsonArray = [];
+      for (var i = 0, length = $scope.list.length; i < length; i++) {
+        var newJson = {};
+        var node = $scope.list[i];
+        convertTreeToJson(newJson, node.items);
+        newJsonArray.push(newJson);
+      }
+
+      if (newJsonArray.length === 1) {
+        $scope.newJson = newJsonArray.shift();
+      } else {
+        $scope.newJson = newJsonArray
+      }
+
+      return $scope.newJson;
+    };
+
+
+    $scope.download = function () {
+
+
+      $scope.getNewJson();
+
+      //validate json
+      var validateJson = function () {
+        var jsonObj = null;
+        try {
+          jsonObj = JSON.parse(JSON.stringify($scope.newJson));
+          return true;
+        } catch (e) {
+          jsonObj = null;
+          console.error(e);
+
+          return false;
+        }
+      };
+
+      if (!validateJson()) return;
+      $("<a/>", {
+        "download": "data.json",
+        "href": "data:application/json," + encodeURIComponent(JSON.stringify($scope.newJson, null, '\t'))
+      }).appendTo("body")
+        .click(function () {
+          $(this).remove()
+        })[0].click()
+
 
     };
-    var establishTree = function (row, parent) {
+
+    $scope.establishTree = function (row, parent) {
 
 
       for (var key in row) {
         var value = row[key];
         var childNode = {};
         childNode.label = key;
-
-
         childNode.value = value;
         if (typeof childNode.value === "object") {
           childNode.items = [];
-          establishTree(childNode.value, childNode.items);
+          $scope.establishTree(childNode.value, childNode.items);
         }
         parent.push(childNode);
       }
@@ -98,7 +118,7 @@
     };
 
 
-    var convertJsonToTree = function (sourceJson) {
+    $scope.convertJsonToTree = function (sourceJson) {
 
       var tempArray = [];
       var sourceTree = [];
@@ -118,21 +138,95 @@
           tempNode.value = row;
         } else {
           tempNode.label = 'item' + i + 1;
-          tempNode.value = 'item' + i + 1;
+          tempNode.value = {};
         }
         tempNode.items = [];
-        establishTree(row, tempNode.items);
+        $scope.establishTree(row, tempNode.items);
         sourceTree.push(tempNode);
       }
       ;
 
-
       $scope.list = sourceTree;
     };
 
+  })
+    .directive('dropZone', function (toastr) {
+      return {
+        restrict: 'A',
+        link: function (scope, element) {
 
-    convertJsonToTree($scope.sourceJson);
+
+          var dropzoneConfig = {
+            //URl is compulsory
+            url: '/fake',
+            //method is compulsory here
+            method: 'get',
+            acceptedFiles: ".json, .csv, .xls,.xlsx",
+            maxFilesize: 10000, //MB
+            maxFiles: 1,
+            paramName: 'uploadfile',
+            maxThumbnailFilesize: 10,
+            parallelUploads: 1,
+            autoProcessQueue: true,
+            dictDefaultMessage: '\<img src=https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png\><label>(Drop or select .CSV .JSON .XLS .XLSX File)</label>'
+          };
+
+          var dropzone = new Dropzone(element[0], dropzoneConfig);
+          dropzone.on('addedfile', function (file) {
+
+            scope.list = [];
+            try {
+              console.log(file);
+              var fileNumber = dropzone.files.length;
+              if (fileNumber > 1) {
+                dropzone.removeFile(dropzone.files[0]);
+              }
 
 
-  });
+              var re = /(?:\.([^.]+))?$/;
+              var ext = re.exec(file.name)[1];
+
+
+              if (ext === 'json') {
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  var contents = e.target.result;
+
+                  try {
+                    var jsonObj = JSON.parse(contents);
+                    var jsonPretty = JSON.stringify(jsonObj, null, '\t');
+                    scope.$apply(function () {
+                      scope.convertJsonToTree(jsonObj);
+                    });
+                    toastr.success('Load json successfully', 'Success', {
+                      closeButton: true
+                    });
+                  } catch (e) {
+                    toastr.error('Invalid json or csv', 'Error', {
+                      closeButton: true
+                    });
+
+                  }
+
+                };
+                reader.readAsText(file);
+              } else {
+
+                console.log('I am csv ');
+
+
+              }
+            } catch (e) {
+              toastr.error('unsupported file', 'Error', {
+                closeButton: true
+              });
+
+            }
+
+
+          });
+        }
+      };
+    });
 })(window.angular);

@@ -83,7 +83,7 @@
                                                                                                             value="0"></label>
       </div>
 
-      <div ng-switch-when="Link" class="col-xs-8 editarea">
+      <div ng-switch-when="Link" class="col-xs-5 editarea">
         <div class="form-group has-feedback"
              ng-class="{'has-success':(jsonform.link.$dirty && !edit)|| (jsonform.link.$pristine&&!edit)}">
           <textarea ng-model="node.value" class="form-control" name="link" ng-focus="edit=true"
@@ -113,10 +113,10 @@
         </div>
       </div>
 
-      <div ng-switch-when="html" class="col-xs-8 editarea">
+      <div ng-switch-when="html" class="col-xs-5 editarea">
         <div class="form-group has-feedback"
              ng-class="{'has-success':(jsonform.html.$dirty && !edit)|| (jsonform.html.$pristine&&!edit)}">
-          <textarea class="form-control" rows="6" ng-model="node.value" ng-focus="edit=true"
+          <textarea class="form-control" rows="10" ng-model="node.value" ng-focus="edit=true"
                     ng-blur="edit=false" name="html"></textarea>
           <span class="glyphicon glyphicon-ok form-control-feedback"
                 ng-if="(jsonform.html.$dirty && !edit)||(jsonform.html.$pristine&&!edit)"></span>
