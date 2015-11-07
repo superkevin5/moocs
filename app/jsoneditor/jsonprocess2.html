@@ -64,6 +64,36 @@
       overflow: auto;
     }
 
+    .imgBorder {
+
+      border-radius: 10px;
+      height: 150px;
+      z-index: 10;
+      width: 200px;
+      padding: 15px 15px 0;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+      -moz-box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+      -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+      font-size: 0.1em;
+      overflow: hidden;
+      margin-top:10px;
+    }
+
+    .imgBorder:hover {
+      cursor: pointer;
+    }
+
+    .flex {
+
+      display: flex;
+      flex-direction: row;
+      flex-flow: row wrap;
+      /* Then we define how is distributed the remaining space */
+      justify-content: space-around;
+
+    }
+
     .coverscreen {
       background: #ccc;
       /*position: fixed;*/
@@ -89,6 +119,21 @@
     <div class="dropzone json-polishdropzone" drop-zone></div>
   </div>
 
+  <div class="container text-center flex">
+
+
+    <div class="thumbnail imgBorder" ng-repeat="sheet in sheetNames track by $index">
+      <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png" alt="{{sheet}}">
+
+      <div class="caption">
+        <h5>Sheet {{$index+1}} : {{sheet}}</h5>
+
+        <p><a href="#" class="btn btn-primary" role="button" ng-click="selectSheet(sheet)">Select</a></p>
+      </div>
+    </div>
+
+
+  </div>
 </div>
 
 
@@ -106,7 +151,7 @@
 </div>
 <div class="container-fluid">
 
-
+<pre>{{list|json}}</pre>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 ">
       <div class="tree">
@@ -138,6 +183,7 @@
 <script type="text/javascript" src="dropzone.min.js"></script>
 <script type="text/javascript" src="angular-animate.min.js"></script>
 <script type="text/javascript" src="angular-toastr.tpls.js"></script>
+<script type="text/javascript" src="xlsx.core.min.js"></script>
 
 </body>
 </html>

@@ -10,7 +10,7 @@
     {{node.label}}</h4>
 </div>
 
-<div ng-if="!node.items&&isOpen||isOpenAll" ng-switch="node.label" class="container">
+<div ng-if="!node.items&&isOpen&&!node.array||isOpenAll" ng-switch="node.label" class="container">
 
   <form role="form" name="jsonform">
     <div class="row">
@@ -51,7 +51,7 @@
         <!--dropdown -->
         <select name="category" class="form-control"
                 ng-model="node.value"
-                ng-options="category  for category in categories">
+                ng-options="category  for category in categories| orderBy:category">
           <option value="">-- Please Select --</option>
         </select>
       </div>
@@ -113,32 +113,36 @@
         </div>
       </div>
 
-      <div ng-switch-when="html" class="col-xs-5 editarea">
+      <div ng-switch-when="html" class="col-xs-6 editarea">
         <div class="form-group has-feedback"
              ng-class="{'has-success':(jsonform.html.$dirty && !edit)|| (jsonform.html.$pristine&&!edit)}">
           <textarea class="form-control" rows="10" ng-model="node.value" ng-focus="edit=true"
-                    ng-blur="edit=false" name="html"></textarea>
+                    ng-blur="edit=false" name="html" placeholder="Put html here"></textarea>
           <span class="glyphicon glyphicon-ok form-control-feedback"
                 ng-if="(jsonform.html.$dirty && !edit)||(jsonform.html.$pristine&&!edit)"></span>
         </div>
       </div>
 
-      <div ng-switch-default class="col-xs-12 editarea">
+      <div ng-switch-default class="col-xs-6 editarea">
         <div class="form-group has-feedback"
              ng-class="{'has-success':(jsonform.other.$dirty && !edit)|| (jsonform.other.$pristine&&!edit)}"
              ng-if="!isObj(node.value)">
-          <input type="text" ng-model="node.value" ng-focus="edit=true"
-                 ng-blur="edit=false" name="other" class="form-control">
+          <textarea   rows="10" ng-model="node.value" ng-focus="edit=true"
+                 ng-blur="edit=false" name="other" class="form-control"></textarea>
            <span class="glyphicon glyphicon-ok form-control-feedback"
                  ng-if="(jsonform.other.$dirty && !edit)||(jsonform.other.$pristine&&!edit)"></span>
         </div>
       </div>
-
-
     </div>
   </form>
 </div>
-<ol ui-tree-nodes="" ng-model="node.items" ng-if="isOpen||isOpenAll">
-  <li ng-repeat="node in node.items" ui-tree-node ng-include="'leaf.html'">
+
+<ol ui-tree-nodes="" ng-model="node.items" ng-if="!!node.items&&(isOpen||isOpenAll)">
+  <li ng-repeat="node in node.items" ui-tree-node ng-include="'leaf.html'" >
+  </li>
+</ol>
+
+<ol ui-tree-nodes="" ng-model="node.array" ng-if="!!node.array&&(isOpen||isOpenAll)">
+  <li ng-repeat="node in node.array" ui-tree-node ng-include="'leaf.html'">
   </li>
 </ol>
