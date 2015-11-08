@@ -113,7 +113,6 @@
 
 
     $scope.getNewJson = function () {
-
       $scope.newJson = $scope.getNewJsonHandleArray($scope.list);
     };
 
@@ -386,16 +385,16 @@
         }
 
 
-        var jsonSectionCellValue = worksheet[jsonSectionCellIndex].v;
-        var typeCellCellValue = worksheet[typeCellIndex].v;
-        var orderCellValue = worksheet[orderCellIndex].v;
-        var levelCellValue = worksheet[levelCellIndex].v;
-        var categoryCellValue = worksheet[categoryCellIndex].v;
-        var sectionCellValue = worksheet[sectionCellIndex].v;
-        var pageCellValue = worksheet[pageCellIndex].v;
-        var tableauviewCellValue = worksheet[tableauviewCellIndex].v;
-        var linkCellValue = worksheet[linkCellIndex].v;
-        var des2CellValue = worksheet[des2CellIndex].v;
+        var jsonSectionCellValue = angular.isDefined(worksheet[jsonSectionCellIndex]) ? (worksheet[jsonSectionCellIndex].v) : '';
+        var typeCellCellValue = angular.isDefined(worksheet[typeCellIndex])?worksheet[typeCellIndex].v:'';
+        var orderCellValue = angular.isDefined(worksheet[orderCellIndex])?worksheet[orderCellIndex].v:'';
+        var levelCellValue = angular.isDefined(worksheet[levelCellIndex])?worksheet[levelCellIndex].v:'';
+        var categoryCellValue = angular.isDefined(worksheet[categoryCellIndex])?worksheet[categoryCellIndex].v:'';
+        var sectionCellValue = angular.isDefined(worksheet[sectionCellIndex])?worksheet[sectionCellIndex].v:'';
+        var pageCellValue = angular.isDefined(worksheet[pageCellIndex])?worksheet[pageCellIndex].v:'';
+        var tableauviewCellValue = angular.isDefined(worksheet[tableauviewCellIndex])?worksheet[tableauviewCellIndex].v:'';
+        var linkCellValue = angular.isDefined(worksheet[linkCellIndex])?worksheet[linkCellIndex].v:'';
+        var des2CellValue = angular.isDefined(worksheet[des2CellIndex])?worksheet[des2CellIndex].v:'';
 
 
         if (angular.isUndefined(finalConvertedJson.moocs[jsonSectionCellValue])) {
