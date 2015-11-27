@@ -31,6 +31,16 @@
             }, true);
 
 
+            $scope.checkFilterOn = function(){
+
+                return $scope.typeOn|| $scope.orderOn||
+                    $scope.levelOn|| $scope.categoryOn||
+                    $scope.sectionOn|| $scope.pageOn||
+                    $scope.tableauOn|| $scope.linkOn||
+                    $scope.descriptionOn;
+            };
+
+
             $scope.convertArrayInList = function (itemsInArray, node) {
 
                 for (var i = 0, length = itemsInArray.length; i < length; i++) {
@@ -412,7 +422,7 @@
                         "category": categoryCellValue,
                         "section": sectionCellValue,
                         "page": pageCellValue,
-                        "tableauviewCellValue": tableauviewCellValue,
+                        "tableauView": tableauviewCellValue,
                         "Link": linkCellValue,
                         "description": {
                             "tag": "div",

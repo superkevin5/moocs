@@ -57,7 +57,8 @@
             box-shadow: 0 0 10px #719ECE;
             margin: 10px;
             border: 4px solid #cccccc;
-            height: 800px;
+            height: auto;
+            min-height: 800px;
             font-family: Tahoma, sans-serif;
             background-position: bottom right;
             background-repeat: no-repeat;
@@ -94,14 +95,11 @@
 
         }
 
-        .coverscreen {
-            background: #ccc;
-            /*position: fixed;*/
-            /*width: 100%;*/
-            /*height: 100%;*/
-            /*top: 0px;*/
-            /*left: 0px;*/
+        .heighlight{
+            background-color: #FFFF00;
         }
+
+
 
 
     </style>
@@ -135,14 +133,42 @@
 
     </div>
 </div>
-
-
 <div class="container-fluid">
     <div class="row  text-center">
         <div class="col-md-6 col-xs-12">
             <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="isOpenAll=!isOpenAll">Open/Close
                 All
             </button>
+            <label><b>Filter options:</b></label>
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1"  ng-model="typeOn" ng-init="typeOn=false">type
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" ng-model="orderOn" ng-init="orderOn=false">order
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" ng-model="levelOn" ng-init="levelOn=false">level
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox4" ng-model="categoryOn" ng-init="categoryOn=false">category
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox5" ng-model="sectionOn" ng-init="sectionOn=false">section
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox6" ng-model="pageOn" ng-init="pageOn=false">page
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox7" ng-model="tableauOn" ng-init="tableauOn=false">tableauView
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox8" ng-model="linkOn" ng-init="linkOn=false">link
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox9" ng-model="descriptionOn" ng-init="descriptionOn=false">description
+                </label>
+            </div>
         </div>
         <div class="col-md-6 col-xs-12">
             <button type="button" class="btn btn-default btn-lg btn-block" ng-click="download()">Download new json
@@ -166,8 +192,10 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 ">
-            <pre class="tree">{{newJson|json}}</pre>
+            <pre class="jsonDisplay">{{newJson|json}}</pre>
         </div>
+
+
     </div>
 
 
