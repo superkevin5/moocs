@@ -7,7 +7,8 @@
           href="" ng-show="isOpenAll">
     &nbsp;    &nbsp;
   </span>
-        {{node.label}}</h4>
+        <span ng-class="{highlight:node.label==='type'&&typeOn||node.label==='order'&&orderOn||node.label==='level'&&levelOn||node.label==='category'&&categoryOn||node.label==='section'&&sectionOn||node.label==='page'&&pageOn
+        ||node.label==='tableauView'&&tableauOn||node.label==='Link'&&linkOn||node.label==='description'&&descriptionOn||node.label==='html'&&descriptionOn}">{{node.label}}</span></h4>
 </div>
 
 <div ng-if="!node.items&&!node.array" class="container">

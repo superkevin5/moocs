@@ -95,11 +95,45 @@
 
         }
 
-        .heighlight{
+        .highlight {
             background-color: #FFFF00;
         }
 
+        .hidehide {
+            background-color: #eee;
 
+            -webkit-transform: scaleY(0);
+            -o-transform: scaleY(0);
+            -ms-transform: scaleY(0);
+            transform: scaleY(0);
+
+            -webkit-transform-origin: top;
+            -o-transform-origin: top;
+            -ms-transform-origin: top;
+            transform-origin: top;
+
+            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+            -o-transition: -o-transform 0.1s ease-in-out;
+            -ms-transition: -ms-transform 0.1s ease-in-out;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .showshow {
+            -webkit-transform: scaleY(1);
+            -o-transform: scaleY(1);
+            -ms-transform: scaleY(1);
+            transform: scaleY(1);
+
+            -webkit-transform-origin: top;
+            -o-transform-origin: top;
+            -ms-transform-origin: top;
+            transform-origin: top;
+            -webkit-transition: -webkit-transform 0.3s ease-in-out;
+            -o-transition: -o-transform 0.3s ease-in-out;
+            -ms-transition: -ms-transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+
+        }
 
 
     </style>
@@ -140,9 +174,10 @@
                 All
             </button>
             <label><b>Filter options:</b></label>
+
             <div class="checkbox">
                 <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1"  ng-model="typeOn" ng-init="typeOn=false">type
+                    <input type="checkbox" id="inlineCheckbox1" ng-model="typeOn" ng-init="typeOn=false">type
                 </label>
                 <label class="checkbox-inline">
                     <input type="checkbox" id="inlineCheckbox2" ng-model="orderOn" ng-init="orderOn=false">order
@@ -171,7 +206,7 @@
             </div>
         </div>
         <div class="col-md-6 col-xs-12">
-            <button type="button" class="btn btn-default btn-lg btn-block" ng-click="download()">Download new json
+            <button type="button" class="btn btn-default btn-lg btn-block" ng-click="download()">Download New JSON
             </button>
         </div>
     </div>
@@ -192,7 +227,12 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 ">
-            <pre class="jsonDisplay">{{newJson|json}}</pre>
+            <a href="" ng-click="showJson=!showJson">Display/Hide JSON</a>
+
+
+            <div ng-class="{showshow:showJson,hidehide:!showJson}">
+                <pre>{{newJson|json}}</pre>
+            </div>
         </div>
 
 
