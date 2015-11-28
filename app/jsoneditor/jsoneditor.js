@@ -31,12 +31,12 @@
             }, true);
 
 
-            $scope.checkFilterOn = function(){
+            $scope.checkFilterOn = function () {
 
-                return $scope.typeOn|| $scope.orderOn||
-                    $scope.levelOn|| $scope.categoryOn||
-                    $scope.sectionOn|| $scope.pageOn||
-                    $scope.tableauOn|| $scope.linkOn||
+                return $scope.typeOn || $scope.orderOn ||
+                    $scope.levelOn || $scope.categoryOn ||
+                    $scope.sectionOn || $scope.pageOn ||
+                    $scope.tableauOn || $scope.linkOn ||
                     $scope.descriptionOn;
             };
 
@@ -125,6 +125,64 @@
 
             $scope.getNewJson = function () {
                 $scope.newJson = $scope.getNewJsonHandleArray($scope.list);
+            };
+
+
+            $scope.projectToRight = function (node) {
+
+                var array = ["type", "order", "level", "category", "section", "page", "tableauView", "Link", "description"];
+
+
+                if(angular.isDefined(node.items)){
+
+                    var fieldLength = node.items.length;
+                    for (var i = 0; i < node.items.length; i++) {
+                        var item = node.items[i];
+                        var index = array.indexOf(item.label);
+                        if (index != -1) {
+                            array.splice(index, 1);
+                        }
+                    }
+
+
+                    if (array.length === 0) {
+                        $scope.projectList = node.items;
+                        $scope.projectName = node.label;
+
+                    }
+                }else if(!node.items&&!node.array){
+
+                    $scope.projectValue = node.value;
+                    $scope.projectName = node.label;
+
+                }else{
+                    $scope.projectList = [];
+                    $scope.projectName ='';
+                }
+
+
+
+
+
+
+            };
+
+            $scope.isPage = function(node){
+                var array = ["type", "order", "level", "category", "section", "page", "tableauView", "Link", "description"];
+
+                for (var i = 0; i < node.items.length; i++) {
+                    var item = node.items[i];
+                    var index = array.indexOf(item.label);
+                    if (index != -1) {
+                        array.splice(index, 1);
+                    }
+                }
+
+                if (array.length === 0) {
+                  return true;
+                }else{
+                    return false;
+                }
             };
 
 
