@@ -1,141 +1,14 @@
 <div ng-init="isOpen=false">
     <h4>
-        <a href="" ng-click="isOpen=!isOpen;projectToRight(node)" >
+        <a href="" ng-click="isOpen=!isOpen;projectToRight(node)">
             <i class="glyphicon " ng-class="{'glyphicon-menu-down': isOpen,'glyphicon-menu-right':!isOpen}"></i>&nbsp;
         </a>
-        <span  ng-click="isOpen=!isOpen;projectToRight(node)" class="cursorpalm">{{node.label}}</span>
+        <span ng-click="isOpen=!isOpen;projectToRight(node)" class="cursorpalm">{{node.label}}</span>
     </h4>
 </div>
 
-<!--<div ng-if="!node.items&&!node.array" class="container">-->
-<!--<form role="form" name="jsonform" ng-switch="node.label">-->
-<!--<div class="row">-->
-
-<!--<div ng-switch-when="type" class="col-xs-5 editarea" ng-show="typeOn||isOpen||isOpenAll">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.type.$dirty && !edit)|| (jsonform.type.$pristine&&!edit)}">-->
-<!--<input type="text" ng-model="node.value" class="form-control" name="type" ng-focus="edit=true"-->
-<!--ng-blur="edit=false">-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.type.$dirty && !edit)||(jsonform.type.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="order" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll||orderOn">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.order.$dirty && !edit)|| (jsonform.order.$pristine&&!edit)}">-->
-<!--<input type="text" ng-model="node.value" class="form-control" name="order" ng-focus="edit=true"-->
-<!--ng-blur="edit=false">-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.order.$dirty && !edit)||(jsonform.order.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="level" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll||levelOn">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.level.$dirty && !edit)|| (jsonform.level.$pristine&&!edit)}">-->
-
-<!--<input type="text" ng-model="node.value" class="form-control" name="level" ng-focus="edit=true"-->
-<!--ng-blur="edit=false">-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.level.$dirty && !edit)||(jsonform.level.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--<div ng-switch-when="category" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll||categoryOn">-->
-<!--&lt;!&ndash;dropdown &ndash;&gt;-->
-<!--<select name="category" class="form-control"-->
-<!--ng-model="node.value"-->
-<!--ng-options="category  for category in categories| orderBy:category">-->
-<!--<option value="">&#45;&#45; Please Select &#45;&#45;</option>-->
-<!--</select>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="section" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll||sectionOn">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.section.$dirty && !edit)|| (jsonform.section.$pristine&&!edit)}">-->
-<!--<input type="text" ng-model="node.value" class="form-control" name="section" ng-focus="edit=true"-->
-<!--ng-blur="edit=false">-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.section.$dirty && !edit)||(jsonform.section.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="page" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll||pageOn">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.page.$dirty && !edit)|| (jsonform.page.$pristine&&!edit)}">-->
-<!--<input type="text" ng-model="node.value" class="form-control" name="page" ng-focus="edit=true"-->
-<!--ng-blur="edit=false">-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.page.$dirty && !edit)||(jsonform.page.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="tableauView" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll||tableauOn">-->
-<!--<label>Yes&nbsp;&nbsp;<input type="radio" ng-model="node.value"-->
-<!--value="1"></label>&nbsp;&nbsp;&nbsp;&nbsp;<label>No&nbsp;&nbsp; <input-->
-<!--type="radio"-->
-<!--ng-model="node.value"-->
-<!--value="0"></label>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="Link" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll||linkOn">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.link.$dirty && !edit)|| (jsonform.link.$pristine&&!edit)}">-->
-<!--<textarea ng-model="node.value" class="form-control" name="link" ng-focus="edit=true"-->
-<!--ng-blur="edit=false" rows="4"></textarea>-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.link.$dirty && !edit)||(jsonform.link.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="tag" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.tag.$dirty && !edit)|| (jsonform.tag.$pristine&&!edit)}">-->
-<!--<input type="text" ng-model="node.value" class="form-control" name="tag" ng-focus="edit=true"-->
-<!--ng-blur="edit=false">-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.tag.$dirty && !edit)||(jsonform.tag.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="id" class="col-xs-5 editarea" ng-show="isOpen||isOpenAll">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.id.$dirty && !edit)|| (jsonform.id.$pristine&&!edit)}">-->
-<!--<input type="text" ng-model="node.value" class="form-control" ng-focus="edit=true"-->
-<!--ng-blur="edit=false" name="id">-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.id.$dirty && !edit)||(jsonform.id.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-when="html" class="col-xs-6 editarea" ng-show="isOpen||isOpenAll||descriptionOn">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.html.$dirty && !edit)|| (jsonform.html.$pristine&&!edit)}">-->
-<!--<textarea class="form-control" rows="10" ng-model="node.value" ng-focus="edit=true"-->
-<!--ng-blur="edit=false" name="html" placeholder="Put html here"></textarea>-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.html.$dirty && !edit)||(jsonform.html.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div ng-switch-default class="col-xs-7 editarea" ng-show="isOpen||isOpenAll">-->
-<!--<div class="form-group has-feedback"-->
-<!--ng-class="{'has-success':(jsonform.other.$dirty && !edit)|| (jsonform.other.$pristine&&!edit)}"-->
-<!--ng-if="!isObj(node.value)">-->
-<!--<textarea rows="10" ng-model="node.value" ng-focus="edit=true"-->
-<!--ng-blur="edit=false" name="other" class="form-control"></textarea>-->
-<!--<span class="glyphicon glyphicon-ok form-control-feedback"-->
-<!--ng-if="(jsonform.other.$dirty && !edit)||(jsonform.other.$pristine&&!edit)"></span>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-
 <ol ui-tree-nodes="" ng-model="node.items"
-    ng-if="!!node.items&&(isOpen||(node.label==='description'&&descriptionOn))&&!isPage(node)" >
+    ng-if="!!node.items&&(isOpen||(node.label==='description'&&descriptionOn))&&!isPage(node)">
     <li ng-repeat="node in node.items" ui-tree-node ng-include="'leaf.html'">
     </li>
 </ol>

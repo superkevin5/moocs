@@ -133,7 +133,7 @@
                 var array = ["type", "order", "level", "category", "section", "page", "tableauView", "Link", "description"];
 
 
-                if(angular.isDefined(node.items)){
+                if (angular.isDefined(node.items)) {
 
                     var fieldLength = node.items.length;
                     for (var i = 0; i < node.items.length; i++) {
@@ -150,24 +150,23 @@
                         $scope.projectName = node.label;
 
                     }
-                }else if(!node.items&&!node.array){
+                    $scope.projectValue = undefined;
+                } else if (!node.items && !node.array) {
 
-                    $scope.projectValue = node.value;
+                    $scope.projectValue = node;
+                    $scope.projectList = undefined;
                     $scope.projectName = node.label;
 
-                }else{
+                } else {
                     $scope.projectList = [];
-                    $scope.projectName ='';
+                    $scope.projectName = '';
+                    $scope.projectValue = undefined;
                 }
-
-
-
-
 
 
             };
 
-            $scope.isPage = function(node){
+            $scope.isPage = function (node) {
                 var array = ["type", "order", "level", "category", "section", "page", "tableauView", "Link", "description"];
 
                 for (var i = 0; i < node.items.length; i++) {
@@ -179,8 +178,8 @@
                 }
 
                 if (array.length === 0) {
-                  return true;
-                }else{
+                    return true;
+                } else {
                     return false;
                 }
             };
@@ -404,6 +403,9 @@
 
 
             $scope.selectSheet = function (sheetName) {
+                $scope.projectList = [];
+                $scope.projectValue = undefined;
+                $scope.projectName = undefined;
                 var worksheet = $scope.workbook.Sheets[sheetName];
 
                 if (angular.isUndefined(worksheet['!ref'])) {
@@ -534,6 +536,9 @@
 
                             var re = /(?:\.([^.]+))?$/;
                             var ext = re.exec(file.name)[1];
+                            scope.projectList = [];
+                            scope.projectValue = undefined;
+                            scope.projectName = undefined;
 
 
                             if (ext === 'json') {

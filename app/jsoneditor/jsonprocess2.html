@@ -180,38 +180,38 @@
 
 
         <div class="col-md-6 col-xs-12">
-        <label><b>Filter options:</b></label>
+            <label><b>Filter options:</b></label>
 
-        <div class="checkbox">
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox1" ng-model="typeOn" ng-init="typeOn=false">type
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox2" ng-model="orderOn" ng-init="orderOn=false">order
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox3" ng-model="levelOn" ng-init="levelOn=false">level
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox4" ng-model="categoryOn" ng-init="categoryOn=false">category
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox5" ng-model="sectionOn" ng-init="sectionOn=false">section
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox6" ng-model="pageOn" ng-init="pageOn=false">page
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox7" ng-model="tableauOn" ng-init="tableauOn=false">tableauView
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox8" ng-model="linkOn" ng-init="linkOn=false">link
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox9" ng-model="descriptionOn" ng-init="descriptionOn=false">description
-            </label>
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" ng-model="typeOn" ng-init="typeOn=false">type
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" ng-model="orderOn" ng-init="orderOn=false">order
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" ng-model="levelOn" ng-init="levelOn=false">level
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox4" ng-model="categoryOn" ng-init="categoryOn=false">category
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox5" ng-model="sectionOn" ng-init="sectionOn=false">section
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox6" ng-model="pageOn" ng-init="pageOn=false">page
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox7" ng-model="tableauOn" ng-init="tableauOn=false">tableauView
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox8" ng-model="linkOn" ng-init="linkOn=false">link
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox9" ng-model="descriptionOn" ng-init="descriptionOn=false">description
+                </label>
+            </div>
         </div>
-    </div>
     </div>
 
 </div>
@@ -222,7 +222,7 @@
                 <div ui-tree class="angular-ui-tree">
                     <ol ui-tree-nodes="" ng-model="list" id="tree-root" class="angular-ui-tree-nodes">
                         <li ng-repeat="node in list" ui-tree-node ng-include="'leaf.html'"
-                           ></li>
+                                ></li>
                     </ol>
                 </div>
             </div>
@@ -230,48 +230,44 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 ">
-            <!--<a href="" ng-click="showJson=!showJson">Display/Hide JSON</a>-->
-
-
-            <!--<div ng-class="{showshow:showJson,hidehide:!showJson}">-->
-            <!--<pre>{{newJson|json}}</pre>-->
-            <!--</div>-->
 
 
             <div class="tree">
                 <h3> {{projectName}}</h3>
 
-                <div ui-tree class="angular-ui-tree">
+                <div ui-tree class="angular-ui-tree" ng-show="projectList.length!=0">
                     <ol ui-tree-nodes="" ng-model="projectList" id="tree-root2" class="angular-ui-tree-nodes">
                         <li ng-repeat="node in projectList" ui-tree-node ng-include="'leaf2.html'"></li>
                     </ol>
                 </div>
-            </div>
 
-
-            <div>
-                <div class="form-group has-feedback"
-                ng-class="{'has-success':(jsonform.other.$dirty && !edit)|| (jsonform.other.$pristine&&!edit)}"
-                ng-if="!isObj(projectValue)">
-                <textarea rows="10" ng-model="projectValue" ng-focus="edit=true"
-                ng-blur="edit=false" name="other" class="form-control"></textarea>
+                <div ng-show="!!projectValue">
+                    <form role="form" name="jsonform">
+                        <div class="form-group has-feedback"
+                             ng-class="{'has-success':(jsonform.other.$dirty && !edit)|| (jsonform.other.$pristine&&!edit)}"
+                             ng-if="!isObj(projectValue.value)">
+                <textarea rows="10" cols="10" ng-model="projectValue.value" ng-focus="edit=true"
+                          ng-blur="edit=false" name="other" class="form-control"></textarea>
                 <span class="glyphicon glyphicon-ok form-control-feedback"
-                ng-if="(jsonform.other.$dirty && !edit)||(jsonform.other.$pristine&&!edit)"></span>
+                      ng-if="(jsonform.other.$dirty && !edit)||(jsonform.other.$pristine&&!edit)"></span>
+                        </div>
+                    </form>
                 </div>
-                </div>
-                </div>
-                </form>
+
 
             </div>
 
-            <pre>{{projectList|json}}</pre>
 
         </div>
-
-
     </div>
 
+</div>
 
+<a href="" ng-click="showJson=!showJson">Display/Hide JSON</a>
+
+
+<div ng-class="{showshow:showJson,hidehide:!showJson}">
+    <pre>{{newJson|json}}</pre>
 </div>
 
 
