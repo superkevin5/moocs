@@ -5,7 +5,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>MOOC Dashboard helpers</title>
     <link rel="icon" type="image/png" href="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/LADA_ico.png">
+
+    <link href="angular-toastr.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="angular-ui-tree.min.css" type="text/css"/>
+    <link rel="stylesheet" href="bootstrap-toggle.min.css" type="text/css"/>
+    <link href="dropzone.min.css" rel="stylesheet" media="all">
+
     <style>
+
+        *{
+            box-sizing:initial;
+        }
+
         textarea {
             height: 30em;
         }
@@ -183,7 +195,6 @@
             right: 10px;
         }
     </style>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
 
@@ -213,6 +224,129 @@
           rel="stylesheet" media="all">
 
     <style>
+
+
+
+        .editarea {
+            margin-left: 20px;
+        }
+
+        .json-polishdropzone {
+            text-align: center;
+            border: dashed 5px black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            height: 200px;
+            width: 500px;
+            display: inline-block;
+        }
+
+        .separateJson {
+            padding-bottom: 50px;
+            margin-bottom: 80px;
+            border-bottom: dashed 3px;
+        }
+
+        .dz-error-message, .dz-error-mark {
+            display: none !important;
+        }
+
+        .dz-message {
+            text-align: center;
+            margin: auto;
+            font-size: 1.5em;
+        }
+
+        .tree {
+            box-shadow: 0 0 10px #719ECE;
+            margin: 10px;
+            border: 4px solid #cccccc;
+            height: auto;
+            min-height: 800px;
+            font-family: Tahoma, sans-serif;
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            overflow: auto;
+        }
+
+        .imgBorder {
+
+            border-radius: 10px;
+            height: 150px;
+            z-index: 10;
+            width: 200px;
+            padding: 15px 15px 0;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+            -moz-box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+            -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+            font-size: 0.1em;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .imgBorder:hover {
+            cursor: pointer;
+        }
+
+        .cursorpalm {
+            cursor: pointer;
+        }
+
+        .flex {
+
+            display: flex;
+            flex-direction: row;
+            flex-flow: row wrap;
+            /* Then we define how is distributed the remaining space */
+            justify-content: space-around;
+
+        }
+
+        .highlight {
+            background-color: #FFFF00;
+        }
+
+        .hidehide {
+            background-color: #eee;
+
+            -webkit-transform: scaleY(0);
+            -o-transform: scaleY(0);
+            -ms-transform: scaleY(0);
+            transform: scaleY(0);
+
+            -webkit-transform-origin: top;
+            -o-transform-origin: top;
+            -ms-transform-origin: top;
+            transform-origin: top;
+
+            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+            -o-transition: -o-transform 0.1s ease-in-out;
+            -ms-transition: -ms-transform 0.1s ease-in-out;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .showshow {
+            -webkit-transform: scaleY(1);
+            -o-transform: scaleY(1);
+            -ms-transform: scaleY(1);
+            transform: scaleY(1);
+
+            -webkit-transform-origin: top;
+            -o-transform-origin: top;
+            -ms-transform-origin: top;
+            transform-origin: top;
+            -webkit-transition: -webkit-transform 0.3s ease-in-out;
+            -o-transition: -o-transform 0.3s ease-in-out;
+            -ms-transition: -ms-transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+
+        }
+
+
+
+
 
     </style>
 </head>
@@ -491,11 +625,176 @@
             </div>
         </div>
     </div>
+
+    <div ng-app="jsoneditor" ng-cloak ng-controller="jsoneditor">
+        <toaster-container toaster-options="
+    {'close-button':{'toast-warning': true, 'toast-error': false } }">
+        </toaster-container>
+
+        <div class="jumbotron">
+            <div class="container text-center">
+                <div class="dropzone json-polishdropzone" drop-zone></div>
+            </div>
+
+            <div class="container text-center flex">
+
+
+                <div class="thumbnail imgBorder" ng-repeat="sheet in sheetNames track by $index">
+                    <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png" alt="{{sheet}}">
+
+                    <div class="caption">
+                        <h5>Sheet {{$index+1}} : {{sheet}}</h5>
+
+                        <p><a href="#" class="btn btn-primary" role="button" ng-click="selectSheet(sheet)">Select</a></p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row  text-center">
+                <div class="col-md-6 col-xs-12">
+                    <button type="button" class="btn btn-default btn-lg btn-block" ng-click="download()">Download New JSON
+                    </button>
+                </div>
+
+
+                <div class="col-md-6 col-xs-12">
+                    <label><b>Filter options:</b></label>
+
+                    <div class="checkbox">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" ng-model="typeOn" ng-init="typeOn=false">type
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" ng-model="orderOn" ng-init="orderOn=false">order
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" ng-model="levelOn" ng-init="levelOn=false">level
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox4" ng-model="categoryOn" ng-init="categoryOn=false">category
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox5" ng-model="sectionOn" ng-init="sectionOn=false">section
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox6" ng-model="pageOn" ng-init="pageOn=false">page
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" ng-model="tableauOn" ng-init="tableauOn=false">tableauView
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox8" ng-model="linkOn" ng-init="linkOn=false">link
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox9" ng-model="descriptionOn" ng-init="descriptionOn=false">description
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 ">
+                    <div class="tree">
+                        <div ui-tree class="angular-ui-tree">
+                            <ol ui-tree-nodes="" ng-model="list" id="tree-root" class="angular-ui-tree-nodes">
+                                <li ng-repeat="node in list" ui-tree-node ng-include="'leaf.html'"
+                                        ></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-6 ">
+
+
+                    <div class="tree">
+                        <h3> {{projectName}}</h3>
+
+                        <div ui-tree class="angular-ui-tree" ng-show="projectList.length!=0">
+                            <ol ui-tree-nodes="" ng-model="projectList" id="tree-root2" class="angular-ui-tree-nodes">
+                                <li ng-repeat="node in projectList" ui-tree-node ng-include="'leaf2.html'"></li>
+                            </ol>
+                        </div>
+
+                        <div ng-show="!!projectValue">
+                            <form role="form" name="jsonform">
+                                <div class="form-group has-feedback"
+                                     ng-class="{'has-success':(jsonform.other.$dirty && !edit)|| (jsonform.other.$pristine&&!edit)}"
+                                     ng-if="!isObj(projectValue.value)">
+                <textarea rows="10" cols="10" ng-model="projectValue.value" ng-focus="edit=true"
+                          ng-blur="edit=false" name="other" class="form-control"></textarea>
+                <span class="glyphicon glyphicon-ok form-control-feedback"
+                      ng-if="(jsonform.other.$dirty && !edit)||(jsonform.other.$pristine&&!edit)"></span>
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <a href="" ng-click="showJson=!showJson">Display/Hide JSON</a>
+
+
+        <div ng-class="{showshow:showJson,hidehide:!showJson}">
+            <pre>{{newJson|json}}</pre>
+        </div>
+
+    </div>
+
+
+
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/dist/htmlminifier.min.js"></script>
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/uglify.js"></script>
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/cleancss-browser.js"></script>
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/relateurl-browser.js"></script>
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/master.js"></script>
+
+
+
+
+
+    <!--Json editor-->
+    <!--<script type="text/javascript" src="jquery.js"></script>-->
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="jsoneditor.js"></script>
+    <script type="text/javascript" src="angular-ui-tree.min.js"></script>
+    <script type="text/javascript" src="bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" src="dropzone.min.js"></script>
+    <script type="text/javascript" src="angular-animate.min.js"></script>
+    <script type="text/javascript" src="angular-toastr.tpls.js"></script>
+    <script type="text/javascript" src="xlsx.core.min.js"></script>
+    <script type="text/javascript" src="angular-file-saver.min.js"></script>
+    <script type="text/javascript" src="angular-file-saver.bundle.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div id="footer">
         <p class="footer_p">UNSW - Learning & Teching Unit, <br/>
