@@ -3,10 +3,9 @@
         <a href="" ng-click="isOpen=!isOpen;projectToRight(node)">
             <i class="glyphicon " ng-class="{'glyphicon-menu-down': isOpen,'glyphicon-menu-right':!isOpen}"></i>&nbsp;
         </a>
-        <span ng-click="isOpen=!isOpen;projectToRight(node)" class="cursorpalm">{{node.label}}</span>
+        <span ng-click="isOpen=!isOpen;projectToRight(node)" class="cursorpalm"  ng-class="{'highlight':node.label === projectName}">{{node.label}}</span>
     </h4>
 </div>
-
 <ol ui-tree-nodes="" ng-model="node.items"
     ng-if="!!node.items&&(isOpen||(node.label==='description'&&descriptionOn))&&!isPage(node)">
     <li ng-repeat="node in node.items" ui-tree-node ng-include="'leaf.html'">
