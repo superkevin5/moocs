@@ -1,18 +1,18 @@
 <div ng-init="isOpen=false">
     <h4>
         <a href="" ng-click="isOpen=!isOpen;projectToRight(node)">
-            <i class="glyphicon " ng-class="{'glyphicon-menu-down': isOpen,'glyphicon-menu-right':!isOpen}"></i>&nbsp;
+            <i class="glyphicon " ng-class="{'glyphicon-menu-down': isOpen||(openmoocs&&toplevelValue.indexOf(node.label) > -1),'glyphicon-menu-right':!isOpen}"></i>&nbsp;
         </a>
         <span ng-click="isOpen=!isOpen;projectToRight(node)" class="cursorpalm"  ng-class="{'highlight':node.label === projectName}">{{node.label}}</span>
     </h4>
 </div>
 <ol ui-tree-nodes="" ng-model="node.items"
-    ng-if="!!node.items&&(isOpen||(node.label==='description'&&descriptionOn))&&!isPage(node)">
+    ng-if="!!node.items&&!isPage(node)&&isOpen||(openmoocs&&toplevelValue.indexOf(node.label) > -1)">
     <li ng-repeat="node in node.items" ui-tree-node ng-include="'leaf.html'">
     </li>
 </ol>
 
-<ol ui-tree-nodes="" ng-model="node.array" ng-if="!!node.array&&(isOpen)">
+<ol ui-tree-nodes="" ng-model="node.array" ng-if="!!node.array&&(isOpen||(openmoocs&&toplevelValue.indexOf(node.label) > -1))">
     <li ng-repeat="node in node.array" ui-tree-node ng-include="'leaf.html'">
     </li>
 </ol>

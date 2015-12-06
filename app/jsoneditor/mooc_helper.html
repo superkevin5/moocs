@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>MOOC Dashboard helpers</title>
     <link rel="icon" type="image/png" href="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/LADA_ico.png">
-
+    <link rel="stylesheet" href="jquery-ui.min.css" type="text/css"/>
     <link href="angular-toastr.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="angular-ui-tree.min.css" type="text/css"/>
@@ -14,8 +14,8 @@
 
     <style>
 
-        *{
-            box-sizing:initial;
+        * {
+            box-sizing: initial;
         }
 
         textarea {
@@ -197,6 +197,7 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
+    <script src="jquery-ui.min.js"></script>
 
     <script>
 
@@ -214,6 +215,9 @@
             }
         });
 
+        $(function () {
+            $("#tabs").tabs();
+        });
 
     </script>
 
@@ -224,7 +228,6 @@
           rel="stylesheet" media="all">
 
     <style>
-
 
 
         .editarea {
@@ -345,9 +348,6 @@
         }
 
 
-
-
-
     </style>
 </head>
 
@@ -370,118 +370,125 @@
         </div>
     </div>
 
-    <div id="helpspace">
-        <p>Testing the space for editor</p>
-    </div>
-
-    <div id="mainbody">
-        <textarea id="editor1" name="editor1" rows="4" cols="40"></textarea>
-        <script>
-            // Replace the <textarea id="editor1"> with a CKEditor
-            // instance, using default configuration.
-            CKEDITOR.replace('editor1');
-        </script>
-    </div>
-
-    <div>
-        <div id="outer-wrapper">
-            <div id="wrapper">
-                <textarea rows="4" cols="40" id="input" hidden="true"></textarea>
-                <button type="button" id="minify-btn" class="minify-button">Minify</button>
-                <p></p>
-                Result:<br/><textarea rows="4" cols="40" id="output" class="min-output" readonly></textarea>
-
-                <p>Summary stats</p>
-
-                <p id="stats"></p>
-                <hr/>
-                <div id="lint-report">
-                    LINT REPORT:
-                    <div id="report"></div>
-                </div>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">HTML editor</a></li>
+            <li><a href="#tabs-2">JSON editor</a></li>
+        </ul>
+        <div id="tabs-1">
+            <div id="helpspace">
+                <p>Testing the space for editor</p>
             </div>
-            <div id="options">
-                <ul>
-                    <li>
-                        <input type="checkbox" id="remove-comments" checked>
-                        <label for="remove-comments">Remove comments
-                            <br>
+
+            <div id="mainbody">
+                <textarea id="editor1" name="editor1" rows="4" cols="40"></textarea>
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace('editor1');
+                </script>
+            </div>
+
+            <div>
+                <div id="outer-wrapper">
+                    <div id="wrapper">
+                        <textarea rows="4" cols="40" id="input" hidden="true"></textarea>
+                        <button type="button" id="minify-btn" class="minify-button">Minify</button>
+                        <p></p>
+                        Result:<br/><textarea rows="4" cols="40" id="output" class="min-output" readonly></textarea>
+
+                        <p>Summary stats</p>
+
+                        <p id="stats"></p>
+                        <hr/>
+                        <div id="lint-report">
+                            LINT REPORT:
+                            <div id="report"></div>
+                        </div>
+                    </div>
+                    <div id="options">
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="remove-comments" checked>
+                                <label for="remove-comments">Remove comments
+                                    <br>
                 <span class="quiet short">
                   Conditional comments are left intact, but their inner (insignificant) whitespace is removed.
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-comments-from-cdata" checked>
-                        <label for="remove-comments-from-cdata">Also remove comments from scripts and styles</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-cdata-sections-from-cdata" checked>
-                        <label for="remove-cdata-sections-from-cdata">Remove CDATA sections from scripts and
-                            styles</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="collapse-whitespace" checked>
-                        <label for="collapse-whitespace">Collapse whitespace</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="conservative-collapse">
-                        <label for="conservative-collapse">Conservative whitespace collapse</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="collapse-boolean-attributes" checked>
-                        <label for="collapse-boolean-attributes">
-                            Collapse boolean attributes
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-comments-from-cdata" checked>
+                                <label for="remove-comments-from-cdata">Also remove comments from scripts and
+                                    styles</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-cdata-sections-from-cdata" checked>
+                                <label for="remove-cdata-sections-from-cdata">Remove CDATA sections from scripts and
+                                    styles</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="collapse-whitespace" checked>
+                                <label for="collapse-whitespace">Collapse whitespace</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="conservative-collapse">
+                                <label for="conservative-collapse">Conservative whitespace collapse</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="collapse-boolean-attributes" checked>
+                                <label for="collapse-boolean-attributes">
+                                    Collapse boolean attributes
+                                    <br>
                 <span class="quiet short">
                   (e.g. <code>&lt;... disabled="disabled"&gt; &rarr; &lt;... disabled&gt;</code>)
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-attribute-quotes" checked>
-                        <label for="remove-attribute-quotes">
-                            Remove attribute quotes
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-attribute-quotes" checked>
+                                <label for="remove-attribute-quotes">
+                                    Remove attribute quotes
+                                    <br>
                 <span class="quiet">
                   (e.g. <code>&lt;p class="foo"&gt; &rarr; &lt;p class=foo&gt;</code>)
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-redundant-attributes" checked>
-                        <label for="remove-redundant-attributes">Remove redundant attributes/values</label>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-redundant-attributes" checked>
+                                <label for="remove-redundant-attributes">Remove redundant attributes/values</label>
 
-                        <div class="quiet">
-                            <code>&lt;script language="Javascript" ...&gt;</code><br>
-                            <code>&lt;form method="get" ...&gt;</code><br>
-                            <code>&lt;input type="text" ...&gt;</code><br>
-                            <code>&lt;script src="..." charset="..."&gt;</code><br>
-                            <code>&lt;a id="..." name="..."&gt;</code><br>
-                            <code>&lt;... onclick="javascript:..." ...&gt;</code>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="use-short-doctype" checked>
-                        <label for="use-short-doctype" title="i.e. <!DOCTYPE html>">
-                            Use short doctype
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-empty-attributes" checked>
-                        <label for="remove-empty-attributes">
-                            Remove empty (or blank) attributes
-                            <br>
+                                <div class="quiet">
+                                    <code>&lt;script language="Javascript" ...&gt;</code><br>
+                                    <code>&lt;form method="get" ...&gt;</code><br>
+                                    <code>&lt;input type="text" ...&gt;</code><br>
+                                    <code>&lt;script src="..." charset="..."&gt;</code><br>
+                                    <code>&lt;a id="..." name="..."&gt;</code><br>
+                                    <code>&lt;... onclick="javascript:..." ...&gt;</code>
+                                </div>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="use-short-doctype" checked>
+                                <label for="use-short-doctype" title="i.e. <!DOCTYPE html>">
+                                    Use short doctype
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-empty-attributes" checked>
+                                <label for="remove-empty-attributes">
+                                    Remove empty (or blank) attributes
+                                    <br>
                 <span class="quiet short">
                   Valid attributes are: class, id, style, title, lang, dir, event attributes
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-optional-tags" checked>
-                        <label for="remove-optional-tags">
-                            Remove optional tags
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-optional-tags" checked>
+                                <label for="remove-optional-tags">
+                                    Remove optional tags
+                                    <br>
                 <span class="quiet short">
                   Currently, only:
                   <code>&lt;/html></code>,
@@ -494,265 +501,284 @@
                   and
                   <code>&lt;/tr></code>
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-ignored">
-                        <label for="remove-ignored">
-                            Remove ignored tags
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-ignored">
+                                <label for="remove-ignored">
+                                    Remove ignored tags
+                                    <br>
                 <span class="quiet short">
                   Currently, only tags starting and ending with:
                   <code>&lt;% ... %></code>
                   and
                   <code>&lt;? ... ?></code>
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-empty-elements">
-                        <label for="remove-empty-elements" class="unsafe">
-                            Remove empty elements
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-empty-elements">
+                                <label for="remove-empty-elements" class="unsafe">
+                                    Remove empty elements
+                                    <br>
                 <span class="quiet short">
                   All except <code>textarea</code>
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-script-type-attributes">
-                        <label for="remove-script-type-attributes">
-                            Remove <code>type="text/javascript"</code> from <code>script</code>'s
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-script-type-attributes">
+                                <label for="remove-script-type-attributes">
+                                    Remove <code>type="text/javascript"</code> from <code>script</code>'s
+                                    <br>
                 <span class="quiet short">
                   Values other than "text/javascript" (e.g. "text/vbscript") are left intact.
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="remove-style-link-type-attributes">
-                        <label for="remove-style-link-type-attributes">
-                            Remove <code>type="text/css"</code> from <code>style</code>'s and <code>link</code>'s
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remove-style-link-type-attributes">
+                                <label for="remove-style-link-type-attributes">
+                                    Remove <code>type="text/css"</code> from <code>style</code>'s and <code>link</code>'s
+                                    <br>
                 <span class="quiet short">
                   Values other than "text/css" (e.g. "text/plain" or "application/atom+xml") are left intact.
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="case-sensitive">
-                        <label for="case-sensitive">
-                            Case-sensitive attributes
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="case-sensitive">
+                                <label for="case-sensitive">
+                                    Case-sensitive attributes
+                                    <br>
                 <span class="quiet short">
                   Useful when minifying SVG
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="keep-closing-slash">
-                        <label for="keep-closing-slash">
-                            Keep closing slash
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="keep-closing-slash">
+                                <label for="keep-closing-slash">
+                                    Keep closing slash
+                                    <br>
                 <span class="quiet short">
                   Useful when minifying SVG
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="minify-js" checked>
-                        <label for="minify-js">
-                            Minify JS
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="minify-js-templates">
-                        <label for="minify-js-templates">
-                            Minify JS Templates
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="minify-js" checked>
+                                <label for="minify-js">
+                                    Minify JS
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="minify-js-templates">
+                                <label for="minify-js-templates">
+                                    Minify JS Templates
+                                    <br>
                 <span class="quiet short">
                   Minify HTML served inside script tag with a custom type attribute like "text/x-handlebars-template"
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <label for="minify-js-templates-type" class="sub-option">
-                            Template type
-                        </label>
-                        <input type="input" id="minify-js-templates-type">
-                    </li>
-                    <li>
-                        <input type="checkbox" id="minify-css" checked>
-                        <label for="minify-css">
-                            Minify CSS
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="minify-urls">
-                        <label for="minify-urls">
-                            Minify URLs
-                            <br>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="minify-js-templates-type" class="sub-option">
+                                    Template type
+                                </label>
+                                <input type="input" id="minify-js-templates-type">
+                            </li>
+                            <li>
+                                <input type="checkbox" id="minify-css" checked>
+                                <label for="minify-css">
+                                    Minify CSS
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="minify-urls">
+                                <label for="minify-urls">
+                                    Minify URLs
+                                    <br>
                 <span class="quiet short">
                   Convert absolute URLs to relative
                 </span>
-                        </label>
-                    </li>
-                    <li>
-                        <label for="minify-urls-siteurl" class="sub-option">
-                            Site URL
-                        </label>
-                        <input type="input" id="minify-urls-siteurl">
-                    </li>
-                    <li>
-                        <input type="checkbox" id="use-htmllint">
-                        <label for="use-htmllint">
-                            Validate input through HTML lint
-                        </label>
-                    </li>
-                    <li>
-                        <label for="max-line-length" class="sub-option">
-                            Max line length
-                        </label>
-                        <input type="number" id="max-line-length" value="0" min="0" max="10000">
-                    </li>
-                </ul>
-                <div class="controls">
-                    <span>Select:</span>
-                    <a href="#" id="select-all">All</a>,
-                    <a href="#" id="select-none">None</a>,
-                    <a href="#" id="select-safe">Safe</a>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="minify-urls-siteurl" class="sub-option">
+                                    Site URL
+                                </label>
+                                <input type="input" id="minify-urls-siteurl">
+                            </li>
+                            <li>
+                                <input type="checkbox" id="use-htmllint">
+                                <label for="use-htmllint">
+                                    Validate input through HTML lint
+                                </label>
+                            </li>
+                            <li>
+                                <label for="max-line-length" class="sub-option">
+                                    Max line length
+                                </label>
+                                <input type="number" id="max-line-length" value="0" min="0" max="10000">
+                            </li>
+                        </ul>
+                        <div class="controls">
+                            <span>Select:</span>
+                            <a href="#" id="select-all">All</a>,
+                            <a href="#" id="select-none">None</a>,
+                            <a href="#" id="select-safe">Safe</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div ng-app="jsoneditor" ng-cloak ng-controller="jsoneditor">
-        <toaster-container toaster-options="
+        <div id="tabs-2">
+            <div ng-app="jsoneditor" ng-cloak ng-controller="jsoneditor">
+                <toaster-container toaster-options="
     {'close-button':{'toast-warning': true, 'toast-error': false } }">
-        </toaster-container>
+                </toaster-container>
 
-        <div class="jumbotron">
-            <div class="container text-center">
-                <div class="dropzone json-polishdropzone" drop-zone></div>
-            </div>
+                <div class="jumbotron">
+                    <div class="container text-center">
+                        <div class="dropzone json-polishdropzone" drop-zone></div>
+                    </div>
 
-            <div class="container text-center flex">
+                    <div class="container text-center flex">
 
 
-                <div class="thumbnail imgBorder" ng-repeat="sheet in sheetNames track by $index">
-                    <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png" alt="{{sheet}}">
+                        <div class="thumbnail imgBorder" ng-repeat="sheet in sheetNames track by $index">
+                            <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png"
+                                 alt="{{sheet}}">
 
-                    <div class="caption">
-                        <h5>Sheet {{$index+1}} : {{sheet}}</h5>
+                            <div class="caption">
+                                <h5>Sheet {{$index+1}} : {{sheet}}</h5>
 
-                        <p><a href="#" class="btn btn-primary" role="button" ng-click="selectSheet(sheet)">Select</a></p>
+                                <p><a href="#" class="btn btn-primary" role="button" ng-click="selectSheet(sheet)">Select</a>
+                                </p>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
+                <div class="container-fluid">
+                    <div class="row  text-center">
+                        <div class="col-md-6 col-xs-12">
+                            <button type="button" class="btn btn-default btn-lg btn-block" ng-click="download()">
+                                Download New JSON
+                            </button>
+                            <button type="button" class="btn btn-default btn-lg btn-block"
+                                    ng-click="openmoocs = !openmoocs;">Expand / Close mooc
+                            </button>
+                        </div>
 
 
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row  text-center">
-                <div class="col-md-6 col-xs-12">
-                    <button type="button" class="btn btn-default btn-lg btn-block" ng-click="download()">Download New JSON
-                    </button>
-                </div>
+                        <div class="col-md-6 col-xs-12">
+                            <label><b>Filter options:</b></label>
 
-
-                <div class="col-md-6 col-xs-12">
-                    <label><b>Filter options:</b></label>
-
-                    <div class="checkbox">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1" ng-model="typeOn" ng-init="typeOn=false">type
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2" ng-model="orderOn" ng-init="orderOn=false">order
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" ng-model="levelOn" ng-init="levelOn=false">level
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox4" ng-model="categoryOn" ng-init="categoryOn=false">category
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox5" ng-model="sectionOn" ng-init="sectionOn=false">section
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox6" ng-model="pageOn" ng-init="pageOn=false">page
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox7" ng-model="tableauOn" ng-init="tableauOn=false">tableauView
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox8" ng-model="linkOn" ng-init="linkOn=false">link
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox9" ng-model="descriptionOn" ng-init="descriptionOn=false">description
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 ">
-                    <div class="tree">
-                        <div ui-tree class="angular-ui-tree">
-                            <ol ui-tree-nodes="" ng-model="list" id="tree-root" class="angular-ui-tree-nodes">
-                                <li ng-repeat="node in list" ui-tree-node ng-include="'leaf.html'"
-                                        ></li>
-                            </ol>
+                            <div class="checkbox">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox1" ng-model="typeOn"
+                                           ng-init="typeOn=false">type
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox2" ng-model="orderOn"
+                                           ng-init="orderOn=false">order
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox3" ng-model="levelOn"
+                                           ng-init="levelOn=false">level
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox4" ng-model="categoryOn"
+                                           ng-init="categoryOn=false">category
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox5" ng-model="sectionOn"
+                                           ng-init="sectionOn=false">section
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox6" ng-model="pageOn"
+                                           ng-init="pageOn=false">page
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox7" ng-model="tableauOn"
+                                           ng-init="tableauOn=false">tableauView
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox8" ng-model="linkOn"
+                                           ng-init="linkOn=false">link
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox9" ng-model="descriptionOn"
+                                           ng-init="descriptionOn=false">description
+                                </label>
+                            </div>
                         </div>
                     </div>
 
                 </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 ">
+                            <div class="tree">
+                                <div ui-tree class="angular-ui-tree">
+                                    <ol ui-tree-nodes="" ng-model="list" id="tree-root" class="angular-ui-tree-nodes">
+                                        <li ng-repeat="node in list" ui-tree-node ng-include="'leaf.html'"
+                                                ></li>
+                                    </ol>
+                                </div>
+                            </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 ">
-
-
-                    <div class="tree">
-                        <h3> {{projectName}}</h3>
-
-                        <div ui-tree class="angular-ui-tree" ng-show="projectList.length!=0">
-                            <ol ui-tree-nodes="" ng-model="projectList" id="tree-root2" class="angular-ui-tree-nodes">
-                                <li ng-repeat="node in projectList" ui-tree-node ng-include="'leaf2.html'"></li>
-                            </ol>
                         </div>
 
-                        <div ng-show="!!projectValue">
-                            <form role="form" name="jsonform">
-                                <div class="form-group has-feedback"
-                                     ng-class="{'has-success':(jsonform.other.$dirty && !edit)|| (jsonform.other.$pristine&&!edit)}"
-                                     ng-if="!isObj(projectValue.value)">
+                        <div class="col-xs-12 col-sm-12 col-md-6 ">
+
+
+                            <div class="tree">
+                                <h3> {{projectName}}</h3>
+
+                                <div ui-tree class="angular-ui-tree" ng-show="projectList.length!=0">
+                                    <ol ui-tree-nodes="" ng-model="projectList" id="tree-root2"
+                                        class="angular-ui-tree-nodes">
+                                        <li ng-repeat="node in projectList" ui-tree-node ng-include="'leaf2.html'"></li>
+                                    </ol>
+                                </div>
+
+                                <div ng-show="!!projectValue">
+                                    <form role="form" name="jsonform">
+                                        <div class="form-group has-feedback"
+                                             ng-class="{'has-success':(jsonform.other.$dirty && !edit)|| (jsonform.other.$pristine&&!edit)}"
+                                             ng-if="!isObj(projectValue.value)">
                 <textarea rows="10" cols="10" ng-model="projectValue.value" ng-focus="edit=true"
                           ng-blur="edit=false" name="other" class="form-control"></textarea>
                 <span class="glyphicon glyphicon-ok form-control-feedback"
                       ng-if="(jsonform.other.$dirty && !edit)||(jsonform.other.$pristine&&!edit)"></span>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+
+
+                            </div>
+
+
                         </div>
-
-
                     </div>
 
-
                 </div>
+
+                <a href="" ng-click="showJson=!showJson">Display/Hide JSON</a>
+
+
+                <div ng-class="{showshow:showJson,hidehide:!showJson}" ng-show="showJson">
+                    <pre>{{newJson|json}}</pre>
+                </div>
+
             </div>
-
-        </div>
-
-        <a href="" ng-click="showJson=!showJson">Display/Hide JSON</a>
-
-
-        <div ng-class="{showshow:showJson,hidehide:!showJson}">
-            <pre>{{newJson|json}}</pre>
         </div>
 
     </div>
-
 
 
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/dist/htmlminifier.min.js"></script>
@@ -760,9 +786,6 @@
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/cleancss-browser.js"></script>
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/relateurl-browser.js"></script>
     <script src="https://googledrive.com/host/0B8KqLaP_s06IOUhsTHNqMXdFWGs/assets/master.js"></script>
-
-
-
 
 
     <!--Json editor-->
@@ -778,22 +801,6 @@
     <script type="text/javascript" src="xlsx.core.min.js"></script>
     <script type="text/javascript" src="angular-file-saver.min.js"></script>
     <script type="text/javascript" src="angular-file-saver.bundle.min.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <div id="footer">

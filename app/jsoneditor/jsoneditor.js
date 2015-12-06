@@ -3,6 +3,7 @@
     angular.module('jsoneditor', ['ui.bootstrap', 'toastr', 'ngAnimate', 'ngFileSaver']).
         controller('jsoneditor', function ($scope, toastr, FileSaver, Blob) {
             $scope.list = [];
+            $scope.toplevelValue = ['mooc'];
             $scope.categories = [
                 "Overview",
                 "Home",
@@ -185,6 +186,47 @@
             };
 
 
+            $scope.traverseObject = function (json) {
+
+                var isObject, hasKeys, isArray, current;
+
+                for (var k in json) {
+
+                    current = json[k];
+
+                    isObject = typeof current === 'object';
+                    hasKeys = isObject && Object.keys(current).length != 0;
+                    isArray = isObject && Object.prototype.toString.call(current) === '[object Array]';
+
+
+                    if (hasKeys) {
+                        $scope.traverseObject(current);
+                    } else if (isArray) {
+                        $scope.traverseObject(current);
+                    } else {
+                        if (current === ''&&(k==='course' || k ==='edited_by' || k ==='last_edit')) {
+
+                            if (angular.isDefined(json.page)) {
+                                toastr.error('[' + k + '] cannot be empty under [' + json.page + '], please fill [' + k + '] form', 'Error');
+                            } else {
+                                toastr.error('[' + k + '] cannot be empty, please fill [' + k + '] form', 'Error');
+                            }
+                            throw 'error';
+                        }
+                    }
+
+                }
+            };
+
+
+            $scope.opensecondlevel = function(){
+
+
+                $scope.openmoocs = true;
+
+
+            };
+
             $scope.download = function () {
 
 
@@ -192,6 +234,10 @@
 
                 //validate json
                 var validateJson = function () {
+
+
+                    $scope.traverseObject($scope.newJson);
+
                     var jsonObj = null;
                     try {
                         jsonObj = JSON.parse(JSON.stringify($scope.newJson));
@@ -199,12 +245,15 @@
                     } catch (e) {
                         jsonObj = null;
                         console.error(e);
-
+                        toastr.error('Some errors are in the new Json', 'Error');
                         return false;
                     }
                 };
 
-                if (!validateJson()) return;
+
+                if (!validateJson()) {
+                    return;
+                }
 
                 var data = new Blob([JSON.stringify($scope.newJson, null, '\t')], {type: 'text/plain;charset=utf-8'});
                 FileSaver.saveAs(data, 'data.json');
@@ -213,8 +262,13 @@
             };
 
 
-            $scope.convertJsonToTree = function (sourceJson) {
+            $scope.getTopLevelValuesInMoocs = function(sourceJson){
+               $scope.toplevelValue =  $scope.toplevelValue.concat(Object.keys(sourceJson.mooc));
+            };
 
+
+            $scope.convertJsonToTree = function (sourceJson) {
+                $scope.getTopLevelValuesInMoocs(sourceJson);
                 var sourceTree = [];
 
                 if (Array.isArray(sourceJson)) {
@@ -222,6 +276,7 @@
                 } else {
                     $scope.convertObjectInJson(sourceJson, sourceTree);
                 }
+
                 return sourceTree;
             };
 
@@ -423,7 +478,7 @@
                     "last_edit": '',
                     "edited_by": '',
                     "comments": '',
-                    "moocs": {}
+                    "mooc": {}
                 };
 
                 var jsonSectionColumn = columnMap['jsonsection'];
@@ -470,8 +525,8 @@
                     var des2CellValue = angular.isDefined(worksheet[des2CellIndex]) ? worksheet[des2CellIndex].v : '';
 
 
-                    if (angular.isUndefined(finalConvertedJson.moocs[jsonSectionCellValue])) {
-                        finalConvertedJson.moocs[jsonSectionCellValue] = [];
+                    if (angular.isUndefined(finalConvertedJson.mooc[jsonSectionCellValue])) {
+                        finalConvertedJson.mooc[jsonSectionCellValue] = [];
                     }
 
 
@@ -491,7 +546,7 @@
                         }
                     };
 
-                    finalConvertedJson.moocs[jsonSectionCellValue].push(tempObj);
+                    finalConvertedJson.mooc[jsonSectionCellValue].push(tempObj);
 
 
                 }
