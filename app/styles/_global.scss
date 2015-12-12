@@ -1,0 +1,65 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+html {
+  position: relative;
+  height: 100%;
+  overflow-y: scroll; //this is used to stop the scrollbar pushing content left..
+}
+
+body {
+    min-height: 100%;
+    height: 100%;
+    background-repeat: repeat-y;
+    background-position: center center;
+    background-attachment: fixed;
+
+    @media(max-width: $screen-xs-max) {
+        -webkit-background-size: auto auto;
+        -moz-background-size: auto auto;
+        -o-background-size: auto auto;
+        background-size: auto auto;
+    }
+
+    @media(min-width: $screen-sm-min) {
+        -webkit-background-size: $screen-sm-min + $grid-gutter-width auto;
+        -moz-background-size: $screen-sm-min + $grid-gutter-width auto;
+        -o-background-size: $screen-sm-min + $grid-gutter-width auto;
+        background-size: $screen-sm-min + $grid-gutter-width auto;
+    }
+
+    @media(min-width: $screen-md-min) {
+        -webkit-background-size: $screen-md-min + $grid-gutter-width auto;
+        -moz-background-size: $screen-md-min + $grid-gutter-width auto;
+        -o-background-size: $screen-md-min + $grid-gutter-width auto;
+        background-size: $screen-md-min + $grid-gutter-width auto;
+    }
+
+    @media(min-width: $screen-lg-min) {
+        -webkit-background-size: $screen-lg-min + $grid-gutter-width auto;
+        -moz-background-size: $screen-lg-min + $grid-gutter-width auto;
+        -o-background-size: $screen-lg-min + $grid-gutter-width auto;
+        background-size: $screen-lg-min + $grid-gutter-width auto;
+    }
+
+    .pseudotab {
+        border-radius: 5px 5px 0 0;
+        border-bottom: 0;
+        height: 30px;
+    }
+    .progress-bar {
+        height: 25px;
+        font-size: 13pt !important;
+        line-height: 22px !important;
+        font-weight: bold;
+        background-color: $ok;
+    }
+}
+
+
+
+
+
+
+

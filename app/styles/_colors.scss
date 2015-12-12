@@ -1,0 +1,92 @@
+/* GENERIC COLORS */
+
+
+
+$brand-blue: #85bfea;
+$brand-blue-darker: #99cde2;
+$brand-light-blue: #99cde2;
+$brand-heading: #5e8898;
+$brand-yellow: rgb(241,192,12);
+$brand-blue-bg : #729aaa;
+
+$brand-danger: #FE4948;
+$brand-success: #2AC833;
+
+$dash-grey: #a29fa0;
+$header-stripe : #787878;
+
+$bright-red: $brand-danger;
+$light-red: $brand-danger;
+$placeholder: #ddd;
+
+$warning-yellow: #ffd800;
+
+$error-red: $brand-danger;
+$success : $brand-success;
+$failure: $brand-danger;
+
+$aws : #eeba37;
+
+$h1: #fff;
+
+//$greenball: #2AC833; //42 200 51 
+//$redball: #FE4948; //254 73 72
+//$blueball: #1961FD;// 25 97 253
+$greenball: $brand-success;
+$redball: $brand-danger;
+$blueball: $brand-info;
+$yellowball: #FDB335; //253 179 53
+
+
+$shadow: #505050;
+
+/* ELEMENT SPECIFIC COLORS */
+
+$flasher: #ffff7d;
+$flasher-fadeto: #fff;
+
+$page-background: #fff;
+
+$tooltip-bg: $brand-blue-bg;
+
+$dark-pencil-border: #b2b2b2;
+$light-pencil-border: #d2d2d2;
+
+$link-default: #5e8898;
+$modal-bg: $brand-blue-bg;
+$modal: $page-background;
+$modal-gradient-dark:#3580BD;
+$modal-gradient-light:#4E9BD9;
+
+$primary-cta:#E5A705;
+$primary-cta-hover:#EFB810;
+
+$secondary-cta: #d2d2d2;
+$secondary-cta-hover: #b2b2b2;
+
+$outer-container: #fff;
+
+$intro-header: #888;
+
+$warning: $brand-danger;
+$ok: $brand-success;
+
+$expand: #a0a0a0;
+$expand-hover: #888;
+
+$folder-panel: #fff;
+$folder: $brand-blue;
+
+
+$table-striped-th: #e0e0e0;
+$table-striped-td-even-hover: #f0ffff;
+$table-striped-td-odd-hover: #e5f5f5;
+
+
+$has-error: $brand-danger;
+$has-success: $brand-success;
+
+$questionmark: $brand-info;
+
+$dashboard-panel: #e8f4f8;
+$dashboard-icon: #fff;
