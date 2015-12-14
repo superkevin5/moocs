@@ -5,7 +5,7 @@
 html {
   position: relative;
   height: 100%;
-  overflow-y: scroll; //this is used to stop the scrollbar pushing content left..
+  overflow-x: hidden; //this is used to stop the scrollbar pushing content left..
 }
 
 body {
@@ -59,7 +59,14 @@ body {
 
 
 
+#footer {
+    width:100%;
+    position:fixed;
+    bottom:0;
+}
 
-
+#SkinContent *{
+    box-sizing: initial;
+}
 
 

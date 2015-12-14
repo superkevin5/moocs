@@ -7551,7 +7551,7 @@ button.close {
 html {
   position: relative;
   height: 100%;
-  overflow-y: scroll; }
+  overflow-x: hidden; }
 
 body {
   min-height: 100%;
@@ -7581,6 +7581,14 @@ body {
     line-height: 22px !important;
     font-weight: bold;
     background-color: #2AC833; }
+
+#footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0; }
+
+#SkinContent * {
+  box-sizing: initial; }
 
 .blinky {
   -webkit-animation-name: blinker;
