@@ -7590,6 +7590,36 @@ body {
 #SkinContent * {
   box-sizing: initial; }
 
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 30%;
+  width: 50%;
+  margin: -15% 0 0 -25%; }
+
+.border {
+  border: solid 1px; }
+
+.fillParent {
+  height: 100%; }
+
+.fillchild {
+  height: auto; }
+
+.changeuibutton {
+  position: relative !important; }
+
+.ui-base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+.login-margin {
+  margin-top: 5em; }
+
 .blinky {
   -webkit-animation-name: blinker;
   -webkit-animation-duration: .7s;

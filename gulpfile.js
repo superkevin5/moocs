@@ -135,8 +135,6 @@ gulp.task('watch', ['connect'], function () {
     // watch for changes
     gulp.watch([
         'app/**/*.html',
-        'app/styles/**/*.css',
-        'app/styles/**/*.scss',
         'app/scripts/**/*.js',
         'app/images/**/*'
     ]).on('change', $.livereload.changed);

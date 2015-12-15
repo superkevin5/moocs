@@ -29,15 +29,34 @@ angular
             .state('login', {
                 url: '/login',
                 parent: 'base',
-                templateUrl: 'views/login.html'
-                //controller: 'LoginCtrl'
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl'
+            })
+            .state('p2pdashboard', {
+                url: '/p2pdashboard',
+                templateUrl: 'P2P/P2P_home.html'
+                //controller: 'DashboardCtrl'
+            })
+            .state('introsedashboard', {
+                url: '/introsedashboard',
+                templateUrl: 'Introse/INTSE_home.html'
+                //controller: 'DashboardCtrl'
+            })
+            .state('lttodashboard', {
+                url: '/lttodashboard',
+                templateUrl: 'LTTO/LTTO_home.html'
+                //controller: 'DashboardCtrl'
+            })
+            .state('pmeddashboard', {
+                url: '/pmeddashboard',
+                templateUrl: 'PMed-001/PMed_home.html'
+                //controller: 'DashboardCtrl'
+            })
+            .state('introse2dashboard', {
+                url: '/introse2dashboard',
+                templateUrl: 'Introse-002/INTSE2_home.html'
+                //controller: 'DashboardCtrl'
             });
-        //.state('dashboard', {
-        //  url: '/dashboard',
-        //  parent: 'base',
-        //  templateUrl: 'views/dashboard.html',
-        //  controller: 'DashboardCtrl'
-        //})
         //  .state('overview', {
         //    url: '/overview',
         //    parent: 'dashboard',
