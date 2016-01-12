@@ -7,41 +7,48 @@
 
 angular
     .module('mooc')
-    .controller('LoginCtrl', ['$scope','$document','$state',
-        function ($scope,$document,$state) {
+    .controller('LoginCtrl', ['$scope', '$document', '$state', '$timeout', 'userCookie', 'appConstants',
+        function ($scope, $document, $state, $timeout, userCookie, appConstants) {
+            //userCookie.eraseCookie('authToken');
+            $scope.getCourses = function () {
+                return appConstants.courseList;
+            };
 
-            $scope.login = function(){
-
-
-
-                var courseValue = angular.element($document[0].querySelector('#courseselect')).val();
-
-
-
-                console.log(courseValue);
-                switch(courseValue){
-                    case 'p2p' :$state.go('p2pdashboard');
-                        break;
-                    case 'introse' :$state.go('introsedashboard');
-                        break;
-                    case 'introse-002' :$state.go('introse2dashboard');
-                        break;
-                    case 'ltto' :$state.go('lttodashboard');
-                        break;
-                    case 'pmed-001' :$state.go('pmeddashboard');
-                        break;
-
-                }
-
-
-
+            var authToken = userCookie.readCookie('authToken');
+            if (angular.isDefined(authToken) && authToken != null) {
+                $scope.authorized = true;
+                $scope.availableCourses = $scope.getCourses();
             }
 
 
+            $scope.login = function () {
+                $scope.loading = true;
+
+                $scope.authorized = false;
+
+                $timeout(function () {
+                    $scope.loading = false;
+                    if ($scope.validate()) {
+                        userCookie.createCookie('authToken', btoa($scope.username + ':' + $scope.password), appConstants.cookieTimeoutMinutes);
+                        $scope.authorized = true;
+                        $scope.availableCourses = $scope.getCourses();
+                    } else {
+                        userCookie.eraseCookie('authToken');
+                        $scope.authorized = false;
+                    }
+                }, 3000);
+            };
 
 
+            $scope.validate = function () {
+                return true;
+            };
 
 
-
+            $scope.selectCourse = function (courseId, $event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $state.go(appConstants.courseList[courseId]);
+            }
         }]);
 

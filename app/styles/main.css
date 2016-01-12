@@ -7618,7 +7618,37 @@ body {
   bottom: 0; }
 
 .login-margin {
-  margin-top: 5em; }
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto; }
+
+.fadein,
+.fadeout {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s; }
+
+.fastfadein,
+.fastfadeout {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s; }
+
+.fastfadein.ng-hide-remove,
+.fastfadeout.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+  display: block !important; }
+
+.fastfadeout.ng-hide-add,
+.fastfadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+  display: block !important; }
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+  display: block !important; }
+
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+  display: block !important; }
 
 .blinky {
   -webkit-animation-name: blinker;

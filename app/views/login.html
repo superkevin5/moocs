@@ -1,78 +1,41 @@
-<div class="ui middle aligned center aligned grid">
-    <div class="column"  style="width:600px;height:auto">
-        <h2 class="ui teal image header">
-            <div class="content">
-                Log-in to your course
+<div class="text-center">
+
+    <div class="modal-dialog">
+        <div class="modal-content" ng-show="!authorized">
+            <div class="modal-header">
+                <h1 class="text-center"><span ng-if="!loading">Login</span><span ng-if="loading"><i
+                        class="fa fa-spinner fa-pulse fa-1x"></i></span></h1>
             </div>
-        </h2>
-        <form class="ui large form">
-            <div class="ui segment">
-
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address">
+            <div class="modal-body">
+                <form class="form center-block">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="Email" ng-model="username">
                     </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" placeholder="Password" ng-model="password">
                     </div>
-                </div>
-
-                <div class="field">
-                    <div class="ui left icon input">
-                        <div class="ui selection dropdown labeled icon fluid" >
-                            <input type="hidden" id="courseselect">
-                            <i class="dropdown icon"></i>
-
-                            <div class="default text">Select your course</div>
-                            <div class="menu">
-                                <div class="item">
-                                    LTTO
-                                </div>
-                                <div class="item">
-                                    P2P
-                                </div>
-                                <div class="item">
-                                    PMed-001
-                                </div>
-                                <div class="item">
-                                    Introse
-                                </div>
-                                <div class="item">
-                                    Introse-002
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-block" ng-click="login()">Sign In</button>
                     </div>
-                </div>
-
-
-                <div class="field">
-                    <div class="ui left icon input">
-                        <button class="ui fluid teal button changeuibutton" ng-click="login()">
-                            Login in
-                        </button>
-                    </div>
-                </div>
-
-
+                </form>
             </div>
-            <div class="ui error message"></div>
+        </div>
+        <div class="modal-content fadein" ng-show="authorized">
+            <div class="modal-header">
+                <h1 class="text-center">Select your course</h1>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <a href="#" class="list-group-item"
+                       ng-repeat="(courseid,courseName) in availableCourses track by courseid"
+                       ng-click="selectCourse(courseid,$event)">{{courseName}}</a>
 
-        </form>
-
-        <div class="ui floating message">
-            New to us&nbsp;? &nbsp;<a href="#">Sign Up</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    $(function () {
-        $('.ui.dropdown')
-                .dropdown();
-    });
-</script>
+    <div ng-if="$root.debugMode" class="clearfix col-md-12">
+        <pre>{{availableCourses|json}}</pre>
+        <pre>{{authorized}}</pre>
+    </div>

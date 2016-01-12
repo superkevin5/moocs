@@ -11,7 +11,8 @@
 angular
     .module('mooc', [
         'ui.router',
-        'ngAnimate'
+        'ngAnimate',
+        'ngCookies'
     ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -32,40 +33,47 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
-            .state('p2pdashboard', {
+            .state('P2P', {
                 url: '/p2pdashboard',
                 templateUrl: 'P2P/P2P_home.html'
                 //controller: 'DashboardCtrl'
             })
-            .state('introsedashboard', {
+            .state('Introse', {
                 url: '/introsedashboard',
                 templateUrl: 'Introse/INTSE_home.html'
                 //controller: 'DashboardCtrl'
             })
-            .state('lttodashboard', {
+            .state('LTTO', {
                 url: '/lttodashboard',
                 templateUrl: 'LTTO/LTTO_home.html'
                 //controller: 'DashboardCtrl'
             })
-            .state('pmeddashboard', {
+            .state('PMed-001', {
                 url: '/pmeddashboard',
                 templateUrl: 'PMed-001/PMed_home.html'
                 //controller: 'DashboardCtrl'
             })
-            .state('introse2dashboard', {
+            .state('Introse-002', {
                 url: '/introse2dashboard',
                 templateUrl: 'Introse-002/INTSE2_home.html'
                 //controller: 'DashboardCtrl'
-            });
-        //  .state('overview', {
-        //    url: '/overview',
-        //    parent: 'dashboard',
-        //    templateUrl: 'views/dashboard/overview.html'
-        //  })
-        //  .state('reports', {
-        //    url: '/reports',
-        //    parent: 'dashboard',
-        //    templateUrl: 'views/dashboard/reports.html'
-        //  });
+            })
 
-    });
+    })
+    .run(['$rootScope', '$state', '$stateParams','$cookies','$http','appConstants',
+        function ($rootScope, $state, $stateParams,$cookies,$http,appConstants) {
+
+            $rootScope.debugMode = appConstants.debugMode;
+
+            //$rootScope.globals = $cookies.get('globals') || {};
+            //if ($rootScope.globals.currentUser) {
+            //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+            //}
+
+            //$rootScope.$on('$locationChangeStart', function (event, next, current) {
+            //    // redirect to login page if not logged in
+            //    if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+            //        $state.go('login');
+            //    }
+            //});
+        }]);
