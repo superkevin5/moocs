@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html class="no-js">
 <head>
     <!--<base href="/">-->
@@ -6,8 +7,11 @@
     <title>Ani AngularJS Dashboard Theme</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="author" content="Lorenzo vigentini">
+    <meta name="version" content="version 2">
+    <meta name="version-date" content="26 aug 2015">
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -25,12 +29,11 @@
     <link href="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/stylesheets/jquery.sidr.dark.css"
           rel="stylesheet" media="all">
     <link href="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <!-- endbuild -->
 
     <!--semantic UI -->
     <!--<link rel="stylesheet" href="semantic/dist/semantic.min.css"/>-->
-
 
 </head>
 <body ng-app="mooc">
@@ -82,12 +85,22 @@
 <script src="scripts/app.js"></script>
 
 <!-- endbuild -->
+
+<!--controller -->
 <script src="scripts/controllers/login.js"></script>
-<!--<script src="scripts/controllers/dashboard.js"></script>-->
+<script src="scripts/controllers/dashboard.js"></script>
+
+
+<!-- service -->
 <script src="scripts/services/usercookie.js"></script>
 
 
+<!--constants -->
 <script src="scripts/constants/appconstants.js"></script>
+
+
+<!-- vendor -->
+<script type="text/javascript" src="https://online.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>
 
 </body>
 </html>

@@ -35,8 +35,8 @@ angular
             })
             .state('P2P', {
                 url: '/p2pdashboard',
-                templateUrl: 'P2P/P2P_home.html'
-                //controller: 'DashboardCtrl'
+                templateUrl: 'views/course_home.html',
+                controller: 'DashboardCtrl'
             })
             .state('Introse', {
                 url: '/introsedashboard',

@@ -9,7 +9,7 @@ angular
     .module('mooc')
     .controller('LoginCtrl', ['$scope', '$document', '$state', '$timeout', 'userCookie', 'appConstants',
         function ($scope, $document, $state, $timeout, userCookie, appConstants) {
-            //userCookie.eraseCookie('authToken');
+            userCookie.eraseCookie('authToken');
             $scope.getCourses = function () {
                 return appConstants.courseList;
             };
