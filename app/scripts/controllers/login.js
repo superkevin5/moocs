@@ -9,7 +9,7 @@ angular
     .module('mooc')
     .controller('LoginCtrl', ['$scope', '$document', '$state', '$timeout', 'userCookie', 'appConstants',
         function ($scope, $document, $state, $timeout, userCookie, appConstants) {
-            userCookie.eraseCookie('authToken');
+            //userCookie.eraseCookie('authToken');
             $scope.getCourses = function () {
                 return appConstants.courseList;
             };
@@ -45,10 +45,14 @@ angular
             };
 
 
-            $scope.selectCourse = function (courseId, $event) {
+            $scope.selectCourse = function (courseName, $event) {
                 $event.preventDefault();
                 $event.stopPropagation();
-                $state.go(appConstants.courseList[courseId]);
+                //$state.go('course',{'courseName': courseName });
+
+
+                window.location.href ='/#/dashboard/'+courseName;
+                //window.location.reload(true);
             }
         }]);
 

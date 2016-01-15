@@ -12,7 +12,8 @@ angular
     .module('mooc', [
         'ui.router',
         'ngAnimate',
-        'ngCookies'
+        'ngCookies',
+        'ui.bootstrap'
     ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -33,35 +34,21 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
-            .state('P2P', {
-                url: '/p2pdashboard',
+            .state('course', {
+                url: '/dashboard/:courseName',
                 templateUrl: 'views/course_home.html',
                 controller: 'DashboardCtrl'
             })
-            .state('Introse', {
-                url: '/introsedashboard',
-                templateUrl: 'Introse/INTSE_home.html'
-                //controller: 'DashboardCtrl'
-            })
-            .state('LTTO', {
-                url: '/lttodashboard',
-                templateUrl: 'LTTO/LTTO_home.html'
-                //controller: 'DashboardCtrl'
-            })
-            .state('PMed-001', {
-                url: '/pmeddashboard',
-                templateUrl: 'PMed-001/PMed_home.html'
-                //controller: 'DashboardCtrl'
-            })
-            .state('Introse-002', {
-                url: '/introse2dashboard',
-                templateUrl: 'Introse-002/INTSE2_home.html'
-                //controller: 'DashboardCtrl'
+            .state('singleview', {
+                url: '/singleview/:page',
+                templateUrl: 'views/single_view.html',
+                controller: 'SingleViewCtrl'
             })
 
+
     })
-    .run(['$rootScope', '$state', '$stateParams','$cookies','$http','appConstants',
-        function ($rootScope, $state, $stateParams,$cookies,$http,appConstants) {
+    .run(['$rootScope', '$state', '$stateParams','$cookies','$http','appConstants','$window',
+        function ($rootScope, $state, $stateParams,$cookies,$http,appConstants,$window) {
 
             $rootScope.debugMode = appConstants.debugMode;
 
@@ -76,4 +63,18 @@ angular
             //        $state.go('login');
             //    }
             //});
+
+            $rootScope.$on('$locationChangeStart', function($event, changeTo, changeFrom) {
+
+
+                if (changeTo == changeFrom) {
+                    return;
+                }
+
+                //if(changeFrom.includes('dashboard') && changeTo.includes('singleview')) {
+                    window.location.assign(changeTo);
+                    window.location.reload(true);
+                //}
+            });
+
         }]);

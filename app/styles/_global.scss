@@ -152,3 +152,17 @@ body {
   display: block !important;
 }
 
+.palm-cursor{
+  cursor:pointer;
+}
+
+a.removedefaulthyper{
+  color:black;
+}
+
+.centerElement {
+  margin:auto !important;
+}
+
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

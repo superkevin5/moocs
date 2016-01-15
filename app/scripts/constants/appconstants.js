@@ -5,12 +5,12 @@ angular.module('mooc')
         {
             cookieTimeoutMinutes : 30,
             debugMode:true,
-            courseList:{
-                0:'P2P',
-                1:'LTTO',
-                2:'PMed-001',
-                3:'Introse',
-                4:'Introse-002'
-            }
+            courseList:[
+                'P2P',
+                'LTTO',
+                'PMed-001',
+                'Introse',
+                'Introse-002'
+            ]
         }
     );

@@ -27,8 +27,8 @@
             <div class="modal-body">
                 <div class="list-group">
                     <a href="#" class="list-group-item"
-                       ng-repeat="(courseid,courseName) in availableCourses track by courseid"
-                       ng-click="selectCourse(courseid,$event)">{{courseName}}</a>
+                       ng-repeat="courseName in availableCourses track by $index"
+                       ng-click="selectCourse(courseName,$event)">{{courseName}}</a>
 
                 </div>
             </div>
