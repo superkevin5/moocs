@@ -40,9 +40,14 @@ angular
                 controller: 'DashboardCtrl'
             })
             .state('singleview', {
-                url: '/singleview/:page',
+                url: '/singleview/:courseName/:page',
                 templateUrl: 'views/single_view.html',
                 controller: 'SingleViewCtrl'
+            })
+            .state('manual', {
+                url: '/manual/:courseName',
+                templateUrl: 'views/manual.html',
+                controller: 'ManualCtrl'
             })
 
 

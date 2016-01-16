@@ -4,7 +4,7 @@ angular.module('mooc')
     .constant('appConstants',
         {
             cookieTimeoutMinutes : 30,
-            debugMode:true,
+            debugMode:false,
             courseList:[
                 'P2P',
                 'LTTO',

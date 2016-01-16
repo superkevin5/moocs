@@ -1,1 +1,164 @@
-<pre>{{viewtype}}ssssssssssssssssssssssssss</pre>s
+<div class="SkinInner">
+
+    <div class="button" uib-tooltip="{{'sidr'|superTooltip}}"
+         tooltip-placement="left">
+        <a id="simple-menu" href="#sidr">
+            <img toggle-sidr-menu src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/pullicon_small.png"
+                 id="pullicon"/>
+        </a>
+    </div>
+    <div id="SkinContent">
+        <div id="LogoContainer">
+            <div id="Logo">
+                <h1>| {{courseName}} MOOC Dashboard</h1></div>
+            <div id="help">
+                <span ng-click="showHelp()" ng-init="showhelp=false" class="palm-cursor">
+                <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/question_mark_35.png"
+                     id="helpbutton" title="Detailed information"
+                     uib-tooltip="{{'dashhelp'|superTooltip}}"
+                     tooltip-placement="left"/>
+                </span>
+                <span ng-click="goToManual(courseName)" class="palm-cursor">
+
+                    <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/manual_35.png"
+                         id="manual" title="User instructions"
+                         uib-tooltip="{{'dashmanual'|superTooltip}}"
+                         tooltip-placement="bottom"/>
+
+                </span>
+    <span ng-click="goToHome(courseName)" class="palm-cursor"><img
+            src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/home_35.png"
+            id="homebutton" title="Home page"
+            uib-tooltip="{{'dashhome'|superTooltip}}"
+            tooltip-placement="top"/></span>
+            </div>
+        </div>
+
+        <div id="dev">dev</div>
+
+        <div id='cssmenu'>
+            <ul>
+                <li><a class="palm-cursor" ng-click="goToHome(courseName)">Home</a></li>
+                <li><a class="palm-cursor">Report Categories</a>
+                    <ul>
+                        <li ng-repeat="(key,value) in topMenuReportMap"><a class="palm-cursor"
+                                                                           ng-click="goToSingleView(value.page)">{{value.section|capitalize}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='has-sub'><a class="palm-cursor">Functional Domains</a>
+                    <ul>
+                        <li ng-repeat="(key,value) in topMenuDomMap"><a class="palm-cursor"
+                                                                        ng-click="goToSingleView(value.page)">{{value.section|capitalize}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="helpspace" ng-show="showhelp" class="fastfadein fastfadeout">
+        <div id="introText"><p>This is an alpha prototype dashboard produced by the LTU LADA team in order to
+            characterise the activity in MOOCs.<br/> In order to facilitate the organisation of the large amount of data
+            and details we provided three paths to explore the data. </p>
+            <ul>
+                <li>On the left there is an overview by categories of information.</li>
+                <li>On the right the information is presented based on functional domains.</li>
+                <li>A full site maps with links to individual section is provided by expanding the pull menu on the
+                    right side of the page.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="mainbody">
+        <mooc-tableau page="viewType" mooc="courseDetail.mooc" viz="viz"></mooc-tableau>
+    </div>
+
+</div>
+
+<div id="footer">
+    <p class="footer_p">UNSW - Learning & Teching Unit, <br/>
+        Learning Analytics and Data Analysis Team.<br/>
+        For feedback/comments please contact unswmooc1@gmail.com<br/><br/><br/>
+        <strong>Last edited on date 24 august 2015. </strong>
+    </p>
+
+    <div id="tools" class="nastycenter">
+        <ul>
+            <li class="palm-cursor" ng-click="viz.showExportImageDialog()"><img
+                    src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_img.png"
+                    id="img"
+                    title="Export as picture" uib-tooltip="{{'export_pic'|superTooltip}}"
+                    tooltip-placement="top"/></li>
+            <li class="palm-cursor" ng-click="viz.showExportPDFDialog()"><img
+                    src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_pdf.png"
+                    id="pdf"
+                    title="Export as PDF" uib-tooltip="{{'export_pdf'|superTooltip}}"
+                    tooltip-placement="top"/></li>
+            <li class="palm-cursor" ng-click="viz.showExportDataDialog()"><img
+                    src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png"
+                    id="exp"
+                    title="Export DATA" uib-tooltip="{{'export_exp'|superTooltip}}"
+                    tooltip-placement="top"/></li>
+            <br>
+            <br>
+            <p id="toolbox">EXPORT TOOLS</p>
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div id="sidr">
+    <!-- Full menu content -->
+    <ul>
+        <h2>Overview</h2>
+        <li ng-repeat="item in sidrMap['overview'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+        <h2>Participants</h2>
+        <li ng-repeat="item in sidrMap['participants'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+        <h2>What did participants do?</h2>
+
+        <h3>Videos</h3>
+        <li ng-repeat="item in sidrMap['videos'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Content</h3>
+        <li ng-repeat="item in sidrMap['content'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Forums</h3>
+        <li ng-repeat="item in sidrMap['forum'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Assessment</h3>
+        <li ng-repeat="item in sidrMap['assessment'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Evaluation</h3>
+        <li ng-repeat="item in sidrMap['evaluation'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h2>Social Media</h2>
+        <li ng-repeat="item in sidrMap['social media'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h2>Research</h2>
+
+        <li ng-repeat="item in sidrMap['research'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+    </ul>
+</div>
+
+<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<div ng-if="$root.debugMode">
+    <pre>{{courseName}}</pre>
+    <pre>{{topMenuDomMap|json}}</pre>
+    <pre>{{topMenuReportMap|json}}</pre>
+    <pre>{{courseDetail|json}}</pre>
+</div>
+

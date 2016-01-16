@@ -9,67 +9,57 @@ html {
 }
 
 body {
-    min-height: 100%;
-    height: 100%;
-    background-repeat: repeat-y;
-    background-position: center center;
-    background-attachment: fixed;
+  min-height: 100%;
+  height: 100%;
+  background-repeat: repeat-y;
+  background-position: center center;
+  background-attachment: fixed;
 
-    @media(max-width: $screen-xs-max) {
-        -webkit-background-size: auto auto;
-        -moz-background-size: auto auto;
-        -o-background-size: auto auto;
-        background-size: auto auto;
-    }
+  @media(max-width: $screen-xs-max) {
+    -webkit-background-size: auto auto;
+    -moz-background-size: auto auto;
+    -o-background-size: auto auto;
+    background-size: auto auto;
+  }
 
-    @media(min-width: $screen-sm-min) {
-        -webkit-background-size: $screen-sm-min + $grid-gutter-width auto;
-        -moz-background-size: $screen-sm-min + $grid-gutter-width auto;
-        -o-background-size: $screen-sm-min + $grid-gutter-width auto;
-        background-size: $screen-sm-min + $grid-gutter-width auto;
-    }
+  @media(min-width: $screen-sm-min) {
+    -webkit-background-size: $screen-sm-min + $grid-gutter-width auto;
+    -moz-background-size: $screen-sm-min + $grid-gutter-width auto;
+    -o-background-size: $screen-sm-min + $grid-gutter-width auto;
+    background-size: $screen-sm-min + $grid-gutter-width auto;
+  }
 
-    @media(min-width: $screen-md-min) {
-        -webkit-background-size: $screen-md-min + $grid-gutter-width auto;
-        -moz-background-size: $screen-md-min + $grid-gutter-width auto;
-        -o-background-size: $screen-md-min + $grid-gutter-width auto;
-        background-size: $screen-md-min + $grid-gutter-width auto;
-    }
+  @media(min-width: $screen-md-min) {
+    -webkit-background-size: $screen-md-min + $grid-gutter-width auto;
+    -moz-background-size: $screen-md-min + $grid-gutter-width auto;
+    -o-background-size: $screen-md-min + $grid-gutter-width auto;
+    background-size: $screen-md-min + $grid-gutter-width auto;
+  }
 
-    @media(min-width: $screen-lg-min) {
-        -webkit-background-size: $screen-lg-min + $grid-gutter-width auto;
-        -moz-background-size: $screen-lg-min + $grid-gutter-width auto;
-        -o-background-size: $screen-lg-min + $grid-gutter-width auto;
-        background-size: $screen-lg-min + $grid-gutter-width auto;
-    }
+  @media(min-width: $screen-lg-min) {
+    -webkit-background-size: $screen-lg-min + $grid-gutter-width auto;
+    -moz-background-size: $screen-lg-min + $grid-gutter-width auto;
+    -o-background-size: $screen-lg-min + $grid-gutter-width auto;
+    background-size: $screen-lg-min + $grid-gutter-width auto;
+  }
 
-    .pseudotab {
-        border-radius: 5px 5px 0 0;
-        border-bottom: 0;
-        height: 30px;
-    }
-    .progress-bar {
-        height: 25px;
-        font-size: 13pt !important;
-        line-height: 22px !important;
-        font-weight: bold;
-        background-color: $ok;
-    }
+  .pseudotab {
+    border-radius: 5px 5px 0 0;
+    border-bottom: 0;
+    height: 30px;
+  }
+  .progress-bar {
+    height: 25px;
+    font-size: 13pt !important;
+    line-height: 22px !important;
+    font-weight: bold;
+    background-color: $ok;
+  }
 }
 
-
-
-#footer {
-    width:100%;
-    position:fixed;
-    bottom:0;
+#SkinContent * {
+  box-sizing: initial;
 }
-
-#SkinContent *{
-    box-sizing: initial;
-}
-
-
 
 .vertical-align {
   position: absolute;
@@ -80,22 +70,23 @@ body {
   margin: -15% 0 0 -25%;
 }
 
-.border{
-  border:solid 1px;
+.border {
+  border: solid 1px;
 }
 
 .fillParent {
-  height:100%;
+  height: 100%;
 }
 
 .fillchild {
-  height:auto;
+  height: auto;
 }
 
-.changeuibutton{
-  position:relative !important;
+.changeuibutton {
+  position: relative !important;
 
 }
+
 .ui-base {
   position: absolute;
   top: 0;
@@ -104,27 +95,26 @@ body {
   bottom: 0;
 }
 
-.login-margin{
-  margin-top:5em;
-  margin-left:auto;
-  margin-right:auto;
+.login-margin {
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 .fadein,
 .fadeout {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
-  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
-  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
 }
 
 .fastfadein,
 .fastfadeout {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
-  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
-  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
+  -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
+  -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
+  -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s;
 }
 
 .fastfadein.ng-hide-remove,
@@ -139,7 +129,6 @@ body {
   display: block !important;
 }
 
-
 .fadein.ng-hide-remove,
 .fadeout.ng-hide-add.ng-hide-add-active {
   opacity: 0;
@@ -152,17 +141,38 @@ body {
   display: block !important;
 }
 
-.palm-cursor{
-  cursor:pointer;
+.palm-cursor {
+  cursor: pointer;
 }
 
-a.removedefaulthyper{
-  color:black;
+a.removedefaulthyper {
+  color: black;
 }
 
 .centerElement {
-  margin:auto !important;
+  margin: auto !important;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
+}
+
+#footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+
+}
+
+.footer_p {
+  height: 100%;
+  min-height:100%;
+  margin-bottom:0px;
 }
 
 
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nastycenter{
+  margin-top:-80px !important;
+}
+
+

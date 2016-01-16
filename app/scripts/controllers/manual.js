@@ -6,10 +6,8 @@
 
 angular
     .module('mooc')
-    .controller('SingleViewCtrl', ['$scope', '$window', '$stateParams', '$document', '$state', '$timeout', 'userCookie', 'appConstants', '$http', 'CourseDataService',
+    .controller('ManualCtrl', ['$scope', '$window', '$stateParams', '$document', '$state', '$timeout', 'userCookie', 'appConstants', '$http', 'CourseDataService',
         function ($scope, $window, $stateParams, $document, $state, $timeout, userCookie, appConstants, $http, CourseDataService) {
-
-
             $scope.viewType = $stateParams.page;
             $scope.courseName = $stateParams.courseName;
 
@@ -177,7 +175,7 @@ angular
                         for (var y = 0, length = section.length; y < section.length; y++) {
                             if (angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.includes($scope.viewType)) {
 
-                                    var html = section[y].description;
+                                var html = section[y].description;
 
 
                                 var myTransform = {'tag':'${tag}','id':'${id}','html':'${html}'};
@@ -194,4 +192,5 @@ angular
                 }
             }
         }]);
+
 

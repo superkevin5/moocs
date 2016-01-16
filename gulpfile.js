@@ -136,10 +136,11 @@ gulp.task('watch', ['connect'], function () {
     gulp.watch([
         'app/**/*.html',
         'app/scripts/**/*.js',
-        'app/images/**/*'
+        'app/images/**/*',
+        'app/styles/*.scss'
     ]).on('change', $.livereload.changed);
 
-    gulp.watch('app/styles/**/*.scss', ['styles']);
+    gulp.watch('app/styles/*.scss', ['styles']);
     gulp.watch('bower.json', ['wiredep']);
 });
 

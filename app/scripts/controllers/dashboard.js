@@ -23,10 +23,10 @@ angular
             courseDetailPromise.then(function (data) {
                     $scope.courseDetail = angular.copy(data);
 
-                    $scope.validateCourseJson($scope.courseDetail) || $scope.alerts.push[{
+                    $scope.validateCourseJson($scope.courseDetail) || $scope.alerts.push({
                         type: 'danger',
                         msg: 'Invalid json'
-                    }];
+                    });
 
                     $scope.extractSidrInfo($scope.courseDetail);
                     $scope.extractMainInfo($scope.courseDetail);
@@ -35,17 +35,16 @@ angular
                 function (error) {
                     //Need to handel error case
                     console.error(error);
-                    $scope.alerts.push[{
+                    $scope.alerts.push({
                         type: 'danger',
                         msg: 'error'
-                    }];
+                    });
                 }
             );
 
             $scope.validateCourseJson = function (course) {
                 return angular.isDefined(course['mooc']);
             };
-
 
 
             $scope.extractMainInfo = function (course) {
@@ -58,7 +57,7 @@ angular
                 for (var i = 0, length = main.length; i < length; i++) {
 
                     var o = main[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('report') || !o.page.includes('main')) {
+                    if (!o.type.includes('report')) {
                         continue;
                     }
                     angular.isUndefined($scope.mainMap[category]) && ($scope.mainMap[category] = o);
@@ -67,7 +66,7 @@ angular
 
                 for (var i = 0, length = main.length; i < length; i++) {
                     var o = main[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('domain') || !o.page.includes('dom')) {
+                    if (!o.type.includes('domain')) {
                         continue;
                     }
                     angular.isUndefined($scope.domMap[category]) && ($scope.domMap[category] = o);
@@ -81,10 +80,10 @@ angular
                 var sidr = course.mooc.sdr || course.mooc.sidemenu;
 
                 if (angular.isUndefined(sidr)) {
-                    $scope.alerts.push[{
+                    $scope.alerts.push({
                         type: 'danger',
                         msg: 'no siderBar'
-                    }];
+                    });
                     return;
                 }
 
@@ -109,13 +108,17 @@ angular
             };
 
             $scope.goToSingleView = function (location) {
-                $window.location.href = '/#/singleview/' + location;
+                $window.location.href = '/#/singleview/' + $scope.courseName + '/' + location;
                 //hacky way
                 //angular.element(document.querySelector('#mooc')).removeAttr('style');
             };
 
             $scope.goToHome = function (courseName) {
                 $window.location.href = '/#/dashboard/' + courseName;
+                $window.location.reload(true);
+            };
+            $scope.goToManual = function (courseName) {
+                $window.location.href = '/#/manual/' + courseName;
                 $window.location.reload(true);
             };
 
