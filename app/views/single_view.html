@@ -114,6 +114,8 @@
 <div id="sidr">
     <!-- Full menu content -->
     <ul>
+        <li ng-click="goToSingleView(sidrMap['home'][0].page)"
+            class="palm-cursor"><a>{{sidrMap['home'][0].section}}</a></li>
         <h2>Overview</h2>
         <li ng-repeat="item in sidrMap['overview'] track by $index" ng-click="goToSingleView(item.page)"
             class="palm-cursor"><a>{{item.section}}</a></li>
