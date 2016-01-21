@@ -52,8 +52,8 @@ angular
 
 
     })
-    .run(['$rootScope', '$state', '$stateParams','$cookies','$http','appConstants','$window',
-        function ($rootScope, $state, $stateParams,$cookies,$http,appConstants,$window) {
+    .run(['$rootScope', '$state', '$stateParams','$cookies','$http','appConstants','$window','$timeout',
+        function ($rootScope, $state, $stateParams,$cookies,$http,appConstants,$window,$timeout) {
 
             $rootScope.debugMode = appConstants.debugMode;
 
@@ -71,15 +71,10 @@ angular
 
             $rootScope.$on('$locationChangeStart', function($event, changeTo, changeFrom) {
 
+                $timeout(function(){
+                    $.sidr( 'close', 'sidr' );
+                });
 
-                if (changeTo == changeFrom) {
-                    return;
-                }
-
-                //if(changeFrom.includes('dashboard') && changeTo.includes('singleview')) {
-                    window.location.assign(changeTo);
-                    window.location.reload(true);
-                //}
             });
 
         }]);
