@@ -1,44 +1,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html class="no-js">
 <head>
-    <!--<base href="/">-->
-    <meta charset="utf-8">
-    <title>Ani AngularJS Dashboard Theme</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="author" content="Lorenzo vigentini">
-    <meta name="version" content="version 2">
-    <meta name="version-date" content="26 aug 2015">
+  <!--<base href="/">-->
+  <meta charset="utf-8">
+  <title>Ani AngularJS Dashboard Theme</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
+  <meta name="author" content="Lorenzo vigentini">
+  <meta name="version" content="version 2">
+  <meta name="version-date" content="26 aug 2015">
 
+  <link rel="stylesheet" href="bower_components/toastr/toastr.css"/>
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css"/>
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
 
-    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <!--<link href="https://googledrive.com/host/0B8KqLaP_s06ITFd1aHpXc0w4Uk0/css/hover.css" rel="stylesheet" media="all">-->
+  <link rel="stylesheet" href="styles/hover.css"/>
+  <link rel="stylesheet" href="styles/mooc_dashboard.css"/>
+  <!--<link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/mooc_dashboard.css" rel="stylesheet"-->
+  <!--media="all">-->
+  <link rel="stylesheet" href="styles/jquery.sidr.dark.css"/>
+  <!--<link href="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/stylesheets/jquery.sidr.dark.css"-->
+  <!--rel="stylesheet" media="all">-->
+  <!--<link href="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css" rel="stylesheet" media="all">-->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
 
-    <link href="https://googledrive.com/host/0B8KqLaP_s06ITFd1aHpXc0w4Uk0/css/hover.css" rel="stylesheet" media="all">
-    <link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/mooc_dashboard.css" rel="stylesheet"
-          media="all">
-    <link href="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/stylesheets/jquery.sidr.dark.css"
-          rel="stylesheet" media="all">
-    <!--<link href="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css" rel="stylesheet" media="all">-->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
-    <link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/topMenu.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="styles/main.css"/>
-    <!--semantic UI -->
-    <!--<link rel="stylesheet" href="semantic/dist/semantic.min.css"/>-->
-
+  <link rel="stylesheet" href="styles/topMenu.css" rel="stylesheet" media="all"/>
+  <!--<link href="https://googledrive.com/host/0B8KqLaP_s06IUFpYQUQxR21VaXc/topMenu.css" rel="stylesheet" media="all">-->
+  <link rel="stylesheet" href="styles/main.css"/>
+  <!--semantic UI -->
+  <!--<link rel="stylesheet" href="semantic/dist/semantic.min.css"/>-->
 </head>
 <body ng-app="mooc" id="mooc">
+
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
+  your browser</a> to improve your experience.</p>
 <![endif]-->
 <!-- Add your site or application content here -->
 <div class="ui-base">
-    <div ui-view></div>
+  <div ui-view></div>
 </div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -55,8 +59,6 @@
 
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.js"></script>
-
-
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -103,12 +105,18 @@
 <script src="scripts/filter/moocfilter.js"></script>
 
 <!-- vendor -->
-<script type="text/javascript" src="https://online.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>
-<script src="https://googledrive.com/host/0B8KqLaP_s06IYzhLOEc3YVlYN00/jquery.sidr.min.js" type="text/javascript"></script>
-<script src="https://googledrive.com/host/0B8KqLaP_s06IdmZjTUhrbnRCeXc/jquery.matchHeight.js" type="text/javascript"></script>
-<script src="https://googledrive.com/host/0B8KqLaP_s06ISGQ4Q3JQS0wyNEk/jquery.maphilight.js" type="text/javascript"></script>
-<script src="https://googledrive.com/host/0B8KqLaP_s06IUHhOa2cwdnFVbWM/topMenu.js" type="text/javascript"></script>
-<script src="https://rawgit.com/blowsie/Pure-JavaScript-HTML5-Parser/master/htmlparser.js" type="text/javascript"></script>
-<script src="https://googledrive.com/host/0B8KqLaP_s06IUHhOa2cwdnFVbWM/json2html.js" type="text/javascript"></script>
+<script type="text/javascript" src="scripts/vendor/tableau.js"></script>
+<script type="text/javascript" src="scripts/vendor/jquerymaphilight.js"></script>
+<script type="text/javascript" src="scripts/vendor/jquerymatchheight.js"></script>
+<script type="text/javascript" src="scripts/vendor/jquerysidr.js"></script>
+<script type="text/javascript" src="scripts/vendor/htmlparser.js"></script>
+<script type="text/javascript" src="scripts/vendor/json2html.js"></script>
+<script type="text/javascript" src="scripts/vendor/topmenu.js"></script>
+
+<!--<script src="https://googledrive.com/host/0B8KqLaP_s06IdmZjTUhrbnRCeXc/jquery.matchHeight.js" type="text/javascript"></script>-->
+<!--<script src="https://googledrive.com/host/0B8KqLaP_s06ISGQ4Q3JQS0wyNEk/jquery.maphilight.js" type="text/javascript"></script>-->
+<!--<script src="https://googledrive.com/host/0B8KqLaP_s06IUHhOa2cwdnFVbWM/topMenu.js" type="text/javascript"></script>-->
+<!--<script src="https://rawgit.com/blowsie/Pure-JavaScript-HTML5-Parser/master/htmlparser.js" type="text/javascript"></script>-->
+<!--<script src="https://googledrive.com/host/0B8KqLaP_s06IUHhOa2cwdnFVbWM/json2html.js" type="text/javascript"></script>-->
 </body>
 </html>
