@@ -84,25 +84,24 @@
     <strong>Last edited on date 24 august 2015. </strong>
   </p>
 
+
   <div id="tools" class="nastycenter">
     <ul>
-      <li class="palm-cursor" ng-click="viz.showExportImageDialog()"><img
-        src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_img.png"
-        id="img"
-        title="Export as picture" uib-tooltip="{{'export_pic'|superTooltip}}"
-        tooltip-placement="top"/></li>
+      <li ng-click="viz.showExportImageDialog()"  class="palm-cursor"  title="Export as picture">
+        <img src="../images/toold_img.png" uib-tooltip="{{'export_pic'|superTooltip}}" tooltip-append-to-body="false" tooltip-placement="top-left"/></li>
       <li class="palm-cursor" ng-click="viz.showExportPDFDialog()"><img
-        src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_pdf.png"
-        id="pdf"
+        src="../images/toold_pdf.png"
         title="Export as PDF" uib-tooltip="{{'export_pdf'|superTooltip}}"
         tooltip-placement="top"/></li>
       <li class="palm-cursor" ng-click="viz.showExportDataDialog()"><img
-        src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/toold_data.png"
-        id="exp"
-        title="Export DATA" uib-tooltip="{{'export_exp'|superTooltip}}"
-        tooltip-placement="top"/></li>
+        src="../images/toold_data.png"
+        uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"
+        popover-placement="auto top"
+        title="Export DATA" /></li>
       <br>
       <br>
+      <!--uib-tooltip="{{'export_exp'|superTooltip}}"-->
+      <!--tooltip-placement="top"-->
       <p id="toolbox">EXPORT TOOLS</p>
     </ul>
 

@@ -20,7 +20,8 @@
                 </form>
             </div>
         </div>
-        <div class="modal-content fadein" ng-show="authorized">
+        <div class="modal-content fadein" ng-if="authorized">
+          <auto-login ng-if="authorized"></auto-login>
             <div class="modal-header">
                 <h1 class="text-center">Select your course</h1>
             </div>
