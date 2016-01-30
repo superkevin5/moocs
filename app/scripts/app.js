@@ -42,7 +42,8 @@ angular
             .state('singleview', {
                 url: '/singleview/:courseName/:page',
                 templateUrl: 'views/single_view.html',
-                controller: 'SingleViewCtrl'
+                controller: 'SingleViewCtrl',
+                reloadOnSearch: true
             })
             .state('manual', {
                 url: '/manual/:courseName',
