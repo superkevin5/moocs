@@ -7551,6 +7551,9 @@ button.close {
 * {
   zoom: 98%; }
 
+*:not(.fa) {
+  font-family: Arial !important; }
+
 html {
   position: relative;
   height: 100%;
@@ -7675,6 +7678,19 @@ a.removedefaulthyper {
 
 .centerSpinner {
   margin-top: 200px !important; }
+
+div.tooltip-inner {
+  text-align: center;
+  border-radius: 0px;
+  margin-bottom: 6px;
+  background-color: #505050;
+  font-size: 1.3em; }
+
+.footer_p {
+  font-size: 1em !important; }
+
+.uniquefont * {
+  font-size: 1em !important; }
 
 .blinky {
   -webkit-animation-name: blinker;

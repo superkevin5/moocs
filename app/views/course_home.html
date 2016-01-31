@@ -6,11 +6,11 @@
 </div>
 <div id="mainbody" ng-if="!!courseDetail">
     <div id="leftBody" class="box">
-        <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/ReportCategory_small.png"
+        <img src="../images/ReportCategory_small.png"
              uib-tooltip="Report categories represent standard report organised by specific labels. In general the categories refer to the course as a whole."
              tooltip-placement="right"/>
         <br/><br/>
-        <ul>
+        <ul class="uniquefont">
             <li ng-repeat="(key,value) in mainMap track by $index" ng-click="goToSingleView(value.page)"
                 class="palm-cursor"><a class="hvr-underline-from-left removedefaulthyper"
                                        uib-tooltip="{{value.page|superTooltip}}"

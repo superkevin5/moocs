@@ -8,7 +8,7 @@
 </div>
 
 <div id='cssmenu'>
-    <ul>
+    <ul class="uniquefont">
         <li><a class="palm-cursor" ng-click="goToHome(courseName)">Home</a></li>
         <li><a class="palm-cursor">Report Categories</a>
             <ul>
@@ -30,7 +30,7 @@
 
 
     <div ng-if="!viz" class="text-center centerSpinner">
-    <span  >
+    <span>
         <i class="fa fa-spinner fa-pulse fa-5x"></i>
     </span>
     </div>
@@ -63,7 +63,7 @@
                     src="../images/toold_data.png"
                     uib-popover="{{'export_exp'|superTooltip}}" popover-trigger="mouseenter"
                     popover-placement="top"
-                   /></li>
+                    /></li>
             <br>
             <br>
             <!--uib-tooltip="{{'export_exp'|superTooltip}}"-->
