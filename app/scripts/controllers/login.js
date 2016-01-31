@@ -53,7 +53,7 @@ angular
 
                 //window.location.href ='https://cc3948027cc783f6aae60587c570b1b52afa7eec.googledrive.com/host/0B5lCcvQYS1mRZ3Bsd05KcUFGTE0/#/dashboard/'+courseName;
 
-                window.location.href ='/#/dashboard/'+courseName;
+                window.location.href ='/#/dash/'+courseName;
 
                 //window.location.reload(true);
             }

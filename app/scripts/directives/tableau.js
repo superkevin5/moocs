@@ -29,48 +29,6 @@ angular.module('mooc')
                     };
                     $scope.viz = new tableau.Viz(placeholderDiv, url, options);
 
-                  //https://10ay.online.tableau.com/t/unswmooc/views/Videos_0/Overview?:embed=y&:showVizHome=n&:toolbar=n&:apiID=handler0
-
-                  var url2 ="https://sso.online.tableau.com/public/prelogin/sendPassword?messageId=ag802158e00d58e3c6e9da96d8hd5f";
-
-                  var loadIframe =function (){
-
-
-                    var data = new FormData();
-                    data.append('email', 'unswmooc2@gmail.com');
-                    data.append('password', 'n0Password');
-                    //data.append('organization', 'place');
-                    //data.append('requiredkey', 'key');
-
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('POST', url2, true);
-                    xhr.onload = function () {
-                      // do something to response
-                      console.log(this.responseText);
-                    };
-                    xhr.send(data);
-
-
-                    //var url2 ="https://sso.online.tableau.com/public/prelogin/sendPassword?messageId=a3f7cfej0i2ge8gh147bdc59i844233";
-                    //pre-authenticate
-                    //var req = new XMLHttpRequest();
-                    ////req.open("POST",url2, false, "unswmooc2@gmail.com", "n0Password"); //use POST to safely send combination
-                    //req.send(null); //here you can pass extra parameters through
-                    //
-                    //
-                    ////action="https://sso.online.tableau.com/public/prelogin/sendPassword?messageId=a3f7cfej0i2ge8gh147bdc59i844233"
-                    ////setiFrame's SRC attribute
-                    //var iframe = document.getElementsByTagName('iframe')[0];
-                    //iframe.src = url2;
-                  };
-
-                  $timeout(function(){
-                    loadIframe();
-                  }, 5000);
-
-
-
-
                 };
 
                 $scope.closeAlert = function (index) {

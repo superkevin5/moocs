@@ -7673,6 +7673,9 @@ a.removedefaulthyper {
 .nastycenter {
   margin-top: -80px !important; }
 
+.centerSpinner {
+  margin-top: 200px !important; }
+
 .blinky {
   -webkit-animation-name: blinker;
   -webkit-animation-duration: .7s;

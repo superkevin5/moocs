@@ -1,0 +1,92 @@
+<div class="SkinInner">
+
+    <div class="button" uib-tooltip="{{'sidr'|superTooltip}}"
+         tooltip-placement="left">
+        <a id="simple-menu" href="#sidr">
+            <img toggle-sidr-menu src="../../images/pullicon_small.png"
+                 id="pullicon"/>
+        </a>
+    </div>
+
+    <div id="SkinContent">
+        <div id="LogoContainer">
+            <div id="Logo">
+                <h1>| {{courseName}} MOOC Dashboard</h1></div>
+            <div id="help">
+                <span ng-click="showMoocHelp()" ng-init="showhelp=false" class="palm-cursor">
+                <img src="../../images/question_mark_35.png"
+                     id="helpbutton" title="Detailed information"
+                     uib-tooltip="{{'dashhelp'|superTooltip}}"
+                     tooltip-placement="left"/>
+                </span>
+                <span ng-click="goToManual(courseName)" class="palm-cursor">
+
+                    <img src="../../images/manual_35.png"
+                         id="manual" title="User instructions"
+                         uib-tooltip="{{'dashmanual'|superTooltip}}" h
+                         tooltip-placement="bottom"/>
+
+                </span>
+    <span ng-click="goToHome(courseName)" class="palm-cursor"><img
+            src="../../images/home_35.png"
+            id="homebutton" title="Home page"
+            uib-tooltip="{{'dashhome'|superTooltip}}"
+            tooltip-placement="top"/></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="helpspace" ng-show="$root.showhelp" class="fastfadein fastfadeout">
+
+    </div>
+    <div ui-view autoscroll="false"></div>
+</div>
+
+<div id="sidr">
+    <ul>
+        <li ng-click="goToSingleView(sidrMap['home'][0].page)"
+            class="palm-cursor"><a>{{sidrMap['home'][0].section}}</a></li>
+        <h2>Overview</h2>
+        <li ng-repeat="item in sidrMap['overview'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+        <h2>Participants</h2>
+        <li ng-repeat="item in sidrMap['participants'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+        <h2>What did participants do?</h2>
+
+        <h3>Videos</h3>
+        <li ng-repeat="item in sidrMap['videos'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Content</h3>
+        <li ng-repeat="item in sidrMap['content'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Forums</h3>
+        <li ng-repeat="item in sidrMap['forum'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Assessment</h3>
+        <li ng-repeat="item in sidrMap['assessment'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h3>Evaluation</h3>
+        <li ng-repeat="item in sidrMap['evaluation'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h2>Social Media</h2>
+        <li ng-repeat="item in sidrMap['social media'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+
+        <h2>Research</h2>
+
+        <li ng-repeat="item in sidrMap['research'] track by $index" ng-click="goToSingleView(item.page)"
+            class="palm-cursor"><a>{{item.section}}</a></li>
+    </ul>
+</div>
+
+<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+<div ng-if="debugMode">
+    <pre>{{sidrMap|json}}}</pre>
+</div>
+

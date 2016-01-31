@@ -150,69 +150,22 @@ angular
 
 
             $scope.goToSingleView = function (location) {
+                $state.go('dash.single', {
+                    courseName: $scope.courseName,
+                    page: location
+                });
 
-                try {
-                    $window.location.href = '/#/singleview/' + $scope.courseName + '/' + location;
-
-                    //$window.location.href = 'https://cc3948027cc783f6aae60587c570b1b52afa7eec.googledrive.com/host/0B5lCcvQYS1mRZ3Bsd05KcUFGTE0/#/singleview/' + $scope.courseName + '/' + location;
-                }
-                finally{
-                    $window.location.reload(true);
-                }
-                //hacky way
-                //angular.element(document.querySelector('#mooc')).removeAttr('style');
             };
 
             $scope.goToHome = function (courseName) {
-                try {
-                    $window.location.href = '/#/dashboard/' + courseName;
-
-                    //$window.location.href = 'https://cc3948027cc783f6aae60587c570b1b52afa7eec.googledrive.com/host/0B5lCcvQYS1mRZ3Bsd05KcUFGTE0/#/dashboard/' + courseName;
-                }
-                finally{
-                    $window.location.reload(true);
-                }
-
+                $state.go('dash.home');
             };
+
+
             $scope.goToManual = function (courseName) {
-                try {
-                    $window.location.href = '/#/manual/' + courseName;
-
-                    //$window.location.href = 'https://cc3948027cc783f6aae60587c570b1b52afa7eec.googledrive.com/host/0B5lCcvQYS1mRZ3Bsd05KcUFGTE0/#/manual/' + courseName;
-                }finally{
-                    $window.location.reload(true);
-
-                }
+                $state.go('dash.manual');
             };
 
 
-            $scope.showHelp = function () {
-                $scope.showhelp = !$scope.showhelp;
-
-                var keys = Object.keys($scope.courseDetail.mooc);
-                for (var i = 0, length = keys.length; i < keys.length; i++) {
-                    var key = keys[i];
-                    if (Array.isArray($scope.courseDetail.mooc[key])) {
-                        var section = $scope.courseDetail.mooc[key];
-
-                        for (var y = 0, length = section.length; y < section.length; y++) {
-                            if (angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.includes($scope.viewType)) {
-
-                                    var html = section[y].description;
-
-
-                                var myTransform = {'tag':'${tag}','id':'${id}','html':'${html}'};
-                                var rawHTML= json2html.transform(html,myTransform);
-
-                                console.log(rawHTML);
-
-
-                                document.getElementById("helpspace").innerHTML=rawHTML;
-                                //$( "#introText" ).replaceWith(rawHTML);
-                            }
-                        }
-                    }
-                }
-            }
         }]);
 

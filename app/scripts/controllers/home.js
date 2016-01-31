@@ -6,8 +6,8 @@
 
 angular
     .module('mooc')
-    .controller('DashboardCtrl', ['$rootScope','$scope', '$stateParams', '$document', '$state', '$timeout', 'userCookie', 'appConstants', '$http', 'CourseDataService', '$window', '$location',
-        function ($rootScope, $scope, $stateParams, $document, $state, $timeout, userCookie, appConstants, $http, CourseDataService, $window, $location) {
+    .controller('HomeCtrl', ['$scope', '$stateParams', '$document', '$state', '$timeout', 'userCookie', 'appConstants', '$http', 'CourseDataService', '$window',
+        function ($scope, $stateParams, $document, $state, $timeout, userCookie, appConstants, $http, CourseDataService, $window) {
 
             $scope.courseName = $stateParams.courseName;
             console.log($scope.courseName);
@@ -30,7 +30,6 @@ angular
 
                     $scope.extractSidrInfo($scope.courseDetail);
                     $scope.extractMainInfo($scope.courseDetail);
-
                 },
                 function (error) {
                     //Need to handel error case
@@ -108,80 +107,11 @@ angular
             };
 
             $scope.goToSingleView = function (location) {
-
-                if (location === 'sdr_home') {
-                    $state.go('dash.home');
-                } else {
-                    $state.go('dash.single', {
-                        courseName: $scope.courseName,
-                        page: location
-                    });
-                }
+                $state.go('dash.single', {
+                    courseName: $scope.courseName,
+                    page: location
+                });
             };
 
-            $scope.goToHome = function (courseName) {
-                $state.go('dash.home');
-            };
-
-            $scope.goToManual = function (courseName) {
-                $state.go('dash.manual');
-            };
-
-
-            $scope.showMoocHelp = function () {
-                $rootScope.showhelp = !$rootScope.showhelp;
-
-                var url = $location.path();
-
-                var pathArray = url.split('/');
-
-                $scope.viewType = pathArray[pathArray.length - 1];
-
-                if ('home' === $scope.viewType) {
-
-
-                    var str = '<p>This is an alpha prototype dashboard produced by the LTU LADA team in order to characterise the activity in' +
-                        'MOOCs.<br/> In order to facilitate the organisation of the large amount of data and details we provided' +
-                        'three paths to explore the data. </p>' +
-                        '<ul>' +
-                        '<li>On the left there is an overview by categories of information.</li>' +
-                        '<li>On the right the information is presented based on functional domains.</li>' +
-                        '<li>A full site maps with links to individual section is provided by expanding the pull menu on the right' +
-                        'side of the page.' +
-                        '</li>' +
-                        '</ul>';
-
-                    document.getElementById("helpspace").innerHTML = str;
-                    return;
-                }
-
-
-                var keys = Object.keys($scope.courseDetail.mooc);
-                for (var i = 0, length = keys.length; i < keys.length; i++) {
-                    var key = keys[i];
-                    if (Array.isArray($scope.courseDetail.mooc[key])) {
-                        var section = $scope.courseDetail.mooc[key];
-
-                        for (var y = 0, length = section.length; y < section.length; y++) {
-                            if (angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.includes($scope.viewType)) {
-
-                                var html = section[y].description;
-
-
-                                var myTransform = {'tag': '${tag}', 'id': '${id}', 'html': '${html}'};
-                                var rawHTML = json2html.transform(html, myTransform);
-
-                                console.log(rawHTML);
-
-
-                                document.getElementById("helpspace").innerHTML = rawHTML;
-                                //$( "#introText" ).replaceWith(rawHTML);
-                            }
-                        }
-                    }
-                }
-            };
-
-            $state.go('dash.home');
         }]);
 

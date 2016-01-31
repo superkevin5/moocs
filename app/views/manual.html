@@ -1,218 +1,117 @@
-<div class="SkinInner">
-    <div class="button" uib-tooltip="{{'sidr'|superTooltip}}"
-         tooltip-placement="left">
-        <a id="simple-menu" href="#sidr">
-            <img toggle-sidr-menu src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/pullicon_small.png"
-                 id="pullicon"/>
-        </a>
-    </div>
-    <div id="SkinContent">
-        <div id="LogoContainer">
-            <div id="Logo">
-                <h1>| {{courseName}} MOOC Dashboard</h1></div>
-            <div id="help">
-                <span ng-click="showHelp()" ng-init="showhelp=false" class="palm-cursor">
-                <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/question_mark_35.png"
-                     id="helpbutton" title="Detailed information"
-                     uib-tooltip="{{'dashhelp'|superTooltip}}"
-                     tooltip-placement="left"/>
-                </span>
-                <span ng-click="goToManual(courseName)" class="palm-cursor">
+<div id="mainbody">
 
-                    <img src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/manual_35.png"
-                         id="manual" title="User instructions"
-                         uib-tooltip="{{'dashmanual'|superTooltip}}"
-                         tooltip-placement="bottom"/>
+    <h2><span style="font-family:verdana,geneva,sans-serif">MOOC Dashboard Overview</span></h2>
 
-                </span>
-    <span ng-click="goToHome(courseName)" class="palm-cursor"><img
-            src="https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/home_35.png"
-            id="homebutton" title="Home page"
-            uib-tooltip="{{'dashhome'|superTooltip}}"
-            tooltip-placement="top"/></span>
-            </div>
-        </div>
+    <p><span style="font-family:verdana,geneva,sans-serif">This dashboard is a tool which aims to provide easily accessible, at-a-glance information to better understand different aspects from a MOOC course.</span>
+    </p>
 
-        <div id="dev">dev</div>
-    </div>
+    <p><span style="font-family:verdana,geneva,sans-serif">It draws from available data to produce snapshot visual representations.&nbsp;The dashboard is designed to initiate conversation, investigation and/or action around different course aspects.</span>
+    </p>
 
-    <div id="helpspace" ng-show="showhelp" class="fastfadein fastfadeout">
-        <div id="introText"><p>This is an alpha prototype dashboard produced by the LTU LADA team in order to
-            characterise the activity in MOOCs.<br/> In order to facilitate the organisation of the large amount of data
-            and details we provided three paths to explore the data. </p>
-            <ul>
-                <li>On the left there is an overview by categories of information.</li>
-                <li>On the right the information is presented based on functional domains.</li>
-                <li>A full site maps with links to individual section is provided by expanding the pull menu on the
-                    right side of the page.
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-    <div id="mainbody">
-
-        <h2><span style="font-family:verdana,geneva,sans-serif">MOOC Dashboard Overview</span></h2>
-
-        <p><span style="font-family:verdana,geneva,sans-serif">This dashboard is a tool which aims to provide easily accessible, at-a-glance information to better understand different aspects from a MOOC course.</span>
-        </p>
-
-        <p><span style="font-family:verdana,geneva,sans-serif">It draws from available data to produce snapshot visual representations.&nbsp;The dashboard is designed to initiate conversation, investigation and/or action around different course aspects.</span>
-        </p>
-
-        <div>
-            <hr/>
-            <p>&nbsp;</p>
-
-            <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Visual Walkthrough of the main user
-                interface components:</strong></span></h3>
-        </div>
-
-        <h4><span style="font-family:verdana,geneva,sans-serif"><strong>Home page overview:</strong></span></h4>
-
-        <p><img alt="" src="https://googledrive.com/host/0B8KqLaP_s06IbUltS0taeGhMckE/Picture1.PNG"
-                style="height:429px; width:800px"/></p>
-
-        <ul>
-            <li><span style="font-family:verdana,geneva,sans-serif">(a) Report Categories &ndash; data segmented by key areas</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">(b) Functional Domains &ndash; data segmented course elements</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">(c) Quick links &amp; site map</span></li>
-            <li><span style="font-family:verdana,geneva,sans-serif">(d) Help buttons section</span></li>
-        </ul>
-
-        <p>&nbsp;</p>
-
-        <h4><span style="font-family:verdana,geneva,sans-serif"><strong>Example page &ldquo;Overview from Report
-            Categories&rdquo;:</strong></span></h4>
-
-        <p><img alt="" src="https://googledrive.com/host/0B8KqLaP_s06IbUltS0taeGhMckE/Picture2.PNG"
-                style="height:705px; width:800px"/></p>
-
-        <ul>
-            <li><span style="font-family:verdana,geneva,sans-serif">(e) Navigation menu (to move between pages)</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">(f) Help &ndash; to get more information about a page</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">(g) Dashboard Guide &ndash; A quick guide to common features in the dashboard.</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">(h) Export tools &ndash; self-service tools to allow data download and further individual exploration</span>
-            </li>
-        </ul>
-
-        <p style="margin-left:54.0pt">&nbsp;</p>
-
-        <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Tabs with a page:</strong></span></h3>
-
-        <p><img alt="" src="https://googledrive.com/host/0B8KqLaP_s06IbUltS0taeGhMckE/Picture3.PNG"
-                style="height:183px; width:800px"/></p>
-
-        <ul>
-            <li><span style="font-family:verdana,geneva,sans-serif">(i) Tabs help separate larger content areas into manageable chunks.</span>
-            </li>
-        </ul>
-
-        <p>&nbsp;</p>
-
+    <div>
         <hr/>
         <p>&nbsp;</p>
 
-        <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Key Definitions:</strong></span></h3>
-
-        <ul>
-            <li><span style="font-family:verdana,geneva,sans-serif">Signature Track, refers to those who paid for a certificate</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">Non-Signature Track, refers to those who did not pay for the course</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">Distinction, refers to those who achieved a grade as per the formula for distinction</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">Pass, refers to those who achieved a grade as per the formula for distinction</span>
-            </li>
-        </ul>
-
-        <p>&nbsp;</p>
-
-        <div>
-            <hr/>
-            <p>&nbsp;</p>
-        </div>
-
-        <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Additional Notes:</strong></span></h3>
-
-        <ul>
-            <li><span style="font-family:verdana,geneva,sans-serif">Data is shown only for students (and excludes teacher/tutor/community mentor data)</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">Weeks 1..52 refer to calendar weeks, and situate when during the year, the course ran.</span>
-            </li>
-            <li><span style="font-family:verdana,geneva,sans-serif">Most graphs can be drilled down, via hovering on elements, for example:</span>
-            </li>
-        </ul>
-
-        <p>​<img alt="" src="https://googledrive.com/host/0B8KqLaP_s06IbUltS0taeGhMckE/Picture5.PNG"
-                 style="height:293px; width:800px"/></span></p>
-
-        <p>​<img alt="" src="https://googledrive.com/host/0B8KqLaP_s06IbUltS0taeGhMckE/Picture4.PNG"
-                 style="height:156px; width:800px"/></span></p>
-
-
+        <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Visual Walkthrough of the main user
+            interface components:</strong></span></h3>
     </div>
 
-    <div id="footer">
-        <p class="footer_p">UNSW - Learning & Teching Unit, <br/>
-            Learning Analytics and Data Analysis Team.<br/>
-            For feedback/comments please contact unswmooc1@gmail.com<br/><br/><br/>
-            <strong>Last edited on date 24 august 2015. </strong>
-        </p>
-    </div>
+    <h4><span style="font-family:verdana,geneva,sans-serif"><strong>Home page overview:</strong></span></h4>
 
+    <p><img alt="" src="../images/manual/picture1.PNG"
+            style="height:429px; width:800px"/></p>
 
-</div>
-
-<div id="sidr">
-    <!-- Full menu content -->
     <ul>
-        <li ng-click="goToSingleView(sidrMap['home'][0].page)"
-            class="palm-cursor"><a>{{sidrMap['home'][0].section}}</a></li>
-        <h2>Overview</h2>
-        <li ng-repeat="item in sidrMap['overview'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-        <h2>Participants</h2>
-        <li ng-repeat="item in sidrMap['participants'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-        <h2>What did participants do?</h2>
-
-        <h3>Videos</h3>
-        <li ng-repeat="item in sidrMap['videos'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-
-        <h3>Content</h3>
-        <li ng-repeat="item in sidrMap['content'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-
-        <h3>Forums</h3>
-        <li ng-repeat="item in sidrMap['forum'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-
-        <h3>Assessment</h3>
-        <li ng-repeat="item in sidrMap['assessment'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-
-        <h3>Evaluation</h3>
-        <li ng-repeat="item in sidrMap['evaluation'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-
-        <h2>Social Media</h2>
-        <li ng-repeat="item in sidrMap['social media'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
-
-        <h2>Research</h2>
-
-        <li ng-repeat="item in sidrMap['research'] track by $index" ng-click="goToSingleView(item.page)"
-            class="palm-cursor"><a>{{item.section}}</a></li>
+        <li><span style="font-family:verdana,geneva,sans-serif">(a) Report Categories &ndash; data segmented by key areas</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">(b) Functional Domains &ndash; data segmented course elements</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">(c) Quick links &amp; site map</span></li>
+        <li><span style="font-family:verdana,geneva,sans-serif">(d) Help buttons section</span></li>
     </ul>
-</div>
 
+    <p>&nbsp;</p>
+
+    <h4><span style="font-family:verdana,geneva,sans-serif"><strong>Example page &ldquo;Overview from Report
+        Categories&rdquo;:</strong></span></h4>
+
+    <p><img alt="" src="../images/manual/picture2.PNG"
+            style="height:705px; width:800px"/></p>
+
+    <ul>
+        <li><span style="font-family:verdana,geneva,sans-serif">(e) Navigation menu (to move between pages)</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">(f) Help &ndash;
+            to get more information about a page</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">(g) Dashboard Guide &ndash; A quick guide to common features in the dashboard.</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">(h) Export tools &ndash; self-service tools to allow data download and further individual exploration</span>
+        </li>
+    </ul>
+
+    <p style="margin-left:54.0pt">&nbsp;</p>
+
+    <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Tabs with a page:</strong></span></h3>
+
+    <p><img alt="" src="../images/manual/picture3.PNG"
+            style="height:183px; width:800px"/></p>
+
+    <ul>
+        <li><span style="font-family:verdana,geneva,sans-serif">(i) Tabs help separate larger content areas into manageable chunks.</span>
+        </li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <hr/>
+    <p>&nbsp;</p>
+
+    <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Key Definitions:</strong></span></h3>
+
+    <ul>
+        <li><span style="font-family:verdana,geneva,sans-serif">Signature Track, refers to those who paid for a certificate</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">Non-Signature Track, refers to those who did not pay for the course</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">Distinction, refers to those who achieved a grade as per the formula for distinction</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">Pass, refers to those who achieved a grade as per the formula for distinction</span>
+        </li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <div>
+        <hr/>
+        <p>&nbsp;</p>
+    </div>
+
+    <h3><span style="font-family:verdana,geneva,sans-serif"><strong>Additional Notes:</strong></span></h3>
+
+    <ul>
+        <li><span style="font-family:verdana,geneva,sans-serif">Data is shown only for students (and excludes teacher/tutor/community mentor data)</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">Weeks 1..52 refer to calendar weeks, and situate when during the year, the course ran.</span>
+        </li>
+        <li><span style="font-family:verdana,geneva,sans-serif">Most graphs can be drilled down, via hovering on elements, for example:</span>
+        </li>
+    </ul>
+
+    <p>​<img alt="" src="../images/manual/picture5.PNG"
+             style="height:293px; width:800px"/></span></p>
+
+    <p>​<img alt=""  src="../images/manual/picture4.PNG"
+             style="height:156px; width:800px"/></span></p>
+
+
+</div>
+<div id="footer">
+    <p class="footer_p">UNSW - Learning & Teching Unit, <br/>
+        Learning Analytics and Data Analysis Team.<br/>
+        For feedback/comments please contact unswmooc1@gmail.com<br/><br/><br/>
+        <strong>Last edited on date 24 august 2015. </strong>
+    </p>
+</div>
 <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
 

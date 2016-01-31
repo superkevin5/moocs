@@ -34,48 +34,39 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
-            .state('course', {
-                url: '/dashboard/:courseName',
-                templateUrl: 'views/course_home.html',
+            .state('dash', {
+                url: '/dash/:courseName',
+                templateUrl: 'views/dash.html',
                 controller: 'DashboardCtrl'
             })
-            .state('singleview', {
+            .state('dash.single', {
                 url: '/singleview/:courseName/:page',
                 templateUrl: 'views/single_view.html',
-                controller: 'SingleViewCtrl',
-                reloadOnSearch: true
+                controller: 'SingleViewCtrl'
             })
-            .state('manual', {
-                url: '/manual/:courseName',
+            .state('dash.home', {
+                url: '/home',
+                templateUrl: 'views/course_home.html',
+                controller: 'HomeCtrl'
+            })
+            .state('dash.manual', {
+                url: '/manual',
                 templateUrl: 'views/manual.html',
                 controller: 'ManualCtrl'
             })
-
-
     })
-    .run(['$rootScope', '$state', '$stateParams','$cookies','$http','appConstants','$window','$timeout',
-        function ($rootScope, $state, $stateParams,$cookies,$http,appConstants,$window,$timeout) {
-
+    .run(['$rootScope', '$state', '$stateParams', '$cookies', '$http', 'appConstants', '$window', '$timeout',
+        function ($rootScope, $state, $stateParams, $cookies, $http, appConstants, $window, $timeout) {
             $rootScope.debugMode = appConstants.debugMode;
-
-            //$rootScope.globals = $cookies.get('globals') || {};
-            //if ($rootScope.globals.currentUser) {
-            //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-            //}
-
-            //$rootScope.$on('$locationChangeStart', function (event, next, current) {
-            //    // redirect to login page if not logged in
-            //    if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-            //        $state.go('login');
-            //    }
-            //});
-
-            $rootScope.$on('$locationChangeStart', function($event, changeTo, changeFrom) {
-
-                $timeout(function(){
-                    $.sidr( 'close', 'sidr' );
+            $rootScope.$on('$locationChangeStart', function ($event, changeTo, changeFrom) {
+                $timeout(function () {
+                    $.sidr('close', 'sidr');
                 });
-
             });
+
+            $rootScope.$on('$locationChangeSuccess', function() {
+                $rootScope.showhelp = false;
+            });
+
 
         }]);
