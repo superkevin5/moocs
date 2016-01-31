@@ -7,7 +7,7 @@ angular.module('mooc')
     .directive('moocTableau', function ($timeout) {
         var myDirective = {
             restrict: 'E',
-            template: '<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert><div id="tableauViz"></div>',
+            templateUrl: '../../views/tableauholder.html',
             scope: {
                 page: '=',
                 mooc: '=',
