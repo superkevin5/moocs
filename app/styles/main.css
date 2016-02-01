@@ -7666,7 +7666,8 @@ a.removedefaulthyper {
 #footer {
   width: 100%;
   position: fixed;
-  bottom: 0; }
+  bottom: 0;
+  height: 100px !important; }
 
 .footer_p {
   height: 100%;

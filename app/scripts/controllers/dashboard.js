@@ -57,7 +57,7 @@ angular
                 for (var i = 0, length = main.length; i < length; i++) {
 
                     var o = main[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('report')) {
+                    if (o.type.indexOf('report')===-1) {
                         continue;
                     }
                     angular.isUndefined($scope.mainMap[category]) && ($scope.mainMap[category] = o);
@@ -66,7 +66,7 @@ angular
 
                 for (var i = 0, length = main.length; i < length; i++) {
                     var o = main[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('domain')) {
+                    if (o.type.indexOf('domain')===-1) {
                         continue;
                     }
                     angular.isUndefined($scope.domMap[category]) && ($scope.domMap[category] = o);
@@ -163,7 +163,7 @@ angular
                         var section = $scope.courseDetail.mooc[key];
 
                         for (var y = 0, length = section.length; y < section.length; y++) {
-                            if (angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.includes($scope.viewType)) {
+                            if (angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.indexOf($scope.viewType) !=-1) {
 
                                 var html = section[y].description;
 

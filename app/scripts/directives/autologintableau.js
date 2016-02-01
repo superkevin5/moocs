@@ -13,14 +13,11 @@ angular.module('mooc')
             '</form>',
             link: function ($scope, iElm, iAttrs, controller) {
               //var childWindow = window.open('', 'formresult');
-              var windows = window.open("","formresult","width=500,height=300,toolbar=0");
+              var windows = window.open("","formresult",'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=0, top=0, width=200, height=200, visible=none', '');
               document.search.submit();
-
               setTimeout(function(){
                 windows.close();
-              },5000);
-
-
+              },8000);
             }
         };
         return myDirective;

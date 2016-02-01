@@ -12,15 +12,37 @@
         <li><a class="palm-cursor" ng-click="goToHome(courseName)">Home</a></li>
         <li><a class="palm-cursor">Report Categories</a>
             <ul>
-                <li ng-repeat="(key,value) in topMenuReportMap"><a class="palm-cursor"
-                                                                   ng-click="goToSingleView(value.page)">{{value.section|capitalize}}</a>
+                <li ng-repeat="(key,value) in topMenuReportMap"  ng-class="{'has-sub':isArray(value)}" >
+                    <a class="palm-cursor" ng-click="goToSingleView(value.page)" ng-if="!isArray(value)">
+                        {{value.section|capitalize}}
+                    </a>
+                    <a class="palm-cursor" ng-if="isArray(value)">
+                        {{value[0].section|capitalize}}
+                    </a>
+                    <ul ng-if="isArray(value)">
+                        <li  ng-repeat="subEle in value" class="longText">
+                            <a class="palm-cursor longText" ng-click="goToSingleView(subEle.page)">
+                                {{subEle.section|capitalize}}_ {{subEle.page|capitalize}}
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </li>
-        <li class='has-sub'><a class="palm-cursor">Functional Domains</a>
+        <li><a class="palm-cursor">Functional Domains</a>
             <ul>
-                <li ng-repeat="(key,value) in topMenuDomMap"><a class="palm-cursor"
-                                                                ng-click="goToSingleView(value.page)">{{value.section|capitalize}}</a>
+                <li ng-repeat="(key,value) in topMenuDomMap" ng-class="{'has-sub':isArray(value)}">
+                    <a class="palm-cursor" ng-click="goToSingleView(value.page)"  ng-if="!isArray(value)">{{value.section|capitalize}}</a>
+                    <a class="palm-cursor" ng-if="isArray(value)">
+                        {{value[0].section|capitalize}}
+                    </a>
+                    <ul ng-if="isArray(value)">
+                        <li  ng-repeat="subEle in value" class="longText">
+                            <a class="palm-cursor longText" ng-click="goToSingleView(subEle.page)">
+                                {{subEle.section|capitalize}}_ {{subEle.page|capitalize}}
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </li>

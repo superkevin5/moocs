@@ -9,7 +9,6 @@ angular
     .controller('SingleViewCtrl', ['$scope', '$window', '$stateParams', '$document', '$state', '$timeout', 'userCookie', 'appConstants', '$http', 'CourseDataService',
         function ($scope, $window, $stateParams, $document, $state, $timeout, userCookie, appConstants, $http, CourseDataService) {
 
-
             $scope.viewType = $stateParams.page;
             $scope.courseName = $stateParams.courseName;
 
@@ -63,7 +62,7 @@ angular
                 for (var i = 0, length = main.length; i < length; i++) {
 
                     var o = main[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('report')) {
+                    if (o.type.indexOf('report')===-1) {
                         continue;
                     }
                     angular.isUndefined($scope.mainMap[category]) && ($scope.mainMap[category] = o);
@@ -72,7 +71,7 @@ angular
 
                 for (var i = 0, length = main.length; i < length; i++) {
                     var o = main[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('domain')) {
+                    if (o.type.indexOf('domain')===-1) {
                         continue;
                     }
                     angular.isUndefined($scope.domMap[category]) && ($scope.domMap[category] = o);
@@ -109,6 +108,11 @@ angular
             };
 
 
+            $scope.isArray = function(o){
+                return angular.isArray(o);
+            };
+
+
             $scope.extractTopMenu = function (course) {
 
 
@@ -127,19 +131,38 @@ angular
                 for (var i = 0, length = topMenu.length; i < length; i++) {
 
                     var o = topMenu[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('report')) {
+                    if (o.type.indexOf('report')===-1) {
                         continue;
                     }
-                    angular.isUndefined($scope.topMenuReportMap[category]) && ($scope.topMenuReportMap[category] = o);
+
+                    if( angular.isUndefined($scope.topMenuReportMap[category])){
+                        $scope.topMenuReportMap[category] = o;
+                    }else if(angular.isDefined($scope.topMenuReportMap[category]) && !angular.isArray($scope.topMenuReportMap[category])){
+                        var pre =  $scope.topMenuReportMap[category];
+                        $scope.topMenuReportMap[category] = [pre];
+                        $scope.topMenuReportMap[category].push(o);
+                    }else if(angular.isDefined($scope.topMenuReportMap[category]) && angular.isArray($scope.topMenuReportMap[category])){
+                        $scope.topMenuReportMap[category].push(o);
+                    }
+
                 }
 
 
                 for (var i = 0, length = topMenu.length; i < length; i++) {
                     var o = topMenu[i], category = o.category.trim().toLowerCase();
-                    if (!o.type.includes('domain')) {
+                    if (o.type.indexOf('domain')===-1) {
                         continue;
                     }
-                    angular.isUndefined($scope.topMenuDomMap[category]) && ($scope.topMenuDomMap[category] = o);
+
+                    if( angular.isUndefined($scope.topMenuDomMap[category])){
+                        $scope.topMenuDomMap[category] = o;
+                    }else if(angular.isDefined($scope.topMenuDomMap[category]) && !angular.isArray($scope.topMenuDomMap[category])){
+                        var pre =  $scope.topMenuDomMap[category];
+                        $scope.topMenuDomMap[category] = [pre];
+                        $scope.topMenuDomMap[category].push(o);
+                    }else if(angular.isDefined($scope.topMenuDomMap[category]) && angular.isArray($scope.topMenuDomMap[category])){
+                        $scope.topMenuDomMap[category].push(o);
+                    }
                 }
             };
 

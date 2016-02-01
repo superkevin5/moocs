@@ -41,10 +41,10 @@ angular.module('mooc')
                             if (Array.isArray($scope.mooc[key])) {
                                 var section = $scope.mooc[key];
                                 for (var y = 0, length = section.length; y < section.length; y++) {
-                                    if (angular.isDefined(section[y].Link) && angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.includes($scope.page)) {
+                                    if (angular.isDefined(section[y].Link) && angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.indexOf($scope.page)!=-1) {
                                         url = section[y].Link;
                                     }
-                                    else if (angular.isDefined(section[y].link) && angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.includes($scope.page)) {
+                                    else if (angular.isDefined(section[y].link) && angular.isDefined(section[y].page) && (typeof section[y].page === 'string' || section[y].page instanceof String) && section[y].page.indexOf($scope.page)!=-1) {
                                         url = section[y].link;
                                     }
                                 }

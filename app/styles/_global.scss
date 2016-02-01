@@ -172,6 +172,7 @@ a.removedefaulthyper {
   width: 100%;
   position: fixed;
   bottom: 0;
+  height:100px !important;
 
 }
 
@@ -222,3 +223,4 @@ div.tooltip-inner {
 #cssmenu{
   z-index:999;
 }
+

@@ -307,4 +307,10 @@
   #cssmenu .submenu-button.submenu-opened:after {
     display: none;
   }
+  #cssmenu .longText{
+    width: 300px !important;
+  }
+}
+#cssmenu .longText{
+  width: 300px !important;
 }
