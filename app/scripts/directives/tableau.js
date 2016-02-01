@@ -14,7 +14,6 @@ angular.module('mooc')
                 viz: '='
             },
             link: function ($scope, iElm, iAttrs, controller) {
-                $scope.alerts = [];
                 $scope.initializeViz = function (url) {
                     var placeholderDiv = iElm[0].querySelector('#tableauViz');
                     var options = {
@@ -31,9 +30,7 @@ angular.module('mooc')
 
                 };
 
-                $scope.closeAlert = function (index) {
-                    $scope.alerts.splice(index, 1);
-                };
+
 
                 $scope.$watch('mooc', function (value) {
                     if (value) {
@@ -55,18 +52,27 @@ angular.module('mooc')
                         }
 
                         if (angular.isUndefined(url) || url === null || url === '') {
-                            $scope.alerts.push(
-                                {
-                                    type: 'danger',
-                                    msg: 'Invalid tableau URL'
-                                }
-                            );
+                            $scope.showCarousal = true;
+                            $scope.loadAllCarousal();
                         } else {
                             console.log(url);
+                            $scope.showCarousal = false;
                             $scope.initializeViz(url);
                         }
                     }
                 }, true);
+
+                $scope.loadAllCarousal = function(){
+                    $scope.myInterval = 5000;
+                    $scope.noWrapSlides = false;
+                    //var slides = $scope.slides = [];
+                    var currIndex = 0;
+
+                    $scope.imageQueue = ['a.png','b.png','c.png','d.png','e.png','f.png','g.png','h.png','i.png','j.png','k.png','l.png','m.png'];
+                };
+
+                $scope.loadAllCarousal();
+
             }
         };
         return myDirective;

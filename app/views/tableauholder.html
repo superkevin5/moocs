@@ -1,7 +1,11 @@
-<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
-
-
-<div ng-if="alerts.length!=0">
-
+<div ng-if="showCarousal">
+    <div class="carsousel">
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+            <uib-slide ng-repeat="slide in imageQueue">
+                <img ng-src="../images/carouseltemplate/{{slide}}">
+            </uib-slide>
+        </uib-carousel>
+    </div>
 </div>
-<div id="tableauViz" ng-if="alerts.length===0"></div>
+<div id="tableauViz" ng-if="!showCarousal"></div>
+
