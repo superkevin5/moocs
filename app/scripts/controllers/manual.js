@@ -148,39 +148,20 @@ angular
 
 
             $scope.goToSingleView = function (location) {
+                $state.go('dash.single', {
+                    courseName: $scope.courseName,
+                    page: location
+                });
 
-                try {
-                    $window.location.href = '/#/singleview/' + $scope.courseName + '/' + location;
-
-                    //$window.location.href = 'https://cc3948027cc783f6aae60587c570b1b52afa7eec.googledrive.com/host/0B5lCcvQYS1mRZ3Bsd05KcUFGTE0/#/singleview/' + $scope.courseName + '/' + location;
-                }
-                finally{
-                    $window.location.reload(true);
-                }
-                //hacky way
-                //angular.element(document.querySelector('#mooc')).removeAttr('style');
             };
 
             $scope.goToHome = function (courseName) {
-                try {
-                    $window.location.href = '/#/dashboard/' + courseName;
-
-                    //$window.location.href = 'https://cc3948027cc783f6aae60587c570b1b52afa7eec.googledrive.com/host/0B5lCcvQYS1mRZ3Bsd05KcUFGTE0/#/dashboard/' + courseName;
-                }
-                finally{
-                    $window.location.reload(true);
-                }
-
+                $state.go('dash.home');
             };
+
+
             $scope.goToManual = function (courseName) {
-                try {
-                    $window.location.href = '/#/manual/' + courseName;
-
-                    //$window.location.href = 'https://cc3948027cc783f6aae60587c570b1b52afa7eec.googledrive.com/host/0B5lCcvQYS1mRZ3Bsd05KcUFGTE0/#/manual/' + courseName;
-                }finally{
-                    $window.location.reload(true);
-
-                }
+                $state.go('dash.manual');
             };
 
 
