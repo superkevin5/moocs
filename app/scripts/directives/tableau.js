@@ -7,7 +7,16 @@ angular.module('mooc')
     .directive('moocTableau', function ($timeout,appConstants) {
         var myDirective = {
             restrict: 'E',
-            templateUrl: appConstants.appPathIngoogleDrive+ 'views/tableauholder.html',
+            template: '<div ng-if="showCarousal">'+
+            '<div class="carsousel">'+
+            '<uib-carousel interval="myInterval" no-wrap="noWrapSlides">'+
+            '<uib-slide ng-repeat="slide in imageQueue">'+
+            '<img ng-src="{{$root.appPath}}/images/carouseltemplate/{{slide}}">'+
+            '</uib-slide>'+
+            '</uib-carousel>'+
+            '</div>'+
+            '</div>'+
+            '<div id="tableauViz" ng-if="!showCarousal"></div>',
             scope: {
                 page: '=',
                 mooc: '=',
