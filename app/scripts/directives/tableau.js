@@ -4,10 +4,10 @@
 'use strict';
 
 angular.module('mooc')
-    .directive('moocTableau', function ($timeout) {
+    .directive('moocTableau', function ($timeout,appConstants) {
         var myDirective = {
             restrict: 'E',
-            templateUrl: '../../views/tableauholder.html',
+            templateUrl: appConstants.appPathIngoogleDrive+ 'views/tableauholder.html',
             scope: {
                 page: '=',
                 mooc: '=',
