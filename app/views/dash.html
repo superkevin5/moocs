@@ -3,7 +3,7 @@
     <div class="button" uib-tooltip="{{'sidr'|superTooltip}}"
          tooltip-placement="left">
         <a id="simple-menu" href="#sidr">
-            <img toggle-sidr-menu src="../../images/pullicon_small.png"
+            <img toggle-sidr-menu ng-src="{{$root.appPath}}/images/pullicon_small.png"
                  id="pullicon"/>
         </a>
     </div>
@@ -14,21 +14,21 @@
                 <h1>| {{courseName}} MOOC Dashboard</h1></div>
             <div id="help">
                 <span ng-click="showMoocHelp()" ng-init="showhelp=false" class="palm-cursor">
-                <img src="../../images/question_mark_35.png"
+                <img ng-src="{{$root.appPath}}/images/question_mark_35.png"
                      id="helpbutton" title="Detailed information"
                      uib-tooltip="{{'dashhelp'|superTooltip}}"
                      tooltip-placement="left"/>
                 </span>
                 <span ng-click="goToManual(courseName)" class="palm-cursor">
 
-                    <img src="../../images/manual_35.png"
+                    <img ng-src="{{$root.appPath}}/images/manual_35.png"
                          id="manual" title="User instructions"
                          uib-tooltip="{{'dashmanual'|superTooltip}}" h
                          tooltip-placement="bottom"/>
 
                 </span>
     <span ng-click="goToHome(courseName)" class="palm-cursor"><img
-            src="../../images/home_35.png"
+            ng-src="{{$root.appPath}}/images/home_35.png"
             id="homebutton" title="Home page"
             uib-tooltip="{{'dashhome'|superTooltip}}"
             tooltip-placement="top"/></span>

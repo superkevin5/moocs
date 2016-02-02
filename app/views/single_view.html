@@ -67,19 +67,19 @@
     <div id="tools" class="nastycenter">
         <ul>
             <li ng-click="viz.showExportImageDialog()" class="palm-cursor" title="Export as picture">
-                <img src="../images/toold_img.png"
+                <img ng-src="{{$root.appPath}}/images/toold_img.png"
                      uib-popover="{{'export_pic'|superTooltip}}" popover-trigger="mouseenter"
                      popover-placement="top"
                         />
             </li>
             <li class="palm-cursor" ng-click="viz.showExportPDFDialog()"><img
-                    src="../images/toold_pdf.png"
+                    ng-src="{{$root.appPath}}/images/toold_pdf.png"
 
                     uib-popover="{{'export_pdf'|superTooltip}}" popover-trigger="mouseenter"
                     popover-placement="top"
                     /></li>
             <li class="palm-cursor" ng-click="viz.showExportDataDialog()"><img
-                    src="../images/toold_data.png"
+                    ng-src="{{$root.appPath}}/images/toold_data.png"
                     uib-popover="{{'export_exp'|superTooltip}}" popover-trigger="mouseenter"
                     popover-placement="top"
                     /></li>

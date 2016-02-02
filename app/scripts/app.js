@@ -58,6 +58,9 @@ angular
     .run(['$rootScope', '$state', '$stateParams', '$cookies', '$http', 'appConstants', '$window', '$timeout',
         function ($rootScope, $state, $stateParams, $cookies, $http, appConstants, $window, $timeout) {
             $rootScope.debugMode = appConstants.debugMode;
+
+            $rootScope.appPath = appConstants.appPathIngoogleDrive;
+
             $rootScope.$on('$locationChangeStart', function ($event, changeTo, changeFrom) {
                 $timeout(function () {
                     $.sidr('close', 'sidr');

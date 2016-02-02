@@ -2,7 +2,7 @@
     <div class="carsousel">
         <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
             <uib-slide ng-repeat="slide in imageQueue">
-                <img ng-src="../images/carouseltemplate/{{slide}}">
+                <img ng-src="{{$root.appPath}}/images/carouseltemplate/{{slide}}">
             </uib-slide>
         </uib-carousel>
     </div>

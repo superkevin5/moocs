@@ -6,7 +6,7 @@
 </div>
 <div id="mainbody" ng-if="!!courseDetail">
     <div id="leftBody" class="box">
-        <img src="../images/ReportCategory_small.png"
+        <img ng-src="{{$root.appPath}}/images/ReportCategory_small.png"
              uib-tooltip="Report categories represent standard report organised by specific labels. In general the categories refer to the course as a whole."
              tooltip-placement="right"/>
         <br/><br/>
@@ -53,7 +53,7 @@
 
         <p>
             <img id="Image-Maps-Com-image-maps-2015-06-03-033723"
-                 src="../../images/reportPie2.png" border="0"
+                 ng-src="{{$root.appPath}}/images/reportPie2.png" border="0"
                  width="350" height="352" orgWidth="350" orgHeight="352" usemap="#image-maps-2015-06-03-033723"
                  alt="" mooc-map class="centerElement"/>
             <map name="image-maps-2015-06-03-033723" id="ImageMapsCom-image-maps-2015-06-03-033723">
@@ -80,7 +80,7 @@
             </map>
         </p>
         <p class="text-center">
-            <img src="../../images/Domains_small_up.png"
+            <img ng-src="{{$root.appPath}}/images/Domains_small_up.png"
                  uib-tooltip="{{'function_domain'|superTooltip}}"
                  tooltip-placement="bottom"
                  class="centerElement palm-cursor"/>
