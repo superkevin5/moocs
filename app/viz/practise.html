@@ -5,24 +5,29 @@
     <meta charset="utf-8">
     <title>HelloWorld</title>
     <style>
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: black;
-        shape-rendering: crispEdges;
-    }
-    
-    .axis text {
-        font-family: sans-serif;
-        font-size: 11px;
-    }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            font-family: sans-serif;
+            font-size: 11px;
+        }
     </style>
 </head>
 
 <body>
-    <p id="id">Hello World 1</p>
-    <p>Hello World 2</p>
-    <script>
+<p id="id">Hello World 1</p>
+<p>Hello World 2</p>
+
+<div class="MyRect">
+
+</div>
+
+<script>
     //var p =d3.select("body").select("p").text("www.ourd3js.com");
     // var p =d3.select("body").selectAll("p").text("www.ourd3js.com");
     // p.style("color","red").style("font-size","72px");
@@ -33,40 +38,28 @@
     // p.text(function(d, i){
     //     return "第 "+ i + " 个元素绑定的数据是 " + d;
     // });
-
     // var dataset = ["I like dogs","I like cats","I like snakes"];
     // var body = d3.select("body");
     // var p = body.selectAll("p");
-
     // p.data(dataset)
     //   .text(function(d, i){
     //       return d;
     //   });
-
-
     // body.append("p")
     //     .text("append p element");
-
-
     // body.insert("p","#id")
     //     .text("append p element");
-
     // var p = body.select("#id");
     // p.remove();
-
-
     // svg
     // var dataset = [250, 210, 170, 130, 90];
     // var width = 300;  //画布的宽度
     // var height = 300;   //画布的高度
-
     // var svg = d3.select("body")     //选择文档中的body元素
     //         .append("svg")          //添加一个svg元素
     //         .attr("width", width)       //设定宽度
     //         .attr("height", height);    //设定高度
-
     // var rectHeight = 25;   //每个矩形所占的像素高度(包括空白)
-
     // svg.selectAll("rect")
     //         .data(dataset)
     //         .enter()
@@ -80,34 +73,25 @@
     //         })
     //         .attr("height", rectHeight - 2)
     //         .attr("fill", "steelblue");
-
-
     // var dataset = [1.2, 2.3, 0.9, 1.5, 3.3];
     // var min = d3.min(dataset);
     // var max = d3.max(dataset);
-
     // var linear = d3.scale.linear()
     //         .domain([min, max])
     //         .range([0, 300]);
-
     // linear(0.9);    //返回 0
     // linear(2.3);    //返回 175
     // linear(3.3);  
-
     // console.log(linear(2.3));
-
     // var index = [0, 1, 2, 3, 4];
     // var color = ["red", "blue", "green", "yellow", "black"];
     // var ordinal = d3.scale.ordinal()
     //         .domain(index)
     //         .range(color);
-
     // console.log(ordinal(0)); //返回 red
     // ordinal(2); //返回 green
     // ordinal(4); //返回 black
-
     // var rectHeight = 25;   //每个矩形所占的像素高度(包括空白)
-
     // svg.selectAll("rect")
     //     .data(dataset)
     //     .enter()
@@ -121,8 +105,6 @@
     //     })
     //     .attr("height",rectHeight-2)
     //     .attr("fill","steelblue");
-
-
     //     var width = 300;  //画布的宽度
     //     var height = 300;   //画布的高度
     //   var svg = d3.select("body")     //选择文档中的body元素
@@ -131,34 +113,24 @@
     //             .attr("height", height);    //设定高度
     // // 数据
     // var dataset = [ 2.5 , 2.1 , 1.7 , 1.3 , 0.9 ];
-
     // //定义比例尺
     // var linear = d3.scale.linear()
     //       .domain([0, d3.max(dataset)])
     //       .range([0, 250]);
-
     // var axis = d3.svg.axis()
     //      .scale(linear)      //指定比例尺
     //      .orient("bottom")   //指定刻度的方向
     //      .ticks(7);          //指定刻度的数量
     // svg.append("g")
     //    .call(axis);
-
-
-
-
     // /*
-
     // axis style
-
     // */
     // var dataset = [ 2.5 , 2.1 , 1.7 , 1.3 , 0.9 ];
-
     // //定义比例尺
     // var linear = d3.scale.linear()
     //       .domain([0, d3.max(dataset)])
     //       .range([0, 250]);
-
     // var width = 900; //画布的宽度
     // var height = 900; //画布的高度
     // var svg = d3.select("body") //选择文档中的body元素
@@ -169,18 +141,14 @@
     //     .scale(linear) //指定比例尺
     //     .orient("top") //指定刻度的方向
     //     .ticks(7); //指定刻度的数量
-
     // svg.append("g")
     //     .attr("class", "axis")
     //     .attr("transform", "translate(20,130)")
     //     .call(axis);
-
-
     /*
-	rectangle
-    axis style
-
-    */
+     rectangle
+     axis style
+     */
     // var dataset = [2.5, 2.1, 1.7, 1.3, 0.9];
     // var padding = {
     //     left: 30,
@@ -192,7 +160,6 @@
     // var linear = d3.scale.linear()
     //     .domain([0, d3.max(dataset)])
     //     .range([0, 250]);
-
     // var width = 900; //画布的宽度
     // var height = 900; //画布的高度
     // var svg = d3.select("body") //选择文档中的body元素
@@ -203,27 +170,339 @@
     //     .scale(linear) //指定比例尺
     //     .orient("top") //指定刻度的方向
     //     .ticks(7); //指定刻度的数量
-
     // svg.append("g")
     //     .attr("class", "axis")
     //     .attr("transform", "translate(20,130)")
     //     .call(axis);
 
 
-//定义一个数组
-var dataset = [10, 20, 30, 40, 33, 24, 12, 5];
-        
-//x轴的比例尺
-var xScale = d3.scale.ordinal()
-    .domain(d3.range(dataset.length))
-    .rangeRoundBands([0, width - padding.left - padding.right]);
 
-//y轴的比例尺
-var yScale = d3.scale.linear()
-    .domain([0,d3.max(dataset)])
-    .range([height - padding.top - padding.bottom, 0]);
-    
-    </script>
+    //histogram
+
+
+    // var domainOnlyScale = d3.scale.linear().domain([0,10000]);
+
+    // var linearScale = d3.scale.linear()
+    //                   .domain([0,10000])
+    //                   .range([0,100]);
+
+    // var initialScaleData = [0, 1000, 3000, 2000, 5000, 4000, 7000, 6000, 9000, 8000, 10000];
+
+    // var maxInitialData = d3.max(initialScaleData);
+
+
+    // var initialScaleData2 = [0, 1000, 3000, 2000, 5000, 4000, 7000, 6000, 9000, 8000, 10000];
+
+    // var minInitialData2 = d3.min(initialScaleData);
+
+    // console.log(maxInitialData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////    // console.log(domainOnlyScale(1));
+//    var width = 400;
+//    var height = 400;
+//    var svg = d3.select("body")     //选择文档中的body元素
+//            .append("svg")          //添加一个svg元素
+//            .attr("width", width)       //设定宽度
+//            .attr("height", height);    //设定高度
+//
+////    //定义一个数组
+//    var dataset = [10, 20, 30, 40, 33, 24, 12, 5];
+//    //画布周边的空白
+//    var padding = {left:30, right:30, top:20, bottom:20};
+////
+////
+////    // console.log(d3.range(dataset.length));
+////
+////    //x轴的比例尺
+//    var xScale = d3.scale.ordinal()
+//            .domain(d3.range(dataset.length))
+//            .rangeRoundBands([0, width - padding.left - padding.right]);
+//
+//
+////    console.log(xScale.range());
+//
+////    console.log(xScale(0));
+////    console.log(xScale(1));
+////    console.log(xScale(2));
+////    console.log(xScale(3));
+////    console.log(xScale(4));
+////console.log(d3.range(8));
+//
+////    y轴的比例尺
+//    var yScale = d3.scale.linear()
+//            .domain([0,d3.max(dataset)])
+//            .range([height - padding.top - padding.bottom, 0]);
+//
+//
+//
+//
+//    //定义x轴
+//    var xAxis = d3.svg.axis()
+//            .scale(xScale)
+//            .orient("bottom");
+//
+//    //定义y轴
+//    var yAxis = d3.svg.axis()
+//            .scale(yScale)
+//            .orient("left");
+//
+//
+//
+//    //矩形之间的空白
+//    var rectPadding = 4;
+//
+//    //添加矩形元素
+//    var rects = svg.selectAll(".MyRect")
+//            .data(dataset)
+//            .enter()
+//            .append("rect")
+//            .attr("class","MyRect")
+//            .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+//            .attr("x", function(d,i){
+//                return xScale(i) + rectPadding/2;
+//            } )
+//            .attr("y",function(d){
+//                var d = yScale(d);
+//                return d
+//            })
+//            .attr("width", xScale.rangeBand() - rectPadding )
+//            .attr("height", function(d){
+//                return height - padding.top - padding.bottom - yScale(d);
+//            })
+//            .attr("fill","steelblue")       //填充颜色不要写在CSS里
+//            .on("mouseover",function(d,i){
+//                d3.select(this)
+//                        .attr("fill","yellow");
+//            })
+//            .on("mouseout",function(d,i) {
+//                d3.select(this)
+//                        .transition()
+//                        .duration(500)
+//                        .attr("fill", "steelblue");
+//            });
+//
+//
+//
+//
+//
+//    //添加文字元素
+//    var texts = svg.selectAll(".MyText")
+//            .data(dataset)
+//            .enter()
+//            .append("text")
+//            .attr("class","MyText")
+//            .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+//            .attr("x", function(d,i){
+//                return xScale(i) + rectPadding/2;
+//            } )
+//            .attr("y",function(d){
+//                return yScale(d);
+//            })
+//            .attr("dx",function(){
+//                return (xScale.rangeBand() - rectPadding)/2;
+//            })
+//            .attr("dy",function(d){
+//                return 20;
+//            })
+//            .text(function(d){
+//                return d;
+//            });
+//
+//
+//
+//    //添加x轴
+//    svg.append("g")
+//            .attr("class","axis")
+//            .attr("transform","translate(" + padding.left + "," + (height - padding.bottom) + ")")
+//            .call(xAxis);
+//
+//    //添加y轴
+//    svg.append("g")
+//            .attr("class","axis")
+//            .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+//            .call(yAxis);
+
+
+
+//    var myScale = d3.scale.ordinal()
+//            .domain(d3.range(dataset.length))
+//            .rangeRoundBands([0, width - padding.left - padding.right]);
+//
+//
+//
+//    var ramp=d3.scale.linear().domain([0,100]).range(["red","blue"]);
+//
+//
+//    var clamp=d3.scale.linear().domain([20,80]).range([0,120]);
+//    clamp(100); // 160
+//    clamp.clamp(true);
+//    clamp(100); // 120
+
+
+//
+//    var data=[-2.347, 4, 5.23,-1.234,6.234,7.431]; // or whatever.
+//    var y=d3.scale.linear().range([0,120]);
+//    y.domain([d3.min(data), d3.max(data)]); // domain takes bounds as arguments, not all numbers
+//    y.domain() // [-2.347, 7.431];
+//    y.nice() // [-3, 8]
+//
+//
+//    var y=d3.scale.linear().domain([20,80]).range([0,120]);
+
+    // var ticks=axis.selectAll("line")
+    //   .data(y.ticks(4)) // 20, 40, 60 and 80
+    //   .enter().append("svg:line");
+
+    // ticks
+    //   .attr("x1",0).attr("x2",5)
+    //   .attr("y1",y).attr("y2",y) // short and simple.
+    //   .attr("stroke","black");
+
+
+//    console.log(y.ticks(5));
+//
+//    y.clamp(true);
+//    console.log(y(1));
+////
+////
+//    var y=d3.scale.linear([20,80]).range([0,120]);
+//    y(50); // 60
+//    y.invert(60); // 50
+
+//    var xx=d3.scale.ordinal()
+//            .domain(["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]) // 7 items
+//            .rangeBands([0,120]);
+//    console.log(xx("Tuesday"));
+//
+//    var x=d3.scale.ordinal()
+//            .domain(["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]);
+//    x.rangePoints([0,120]);
+//    x("Saturday"); // 120
+//    x.rangeBands([0,120]);
+//    x("Saturday"); // 102.85714285714286
+////    x("Saturday")+x.rangeBand(); // 120
+//    var dataset = [2.5, 2.1, 1.7, 1.3, 0.9];
+//    var p = d3.select("body").selectAll("p");
+//
+//    //获取update部分
+//    var update = p.data(dataset);
+//
+//    //获取enter部分
+//    var enter = update.enter();
+//
+//    //update部分的处理：更新属性值
+//    update.text(function(d){
+//        return "update " + d;
+//    });
+//
+//    //enter部分的处理：添加元素后赋予属性值
+//    enter.append("p")
+//            .text(function(d){
+//                return "enter " + d;
+//            });
+
+
+
+    var width = 800, height=800;
+    var nodes = [ { name: "桂林" }, { name: "广州" },
+        { name: "厦门" }, { name: "杭州" },
+        { name: "上海" }, { name: "青岛" },
+        { name: "天津" } ];
+
+    var edges = [ { source : 0 , target: 1 } , { source : 0 , target: 2 } ,
+        { source : 0 , target: 3 } , { source : 1 , target: 4 } ,
+        { source : 1 , target: 5 } , { source : 1 , target: 6 } ];
+
+
+
+
+    var force = d3.layout.force()
+            .nodes(nodes) //指定节点数组
+            .links(edges) //指定连线数组
+            .size([width,height]) //指定作用域范围
+            .linkDistance(150) //指定连线长度
+            .charge([-400]); //相互之间的作用力
+
+    force.start();
+    console.log(nodes);
+    console.log(edges);
+
+    var svg = d3.select("body")     //选择文档中的body元素
+                .append("svg")          //添加一个svg元素
+                .attr("width", width)       //设定宽度
+                .attr("height", height);    //设定高度
+
+
+    var svg_edges = svg.selectAll("line")
+            .data(edges)
+            .enter()
+            .append("line")
+            .style("stroke","#ccc")
+            .style("stroke-width",1);
+
+    var color = d3.scale.category20();
+
+
+    //添加节点
+    var svg_nodes = svg.selectAll("circle")
+            .data(nodes)
+            .enter()
+            .append("circle")
+            .attr("r",20)
+            .style("fill",function(d,i){
+                return color(i);
+            })
+            .call(force.drag);  //使得节点能够拖动
+
+    //添加描述节点的文字
+    var svg_texts = svg.selectAll("text")
+            .data(nodes)
+            .enter()
+            .append("text")
+            .style("fill", "black")
+            .attr("dx", 20)
+            .attr("dy", 8)
+            .text(function(d){
+                return d.name;
+            });
+
+
+    force.on("tick", function(){ //对于每一个时间间隔
+        //更新连线坐标
+        svg_edges.attr("x1",function(d){ return d.source.x; })
+                .attr("y1",function(d){ return d.source.y; })
+                .attr("x2",function(d){ return d.target.x; })
+                .attr("y2",function(d){ return d.target.y; });
+
+        //更新节点坐标
+        svg_nodes.attr("cx",function(d){ return d.x; })
+                .attr("cy",function(d){ return d.y; });
+
+        //更新文字坐标
+        svg_texts.attr("x", function(d){ return d.x; })
+                .attr("y", function(d){ return d.y; });
+    });
+</script>
 </body>
 
 </html>

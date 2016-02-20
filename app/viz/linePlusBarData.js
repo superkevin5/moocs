@@ -5,6 +5,7 @@ d3.json("linePlusBarData.json",function(error,data) {
             //We can set x data accessor to use index. Reason? So the bars all appear evenly spaced.
             .x(function(d,i) { return i })
             .y(function(d,i) {return d[1] })
+             .options({focusEnable: false}); // here it is
             ;
 
       chart.xAxis.tickFormat(function(d) {
