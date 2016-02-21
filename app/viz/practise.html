@@ -283,6 +283,7 @@
             } )
             .attr("y",function(d){
                 var d = yScale(d);
+                console.log(d);
                 return d
             })
             .attr("width", xScale.rangeBand() - rectPadding )
@@ -444,8 +445,8 @@
             .charge([-400]); //相互之间的作用力
 
     force.start();
-    console.log(nodes);
-    console.log(edges);
+    // console.log(nodes);
+    // console.log(edges);
 
     var svg = d3.select("body")     //选择文档中的body元素
                 .append("svg")          //添加一个svg元素
