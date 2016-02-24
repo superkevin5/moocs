@@ -110,7 +110,6 @@ var line = d3.svg.line()
     .y(function (d) {
         var v2 = map[d].value2;
         return y2Scale(v2);
-        ;
     });
 
 svg.append("g")
@@ -165,33 +164,27 @@ svg.append("rect")
     .attr("width", 10)
     .attr("height", 10);
 
+svg.append("foreignObject")
+    .attr("width", 180)
+    .attr("height", 100)
+    .attr("id", "note")
+    .append("xhtml:body")
+    .attr("display", "none")
+    .style("font", "10px 'Helvetica Neue'");
+
 
 function showData(obj, d) {
     var coord = d3.mouse(obj);
-    var infobox = d3.select(".infobox");
+    var infobox = d3.select("#note");
     var v2 = map[d].value2;
-    // return xScale(d) + rectPadding / 2 + (xScale.rangeBand() - rectPadding) / 2;
-    // return y2Scale(v2);
-    // now we just position the infobox roughly where our mouse is
-
     console.log(coord);
-
-
-    var v2 = map[d].value2;
-        //y2Scale(v2);
-
-//.attr("transform", "translate(" + padding.left + "," + padding.top + ")")
-
-    infobox.style("left", padding.left+xScale(d) + rectPadding / 2 + (xScale.rangeBand() - rectPadding) / 2);
-    infobox.style("top",  padding.top+( y2Scale(v2)));
-    $(".infobox").html("Completed Activity : " + d + ' <br> ' + "Cumulative Change :" + v2);
-    $(".infobox").show();
+    infobox.attr("x", coord[0]);
+    infobox.attr("y", coord[1] + 100);
+    infobox.attr("display", "block");
+    infobox.html("<div class=infobox>Completed Activity : " + d + ' <br>' + "Cumulative Change :" + v2 + "</div>");
 }
-
 
 function hideData() {
-    $(".infobox").hide();
+    var infobox = d3.select("#note");
+    infobox.attr("display", "none")
 }
-
-
-//$("#chart").append("<div class='infobox' style='display:none'>Test</div>");
