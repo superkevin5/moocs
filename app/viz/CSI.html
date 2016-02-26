@@ -1,0 +1,390 @@
+/**
+ * Created by kevin on 2/26/2016.
+ */
+<!--?php $current_user = wp_get_current_user(); $myHash=md5($current_user-&gt;user_email);&lt;br ?--> $hashID = base_convert($myHash, 8, 10);
+// get the first value of designated key name = custom type
+$key_1_value = get_post_meta(get_the_ID(), 'testType', true);
+if($key_1_value != '') {
+    $myTest = $key_1_value;
+}
+
+//remove this after testing
+//$hashID = '12345';
+
+//get the value from WP extended profile
+$myTestOutput = (get_user_meta($current_user-&gt;ID, 'testData', TRUE));
+$output1 = $myTestOutput[CogS1];
+$output2 = $myTestOutput[CogS2];
+
+/*
+ $myTest = 'CogS1';
+ $jsonurl = "http://ls03.e-what.net/results/bkdrpr6.php?tokenid=" . $hashID . "&amp;test=" . $myTest;
+ $json = file_get_contents($jsonurl,0,null,null);
+ $output1 = json_decode($json, true);
+
+ $myTest = 'CogS2';
+ $jsonurl = "http://ls03.e-what.net/results/bkdrpr6.php?tokenid=" . $hashID . "&amp;test=" . $myTest;
+ $json = file_get_contents($jsonurl,0,null,null);
+ $output2 = json_decode($json, true);
+ */
+?&gt;
+
+[raw]
+<script>// <![CDATA[
+jQuery(document).ready(function($) {
+    $( "#tabs" ).tabs();
+    $( "#accordion" ).accordion();
+});
+// ]]></script>
+[/raw]
+
+&nbsp;
+<div id="tabs">
+    <ul>
+    <li><a href="#fragment-1">Description</a></li>
+<li>Your CSI results</li>
+<li><a href="#fragment-3">Your CoSI Results</a></li>
+<li><a href="#fragment-4">References</a></li>
+</ul>
+<div id="fragment-1">
+    Cognitive styles refer to the preferred way an individual processes information. Unlike individual differences in abilities, which describe peak performance, styles describe a person's typical or preferred mode of thinking, remembering or problem solving.
+There are many instruments to measure styles and these usually usually consider bipolar dimensions whereas abilities are unipolar (ranging from zero to a maximum value).
+
+Having more of an ability is usually considered beneficial while having a particular cognitive style simply denotes a tendency to behave in a certain manner.
+    Cognitive style is a usually described as a personality dimension which influences attitudes, values, and social interaction.
+
+    In this profile we used two well known instruments from the work of Allinson and Hayes and Cools &amp; colleagues.
+
+&nbsp;
+
+</div>
+<div id="fragment-2">
+    According to Allinson and Hayes, there is a single, overarching dimension underpinning the various facets of cognitive style identified by previous researchers, which the CSI is designed to assess. Allinson and Hayes label this superordinate dimension, ‘the intuition-analysis dimension’: <strong>Intuition</strong> refers to immediate judgement based on feeling and the adoption of a global perspective. <strong>Analysis</strong> refers to judgement based on mental reasoning and a focus on detail (Allinson &amp; Hayes, 1996).
+
+    The CSI is the instrument they devised to evaluate a unidimensional construct, where analysis and intuition are viewed as bipolar opposites of a single continuum.
+    A number of significant relationships have emerged in studies which have explored the CSI in relation to cross-national differences, entrepreneurial behaviour, gender differences and differences on the basis of job level, the impact of cognitive style on leader–member relations and its degree of correlation with a variety of personality scales.
+
+    These make it an interesting tool to adopt in this context in relation to the other facets considered.
+    In particular, it is possible to compare the scores with two of the Myers–Briggs dimensions: ‘<em>thinking versus feeling</em>’ and ‘<em>sensing versus intuiting</em>'. The former dimension refers to stylistic preferences concerned with the ways in which individuals gather information, i.e. the processes by which information is acquired. The latter dimension, by contrast, is concerned with the ways in which individuals evaluate information in order to reach decisions.
+
+It is intuitive to grasp the importance of these preferences in everyday decision making. In fact the distinction of a rational system operates primarily at the conscious level and is intentional, analytic, primarily verbal, and relatively affect free, and an experiential system assumed to be automatic, preconscious, holistic, associationistic, primarily non-verbal, and intimately associated with affect is at the foundation of the Intution/analysis theories, or the left/right brain theories in popular literature.
+<table>
+<tbody>
+<tr>
+<td width="45%">
+    <h3>Your styles:</h3>
+<strong>Intution: <!--?php echo $output1[1][0]; ?--></strong>
+<strong>Analysis: <!--?php echo $output1[1][1]; ?--></strong>
+<strong>Intution/Analysis metric as continuum: <!--?php echo $output1[1][2]; ?--></strong>
+
+<span style="color: white;">.</span>
+<pre id="csi" style="display: none;">jQuery(document).ready(function($) {
+
+        data = [<!--?php echo $output1[1][0];?-->, <!--?php echo $output1[1][1];?-->, <!--?php echo $output1[1][2];?-->];
+//data = [22,20,42];
+
+        function draw_csi ( el, _csi_data )
+        {
+            var csi_data = _csi_data,
+                chart = d3.select( el ).append("svg")
+                    .attr("width",  220)
+                    .attr("height", 220)
+                    .append("g")
+                    .attr("transform", "translate(120,100)");
+
+            var x = d3.scale.linear()
+                    .domain([-50, 50])
+                    .range([-70, 70])
+
+                , tot = d3.scale.linear()
+                    .domain([-100, 100])
+                    .range([-50, 50])
+
+                , y = d3.scale.linear()
+                    .domain([-50, 50])
+                    .range([50, -90]);
+
+            var scale = [-50, -25, 0, 25, 50] ;
+
+            chart.selectAll("line.v")
+                .data( scale )
+                .enter().append("line")
+                .attr( "class", "v")
+                .attr("x1", x)
+                .attr("x2", x)
+                .attr("y1", y( -50) )
+                .attr("y2", y( 50 ) )
+                .style("stroke", "#ccc");
+
+            chart.selectAll("line.h")
+                .data( scale )
+                .enter().append("line")
+                .attr( "class", "h")
+                .attr("x1", x(-50))
+                .attr("x2", x(50) )
+                .attr("y1", y)
+                .attr("y2", y)
+                .style("stroke", "#ccc");
+
+            chart.selectAll(".rule.h")
+                .data( scale )
+                .enter().append("text")
+                .attr( "class", "h")
+                .attr("x", x)
+                .attr("y", y(-50) )
+                .attr("dy", 20)
+                .attr("text-anchor", "middle")
+                .text( String );
+
+
+            chart.selectAll(".rule.v")
+                .data( scale )
+                .enter().append("text")
+                .attr( "class", "v")
+                .attr("x", x(-50) - 10 )
+                .attr("y", y)
+                .attr("dy", 7)
+                .attr("text-anchor", "end")
+                .text( String );
+
+            chart.append("line")
+                .attr("y1", y(-50) )
+                .attr("y2", y( 50) )
+                .attr("x1", x(   0) )
+                .attr("x2", x(   0) )
+                .style("stroke", "#000");
+
+            chart.append("line")
+                .attr("y1", y(0) )
+                .attr("y2", y(0) )
+                .attr("x1", x(-50))
+                .attr("x2", x(50) )
+                .style("stroke", "#000");
+
+            chart.append("circle")
+                .attr( "class", "data" )
+                .attr("cx", x( csi_data[ 0 ]) )
+                .attr("cy", y( csi_data[ 1 ]) )
+                .attr("r", 5 )
+                 .on("mouseover", function (d) {
+                    showData(this, d);
+                })
+                .on("mouseout", function () {
+                    hideData();
+                });
+
+
+            chart.append("rect")
+                .style("stroke", "#000")
+                .style("fill", "none")
+                .attr("x", x(-50) )
+                .attr("y", y(-80) )
+                .attr("height", 20 )
+                .attr("width", 140 ) ;
+
+            chart.append("circle")
+                .attr( "class", "csitot" )
+                .attr("r", 6 )
+                .attr("cx", tot( csi_data[2] ) )
+                .attr("cy", y(-80) + 9 ) ;
+
+            chart.append("text")
+                .attr( "class", "leyend_h")
+                .attr("x", x(0) )
+                .attr("y", y(-50) + 30 )
+                .attr("text-anchor", "middle")
+                .text( "Intuituion" );
+
+            chart.append("text")
+                .attr("transform", "rotate(-90) translate(20," + y(60) + ")" )
+                .attr( "class", "leyend_v")
+                .attr("x", 0 )
+                .attr("y", 0 )
+                .attr("text-anchor", "middle")
+                .text( "Analysis" );
+
+            chart.append("text")
+                .attr( "class", "leyend_b")
+                .attr("x", -80 )
+                .attr("y", y(-90) - 2 )
+                .attr("text-anchor", "end")
+                .text( "Total" );
+
+            chart.append("text")
+                .attr( "class", "leyend_b1")
+                .attr("x", 100)
+                .attr("y", y(-90) - 2 )
+                .attr("text-anchor", "end")
+                .text( "Max" );
+
+            chart.append("foreignObject")
+                .attr("width", 180)
+                .attr("height", 100)
+                .attr("id", "note")
+                .append("xhtml:body")
+                .attr("display", "none")
+                .style("font", "10px 'Helvetica Neue'");
+        }
+
+        draw_csi('#csi_chart', data);
+    });
+
+    function showData(obj, d) {
+        var coord = d3.mouse(obj);
+        var infobox = d3.select("#note");
+
+        var v2 = map[d].value2;
+
+        infobox.attr("x", coord[0]);
+        infobox.attr("y", coord[1] + 100);
+        infobox.attr("display", "block");
+        infobox.html("<div class=infobox>Analysis : " + d + ' <br>' + "Intuituion :" + v2 + "</div>");
+    }
+
+    function hideData() {
+        var infobox = d3.select("#note");
+        infobox.attr("display", "none")
+    }
+
+
+</pre>
+<div id="csi_chart" align="center"></div></td>
+<td>
+
+This is how other business groups score on the Intution/Analysis (Norms source Allinson &amp; Hayes 1996):
+<img src="http://ls03.e-what.net/results/images/csi_norms.png" alt="" width="80%" /></td>
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+</div>
+<div id="fragment-3">
+    CoSI: Cognitive Styles Indicator
+
+People with a <strong>knowing style</strong> look for facts and data. They want to know exactly the way thing are and tend to retain many facts and details. They like complex problems if they can find a clear and rational solution. Typical characteristics/concepts are: Facts, Details, Logical, Reflective, Objective, Impersonal, Rational Precision, Methodical
+
+People with a planning style are characterized by a need for structure.
+
+                                                                 People with a <strong>planning style</strong> like to organize and control and prefer a well-structured work environment. They attach importance to preparation and planning to reach their objectives. Typical characteristics/concepts are: Sequential, Structured, Conventional, Conformative, Planned, Organized, Systematic, Routine
+
+People with a <strong>creating style</strong> tend to be creative and like experimentation. They see problems as opportunities and challenges, and they like uncertainty and freedom. Typical characteristics/concepts are: Possibilities, Meanings, Ideas, Impulsive, Flexible, Open-ended, Novelty, Subjective, Inventive, Creative
+<table>
+<tbody>
+<tr>
+<td width="45%">
+    <h3>Your styles:</h3>
+<strong>Creating style: <!--?php echo $output2[1][0]; ?--></strong>
+<strong>Knowing style: <!--?php echo $output2[1][1]; ?--></strong>
+<strong>Planning style: <!--?php echo $output2[1][2]; ?--></strong>
+
+&nbsp;
+
+<span style="color: white;">.</span>
+<pre id="CoSI" style="display: none;">jQuery(document).ready(function($) {
+
+        function draw_CoSI( el, data1, data2, data3)
+        {
+            var data = new Array();
+            data[0] = data1;
+            data[1] = data2;
+            data[2] = data3;
+            eval( el, data, [ 'C', 'K', 'R'], 5 ) ;
+        }
+
+        function eval( el, data, axis, max_domain )
+        {
+            var chart = d3.select( el ).append("svg")
+                .attr("width",  220)
+                .attr("height", 220)
+                .append("g")
+                .attr("transform", "translate(110,120)");
+
+            var radius = 90
+                , r = d3.scale.linear()
+                    .domain([0, max_domain])
+                    .range([0, radius])
+                , a = d3.scale.linear()
+                    .domain([0, data.length ] )
+                    .range([0, 2*Math.PI]);
+
+            var line = d3.svg.line.radial( )
+                .radius( r )
+                .angle( function( d, i ) { return a( i ) ; } ) ;
+
+            chart.selectAll( "line.axis" )
+                .data( data )
+                .enter( )
+                .append( "svg:line" )
+                .attr( "class", "axis" )
+                .attr( "x1", 0 )
+                .attr( "y1", 0 )
+                .attr( "x2", function ( d, i ) { return Math.cos( a( i ) - Math.PI/2 ) * radius ; } )
+                .attr( "y2", function ( d, i ) { return Math.sin( a( i )  - Math.PI/2 ) * radius ; } )
+                .style( "stroke", "#ccc" ) ;
+
+            chart.selectAll( "text.axis" )
+                .data( axis )
+                .enter( )
+                .append( "svg:text" )
+                .attr( "class", "axis" )
+                .attr( "x", function ( d, i ) { return Math.cos( a( i ) - Math.PI/2 ) * (radius + 10) ; } )
+                .attr( "y", function ( d, i ) { return Math.sin( a( i )  - Math.PI/2 ) * (radius + 10) + 5 ; } )
+                .text( String )
+                .attr("text-anchor", "middle")
+                .style( "fill", "#000" ) ;
+
+            chart.selectAll( "circle.axis" )
+                .data( r.ticks( 5 ) )
+                .enter( )
+                .append( "svg:circle" )
+                .attr( "class", "axis" )
+                .attr( "cx", 0 )
+                .attr( "cy", 0 )
+                .attr( "r", r )
+                .attr( "stroke", "#ccc" )
+                .attr( "fill", "none" ) ;
+
+            chart
+                .append( "svg:path" )
+                .data( [data] )
+                .attr( "d", function( d ) { return line( d ) + "Z" ; } )
+                .attr("class", "data" )
+                .attr( "fill", "none" )
+                .style("stroke", "#000") ;
+        }
+        draw_CoSI('#CoSI_chart', <!--?php echo $output2[1][0]; ?-->, <!--?php echo $output2[1][1]; ?-->, <!--?php echo $output2[1][2]; ?-->);
+
+
+    });
+</pre>
+<div id="CoSI_chart" align="center"></div></td>
+<td>
+
+This is how other groups score on the CoSI (Norms source Cools &amp; al 2009):
+<img src="http://ls03.e-what.net/results/images/cosi_norms.png" alt="" width="90%" /></td>
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+</div>
+<div id="fragment-4">
+    <ul>
+    <li>Allinson, C., &amp; Hayes, J. (1996). The cognitive style index: A measure of intuition-analysis for organizational research. Journal of Management Studies, 33(1), 119–135.</li>
+<li>Cools, E., &amp; Van den Broeck, H. (2007). Development and Validation of the Cognitive Style Indicator. The Journal of Psychology, 141(4), 359–387. doi:10.3200/JRLP.141.4.359-388</li>
+<li>Cools, E., Van den Broeck, H., &amp; Bouckenooghe, D. (2009). Cognitive styles and person–environment fit: Investigating the consequences of cognitive (mis)fit. European Journal of Work and Organizational Psychology, 18(2), 167–198. doi:10.1080/13594320802295540</li>
+<li>Hodgkinson, G., Sadler-Smith, E., Sinclair, M., &amp; Ashkanasy, N. (2009). More than meets the eye? Intuition and analysis revisited. Personality and individual differences, 47(4), 342–346. doi:10.1016/j.paid.2009.03.025</li>
+</ul>
+&nbsp;
+
+</div>
+</div>
+[raw]
+<script type="text/javascript">// <![CDATA[
+    function runNamedScript(sName) { eval(jQuery("#" + sName).html().replace(/\u0026amp;/g, '\u0026').replace(/\u0026lt;/g, '\u003c').replace(/\u0026gt;/g, '\u003e')); } runNamedScript("csi"); runNamedScript("CoSI");
+// ]]></script>
+[/raw]
+
+&nbsp;
+<div id="navprofile"></div>
