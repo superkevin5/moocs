@@ -3,8 +3,10 @@
 angular.module('mooc')
     .constant('appConstants',
         {
-            appPathIngoogleDrive:'https://googledrive.com/host/0B5lCcvQYS1mRU2VVY1pfWlY0eTA',
+            appPathIngoogleDrive:'../../',
             cookieTimeoutMinutes : 30,
+            isCookieEnabled:false,
+            isIframe:false,
             debugMode:false,
             courseList:[
                 'P2P',

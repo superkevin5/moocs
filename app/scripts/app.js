@@ -60,6 +60,7 @@ angular
             $rootScope.debugMode = appConstants.debugMode;
 
             $rootScope.appPath = appConstants.appPathIngoogleDrive;
+            $rootScope.isIframe = appConstants.isIframe;
 
             $rootScope.$on('$locationChangeStart', function ($event, changeTo, changeFrom) {
                 $timeout(function () {

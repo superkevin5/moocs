@@ -21,7 +21,9 @@
             </div>
         </div>
         <div class="modal-content fadein" ng-if="authorized">
-          <auto-login ng-if="authorized"></auto-login>
+            <auto-login ng-if="authorized&&!isIframe"></auto-login>
+            <auto-login-iframe ng-if="authorized&&isIframe"></auto-login-iframe>
+
             <div class="modal-header">
                 <h1 class="text-center">Select your course</h1>
             </div>
@@ -35,7 +37,6 @@
             </div>
         </div>
     </div>
-
     <div ng-if="$root.debugMode" class="clearfix col-md-12">
         <pre>{{availableCourses|json}}</pre>
         <pre>{{authorized}}</pre>
