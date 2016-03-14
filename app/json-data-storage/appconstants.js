@@ -6,7 +6,7 @@ angular.module('mooc')
             appPathIngoogleDrive:'../../',
             cookieTimeoutMinutes : 30,
             isCookieEnabled:false,
-            isIframe:false,
+            isIframe:true,
             debugMode:false,
             courseList:[
                 'P2P',
