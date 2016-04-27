@@ -8,7 +8,7 @@ angular.module('mooc')
         var myDirective = {
             restrict: 'E',
             template: '<div ng-if="showCarousal">'+
-            '<div class="carsousel">'+
+            '<div class="carsousel tableauPlaceholder">'+
             '<uib-carousel interval="myInterval" no-wrap="noWrapSlides">'+
             '<uib-slide ng-repeat="slide in imageQueue">'+
             '<img ng-src="{{$root.appPath}}/images/carouseltemplate/{{slide}}">'+
@@ -16,7 +16,7 @@ angular.module('mooc')
             '</uib-carousel>'+
             '</div>'+
             '</div>'+
-            '<div id="tableauViz" ng-if="!showCarousal"></div>',
+            '<div id="tableauViz" ng-if="!showCarousal" class="tableauPlaceholder"></div>',
             scope: {
                 page: '=',
                 mooc: '=',
@@ -26,8 +26,6 @@ angular.module('mooc')
                 $scope.initializeViz = function (url) {
                     var placeholderDiv = iElm[0].querySelector('#tableauViz');
                     var options = {
-                        width: placeholderDiv.offsetWidth,
-                        height: placeholderDiv.offsetHeight,
                         hideTabs: false,
                         hideToolbar: true,
                         onFirstInteractive: function () {

@@ -55,9 +55,11 @@
     </span>
     </div>
     <mooc-tableau page="viewType" mooc="courseDetail.mooc" viz="viz"></mooc-tableau>
+    <br>
+    <br>
 </div>
-<div id="footer">
-    <p class="footer_p">UNSW - Learning & Teching Unit, <br/>
+<div id="footer_singleview">
+    <p class="footer_p_singleview">UNSW - Learning & Teching Unit, <br/>
         Learning Analytics and Data Analysis Team.<br/>
         For feedback/comments please contact unswmooc1@gmail.com<br/><br/><br/>
         <strong>Last edited on date 24 august 2015. </strong>
@@ -67,22 +69,12 @@
     <div id="tools" class="nastycenter">
         <ul>
             <li ng-click="viz.showExportImageDialog()" class="palm-cursor" title="Export as picture">
-                <img ng-src="{{$root.appPath}}/images/toold_img.png"
-                     uib-popover="{{'export_pic'|superTooltip}}" popover-trigger="mouseenter"
-                     popover-placement="top"
-                        />
+                <img ng-src="{{$root.appPath}}/images/toold_img.png"/>
             </li>
             <li class="palm-cursor" ng-click="viz.showExportPDFDialog()"><img
-                    ng-src="{{$root.appPath}}/images/toold_pdf.png"
-
-                    uib-popover="{{'export_pdf'|superTooltip}}" popover-trigger="mouseenter"
-                    popover-placement="top"
-                    /></li>
+                    ng-src="{{$root.appPath}}/images/toold_pdf.png"/></li>
             <li class="palm-cursor" ng-click="viz.showExportDataDialog()"><img
-                    ng-src="{{$root.appPath}}/images/toold_data.png"
-                    uib-popover="{{'export_exp'|superTooltip}}" popover-trigger="mouseenter"
-                    popover-placement="top"
-                    /></li>
+                    ng-src="{{$root.appPath}}/images/toold_data.png"/></li>
             <br>
             <br>
             <!--uib-tooltip="{{'export_exp'|superTooltip}}"-->
