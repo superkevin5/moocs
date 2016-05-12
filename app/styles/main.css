@@ -7549,10 +7549,7 @@ button.close {
   display: none !important; }
 
 * {
-  zoom: 98%; }
-
-*:not(.fa) {
-  font-family: Arial !important; }
+  font-family: "Times New Roman", Times, serif; }
 
 html {
   position: relative;
@@ -7564,7 +7561,9 @@ body {
   height: 100%;
   background-repeat: repeat-y;
   background-position: center center;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0; }
   @media (max-width: 767px) {
     body {
       background-size: auto auto; } }
@@ -7668,6 +7667,17 @@ a.removedefaulthyper {
   position: fixed;
   bottom: 0;
   height: 100px !important; }
+
+@media screen and (max-height: 700px) {
+  #footer {
+    display: none; } }
+
+.myTooltip {
+  border-radius: 25px !important;
+  font-size: 0.7em !important; }
+
+#Logo h1 {
+  font-size: 2.5em !important; }
 
 .footer_p_singleview {
   height: 100%;

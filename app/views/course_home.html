@@ -1,20 +1,20 @@
-
 <div ng-if="!courseDetail" class="text-center centerSpinner">
-    <span  >
+    <span>
         <i class="fa fa-spinner fa-pulse fa-5x"></i>
     </span>
 </div>
 <div id="mainbody" ng-if="!!courseDetail">
     <div id="leftBody" class="box">
-        <img ng-src="{{$root.appPath}}/images/ReportCategory_small.png"
-             uib-tooltip="Report categories represent standard report organised by specific labels. In general the categories refer to the course as a whole."
-             tooltip-placement="right"/>
+        <img class="palm-cursor" ng-src="{{$root.appPath}}/images/ReportCategory_small.png"
+             uib-tooltip="{{'main_reportCategory'|superTooltip}}"
+             tooltip-placement="right" tooltip-class="myTooltip"/>
         <br/><br/>
         <ul class="uniquefont">
             <li ng-repeat="(key,value) in mainMap track by $index" ng-click="goToSingleView(value.page)"
-                class="palm-cursor"><a class="hvr-underline-from-left removedefaulthyper"
-                                       uib-tooltip="{{value.page|superTooltip}}"
-                                       tooltip-placement="right">{{key|capitalize}}</a></li>
+                class="palm-cursor"><a class="removedefaulthyper"
+                    ><span uib-tooltip="{{value.page|superTooltip}}"
+                           tooltip-placement="right" tooltip-animation="true" tooltip-class="myTooltip">{{key|capitalize}}</span></a>
+            </li>
         </ul>
         <p>&nbsp;</p>
 
@@ -86,11 +86,11 @@
                  class="centerElement palm-cursor"/>
         </p>
     </div>
-    <div id="footer">
-        <p class="footer_p">UNSW - Learning & Teching Unit, <br/>
-            Learning Analytics and Data Analysis Team.<br/>
-            For feedback/comments please contact unswmooc1@gmail.com<br/><br/><br/>
-            <strong>Last edited on date 24 august 2015. </strong>
-        </p>
-    </div>
+</div>
+<div id="footer">
+    <p class="footer_p">UNSW - Learning & Teching Unit, <br/>
+        Learning Analytics and Data Analysis Team.<br/>
+        For feedback/comments please contact unswmooc1@gmail.com<br/><br/><br/>
+        <strong>Last edited on date 24 august 2015. </strong>
+    </p>
 </div>

@@ -2,16 +2,9 @@
   display: none !important;
 }
 
-
 * {
-  zoom:98%;
+    font-family: "Times New Roman", Times, serif;
 }
-
-
-*:not(.fa) {
-  font-family: Arial !important;
-}
-
 
 html {
   position: relative;
@@ -25,7 +18,8 @@ body {
   background-repeat: repeat-y;
   background-position: center center;
   background-attachment: fixed;
-
+  margin: 0;
+  padding: 0;
   @media(max-width: $screen-xs-max) {
     -webkit-background-size: auto auto;
     -moz-background-size: auto auto;
@@ -172,50 +166,65 @@ a.removedefaulthyper {
   width: 100%;
   position: fixed;
   bottom: 0;
-  height:100px !important;
+  height: 100px !important;
 
+}
+
+@media screen and (max-height: 700px) {
+  #footer {
+    display: none;
+
+  }
+}
+
+
+.myTooltip {
+  border-radius: 25px !important;
+  font-size:0.7em !important;
+}
+
+#Logo h1 {
+  font-size: 2.5em !important;
 }
 
 .footer_p_singleview {
   height: 100%;
-  min-height:100%;
-  margin-bottom:0px;
+  min-height: 100%;
+  margin-bottom: 0px;
   font-size: 1em !important;
-  clear:both;
+  clear: both;
   font-size: 9px;
-  color:#eee;
-  padding-left:50px;
-  padding-top:20px;
-  background-color:#000;
-  min-height:80px;
-  border-top:#ffcc00;
-  border-top-width:10px;
-  border-top-style:solid;
+  color: #eee;
+  padding-left: 50px;
+  padding-top: 20px;
+  background-color: #000;
+  min-height: 80px;
+  border-top: #ffcc00;
+  border-top-width: 10px;
+  border-top-style: solid;
 }
 
 #footer_singleview {
   width: 100%;
-  height:100px !important;
+  height: 100px !important;
   bottom: 0;
   position: fixed;
 }
 
 .footer_p {
   height: 100%;
-  min-height:100%;
-  margin-bottom:0px;
+  min-height: 100%;
+  margin-bottom: 0px;
 }
 
-
-
-.nastycenter{
-  margin-top:-80px !important;
-  border-style:none !important;
-  border:none !important;
+.nastycenter {
+  margin-top: -80px !important;
+  border-style: none !important;
+  border: none !important;
 }
 
-.centerSpinner{
-  margin-top:200px !important;
+.centerSpinner {
+  margin-top: 200px !important;
 }
 
 div.tooltip-inner {
@@ -228,7 +237,7 @@ div.tooltip-inner {
   font-size: 1.3em;
 }
 
-.footer_p{
+.footer_p {
   font-size: 1em !important;
 }
 
@@ -238,19 +247,19 @@ div.tooltip-inner {
   }
 }
 
-
-.carsousel{
-  width:80% !important;
-  overflow:hidden;
-  height:700px !important;
-  margin:auto;
-  border:solid 4px;
-}
-#cssmenu{
-  z-index:999;
+.carsousel {
+  width: 80% !important;
+  overflow: hidden;
+  height: 700px !important;
+  margin: auto;
+  border: solid 4px;
 }
 
-.tableauPlaceholder{
-  overflow:scroll !important;
+#cssmenu {
+  z-index: 999;
+}
+
+.tableauPlaceholder {
+  overflow: scroll !important;
 }
 

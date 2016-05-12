@@ -22,7 +22,8 @@ angular.module('mooc')
             'dashhome':'Return to the homepage',
             'export_pic':'This exports the current view as a picture',
             'export_pdf':'This exports the current view as a PDF document',
-            'export_exp':'This will generate a view of the underlying data as a table which can be saved as CSV'
+            'export_exp':'This will generate a view of the underlying data as a table which can be saved as CSV',
+            'main_reportCategory':'Report categories represent standard report organised by specific labels. In general the categories refer to the course as a whole.'
 
         }
 	);
