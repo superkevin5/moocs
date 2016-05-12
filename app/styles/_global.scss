@@ -3,11 +3,6 @@
 }
 
 
-* {
-  zoom:98%;
-}
-
-
 *:not(.fa) {
   font-family: Arial !important;
 }
@@ -25,7 +20,8 @@ body {
   background-repeat: repeat-y;
   background-position: center center;
   background-attachment: fixed;
-
+  margin:0;
+  padding:0;
   @media(max-width: $screen-xs-max) {
     -webkit-background-size: auto auto;
     -moz-background-size: auto auto;
@@ -168,13 +164,22 @@ a.removedefaulthyper {
   cursor: pointer;
 }
 
+
 #footer {
   width: 100%;
   position: fixed;
   bottom: 0;
-  height:100px !important;
+  height: 100px !important;
 
 }
+
+@media screen and (max-height: 700px) {
+  #footer {
+    display: none;
+
+  }
+}
+
 
 .footer_p_singleview {
   height: 100%;
