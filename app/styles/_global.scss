@@ -170,10 +170,9 @@ a.removedefaulthyper {
 
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 700px) , screen and (max-width: 799px){
   #footer {
     display: none;
-
   }
 }
 
@@ -186,6 +185,15 @@ a.removedefaulthyper {
 #Logo h1 {
   font-size: 2.5em !important;
 }
+
+
+
+@media screen and (max-width: 799px) {
+  #Logo h1 {
+    font-size: 1em !important;
+  }
+}
+
 
 .footer_p_singleview {
   height: 100%;

@@ -50,29 +50,63 @@ body{
 
 /* sections: MAIN */
 #mainbody {
-  background: white none repeat-x;
-  background-size: fit;
-  background-color: white;
-  border: 0px solid #e6e6e6;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  padding: 10px;
+
+
 }
 
-#leftBody{
-	float:left;
-	margin-left:3%;
-	width:35%;
-	padding-top:0px;
-	margin-right:10px;
+
+@media screen and (min-width: 800px) {
+  #leftBody {
+    float: left;
+    width: 35%;
+    padding-left: 5%;
+    padding-top: 3%;
+  }
+
+  #rightBody {
+    float: left;
+    width: 65%;
+    padding-top: 3%;
+  }
+
+  #rightBody p {
+    margin-right: 40%;
+  }
 }
-#rightBody{
-	margin-top:20px;
-	margin-left:100px;
+
+
+@media screen and (max-width: 799px) {
+  #leftBody {
+    width: 100%;
+    padding-top: 3%;
+  }
+
+  #leftBody img {
+    margin-left:30%;
+  }
+
+  #leftBody ul {
+    margin-left:30%;
+  }
+
+
+
+  #rightBody {
+    width: 100%;
+  }
+
+  #rightBody img {
+    margin-right: 30%;
+  }
 }
+
+
+#rightBody:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
 #headerMap{
 	float:left;
 	margin-bottom:0px;
@@ -87,7 +121,7 @@ body{
 	margin-top:10px;
 }
 #mainbody ul{
-	list-style:url("https://googledrive.com/host/0B8KqLaP_s06IYzdzRWg0MTR1a0k/arrow_12.png");
+	list-style:url("../images/arrow_12.png");
 	font-size:18px;
 	min-height:22px;
 }
