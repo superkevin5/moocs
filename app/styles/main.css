@@ -7679,6 +7679,10 @@ a.removedefaulthyper {
 #Logo h1 {
   font-size: 2.5em !important; }
 
+@media screen and (max-width: 799px) {
+  #Logo h1 {
+    font-size: 1em !important; } }
+
 .footer_p_singleview {
   height: 100%;
   min-height: 100%;
