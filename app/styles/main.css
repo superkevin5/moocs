@@ -7588,7 +7588,10 @@ body {
     background-color: #2AC833; }
 
 #SkinContent * {
-  box-sizing: initial; }
+  box-sizing: content-box;
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+  -o-box-sizing: initial; }
 
 .vertical-align {
   position: absolute;
