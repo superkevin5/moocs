@@ -7683,13 +7683,28 @@ a.removedefaulthyper {
   #Logo h1 {
     font-size: 1em !important; } }
 
-.footer_p_singleview {
-  height: 100%;
-  min-height: 100%;
-  margin-bottom: 0px;
-  font-size: 1em !important;
+#manual_footer {
   clear: both;
-  font-size: 9px;
+  width: 100%;
+  height: 100px !important;
+  position: relative; }
+
+.manual_footer_p {
+  clear: both;
+  color: #eee;
+  padding-left: 50px;
+  padding-top: 20px;
+  background-color: #000;
+  min-height: 80px;
+  border-top: #ffcc00;
+  border-top-width: 10px;
+  border-top-style: solid; }
+
+#manual_footer p {
+  margin: 0 !important; }
+
+.footer_p_singleview {
+  clear: both;
   color: #eee;
   padding-left: 50px;
   padding-top: 20px;
@@ -7700,10 +7715,16 @@ a.removedefaulthyper {
   border-top-style: solid; }
 
 #footer_singleview {
+  clear: both;
   width: 100%;
   height: 100px !important;
-  bottom: 0;
-  position: fixed; }
+  position: relative; }
+
+#footer_singleview p {
+  margin: 0 !important; }
+
+#footer_singleview p {
+  font-size: 1em !important; }
 
 .footer_p {
   height: 100%;
@@ -7711,7 +7732,7 @@ a.removedefaulthyper {
   margin-bottom: 0px; }
 
 .nastycenter {
-  margin-top: -80px !important;
+  margin-top: -100px !important;
   border-style: none !important;
   border: none !important; }
 
