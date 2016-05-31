@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('mooc')
-    .directive('moocTableau', function ($timeout,appConstants) {
+    .directive('moocTableau', function ($timeout,$window) {
         var myDirective = {
             restrict: 'E',
             template: '<div ng-if="showCarousal">'+
@@ -23,11 +23,23 @@ angular.module('mooc')
                 viz: '='
             },
             link: function ($scope, iElm, iAttrs, controller) {
+                var urlTmp = undefined;
+                var w = angular.element($window);
+                w.resize(function(){
+                    console.log('s');
+                    if(angular.isDefined(urlTmp)){
+                        $scope.viz.dispose();
+                    $scope.initializeViz(urlTmp);
+                        }
+                });
+
                 $scope.initializeViz = function (url) {
                     var placeholderDiv = iElm[0].querySelector('#tableauViz');
                     var options = {
+                        width: placeholderDiv.clientWidth,
+                        height: placeholderDiv.clientHeight,
                         hideTabs: false,
-                        hideToolbar: true,
+                        hideToolbar: false,
                         onFirstInteractive: function () {
                             var workbook = viz.getWorkbook();
                             var activeSheet = workbook.getActiveSheet();
@@ -65,6 +77,7 @@ angular.module('mooc')
                             console.log(url);
                             $scope.showCarousal = false;
                             $scope.initializeViz(url);
+                            urlTmp = url;
                         }
                     }
                 }, true);
