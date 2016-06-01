@@ -5,11 +5,9 @@ var height = 600;
 var svg = d3.select("#chart")
     .append("svg")
     .attr("width", "100%")
-    .attr("height", "65%")
-    .attr("viewBox", "0 0 " + width + " " + height)
-    .attr("preserveAspectRatio", "xMinYMid meet")
-    .style("border", "solid 1px");
-
+    .attr("height", "85%")
+    .attr("viewBox", "0 0 " + width + " " + (height+70))
+    .attr("preserveAspectRatio", "xMinYMid meet");
 
 var xdataset = ["Contributor", "Investor", "Funder", "StakeHolder", "Entrepreneur"];
 var map = {};
@@ -69,12 +67,13 @@ var rects = svg.selectAll(".MyRect")
         var v1 = map[d].value1;
         return height - padding.top - padding.bottom - y1Scale(v1);
     })
+    .attr("cursor", "pointer")
     .attr("fill", "steelblue")
     .on("mouseover", function (d, i) {
-        // d3.select(this)
-        //     .attr("fill", "yellow");
+        showData(this, d);
     })
     .on("mouseout", function (d, i) {
+        hideData();
         d3.select(this)
             .transition()
             .duration(500)
@@ -97,7 +96,7 @@ svg.selectAll("circle")
         return y2Scale(v2);
     })
     .on("mouseover", function (d) {
-        showData(this, d);
+        //showData(this, d);
     })
     .on("mouseout", function () {
         hideData();
@@ -115,7 +114,13 @@ var line = d3.svg.line()
 svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom) + ")")
-    .call(xAxis);
+    .call(xAxis)
+    .selectAll("text")
+    .style("text-anchor", "end")
+    .style("font-size", "larger")
+    .attr("dx", "-.8em")
+    .attr("dy", ".15em")
+    .attr("transform", "rotate(-65)" );
 
 
 svg.append("g")
@@ -136,7 +141,7 @@ svg.append("path")
 
 svg.append("text")
     .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
-    .attr("transform", "translate(" + (width / 2) + "," + (height - (padding.bottom / 4)) + ")") // centre below axis
+    .attr("transform", "translate(" + (width / 2) + "," + (height + 50) + ")") // centre below axis
     .text("Completed Activities");
 
 
