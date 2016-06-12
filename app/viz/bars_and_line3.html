@@ -23,7 +23,6 @@
         .center {
             margin: 0 auto;
             box-sizing: border-box;
-            margin-top: 5%;
         }
 
         .statement_para {
@@ -92,9 +91,11 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.14/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
@@ -103,6 +104,28 @@
 <div class="container with-3d-shadow with-transitions center">
     <div class="row">
         <h2 id='line_plus_bar_chart'>Business Model Development</h2>
+        <div class="alert alert-danger indication" style="display:none">
+            Invalid input
+        </div>
+        <form>
+            <div class="input-group form-group">
+                <span class="input-group-addon" id="basic-addon3">Labels</span>
+                <input type="text" class="form-control" id="labels" aria-describedby="basic-addon3" placeholder="e.g,investor, funder, stakeHoder">
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon" id="basic-addon3_1">Value1</span>
+                <input type="text" class="form-control" id="value1" aria-describedby="basic-addon3" placeholder="e.g, 1, 2, 3">
+                <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon" id="basic-addon3_2">Value2</span>
+                <input type="text" class="form-control" id="value2" aria-describedby="basic-addon3" placeholder="e.g, 1, 2, 3">
+                <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+            </div>
+            <p>
+                <button type="button" class="btn btn-default navbar-btn" id="create_chart">Create chart</button>
+            </p>
+        </form>
 
         <div id='chart'>
         </div>
