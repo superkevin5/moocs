@@ -78,10 +78,9 @@
             }
         }
 
-
         .infobox {
             border: 2px solid steelblue;
-            padding:8px;
+            padding: 8px;
             border-radius: 4px;
             box-shadow: #333333 0px 0px 10px;
             width: auto !important;
@@ -104,22 +103,42 @@
 <div class="container with-3d-shadow with-transitions center">
     <div class="row">
         <h2 id='line_plus_bar_chart'>Business Model Development</h2>
+
+        <div class="alert alert-info" role="alert">
+            <p>The tooltip shows the values from the cumulative instead of the value of the bars.</p>
+
+            <p> y1-axis = [0, 2, 4, 6, 8];</p>
+
+            <p> y2-axis = [0, 5, 10, 15, 20, 25];</p>
+        </div>
         <div class="alert alert-danger indication" style="display:none">
             Invalid input
+        </div>
+        <div class="alert alert-danger indication2" style="display:none">
+            Number of elements in 3 arrays should match each other
+        </div>
+        <div class="alert alert-danger indication3" style="display:none">
+            value should not be greater than the corresponding maximum y-axis value
+        </div>
+        <div class="alert alert-danger indication4" style="display:none">
+            Label name should be unique.
         </div>
         <form>
             <div class="input-group form-group">
                 <span class="input-group-addon" id="basic-addon3">Labels</span>
-                <input type="text" class="form-control" id="labels" aria-describedby="basic-addon3" placeholder="e.g,investor, funder, stakeHoder">
+                <input type="text" class="form-control" id="labels" aria-describedby="basic-addon3"
+                       placeholder="e.g,investor, funder, stakeHoder">
             </div>
             <div class="input-group form-group">
                 <span class="input-group-addon" id="basic-addon3_1">Value1</span>
-                <input type="text" class="form-control" id="value1" aria-describedby="basic-addon3" placeholder="e.g, 1, 2, 3">
+                <input type="text" class="form-control" id="value1" aria-describedby="basic-addon3"
+                       placeholder="e.g, 1, 2, 3">
                 <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
             </div>
             <div class="input-group form-group">
                 <span class="input-group-addon" id="basic-addon3_2">Value2</span>
-                <input type="text" class="form-control" id="value2" aria-describedby="basic-addon3" placeholder="e.g, 1, 2, 3">
+                <input type="text" class="form-control" id="value2" aria-describedby="basic-addon3"
+                       placeholder="e.g, 1, 2, 3">
                 <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
             </div>
             <p>
